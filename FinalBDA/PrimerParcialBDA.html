@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos Aplicada - Primer Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Base de Datos Aplicada</h1>
+            <p>Primer Parcial: SGBD, Subconsultas, Índices, Hashing y Optimización de Consultas</p>
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: SGBD -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Sistema Gestor de Base de Datos (SGBD)</h2>
+
+                <div class="section-title">¿Qué es un SGBD?</div>
+                <div class="definition">
+                    Es el software que actúa como interfaz entre la base de datos, los usuarios y las aplicaciones.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list"></i>Funciones Principales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Administrar, almacenar y recuperar</strong> información de forma eficiente</li>
+                            <li><strong>Garantizar la fiabilidad</strong> de grandes cantidades de datos</li>
+                            <li><strong>Permitir operaciones CRUD:</strong> Crear, Leer, Actualizar, Eliminar</li>
+                            <li><strong>Asegurar integridad, consistencia y seguridad</strong> de los datos</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Ejemplos:</strong> Oracle, SQL Server, PostgreSQL, MySQL, MongoDB, Redis</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-exclamation-triangle"></i>Problemas ANTES de SGBD
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Redundancia e inconsistencia:</strong> Los datos se duplicaban y no coincidían entre archivos</li>
+                            <li><strong>Dificultad para acceder:</strong> Información dispersa, lenta de recuperar</li>
+                            <li><strong>Aislamiento:</strong> Datos en formatos y ubicaciones diferentes</li>
+                            <li><strong>Falta de integridad:</strong> Difícil aplicar reglas de validación</li>
+                            <li><strong>Sin atomicidad:</strong> No se garantizaba completitud de operaciones</li>
+                            <li><strong>Acceso concurrente:</strong> Anomalías con múltiples usuarios</li>
+                            <li><strong>Seguridad deficiente:</strong> Imposible restringir acceso con precisión</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">Niveles de Abstracción de Datos</div>
+
+<div class="definition">
+    Los niveles de abstracción son distintas formas de ver una base de datos según quién la use, ocultando los detalles innecesarios.
+</div>
+
+<div class="highlight">
+    <strong>Propósito:</strong> Sirven para separar: cómo se guardan los datos, cómo están organizados, qué parte ve cada usuario.
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-layer-group"></i> Nivel 1: Físico (Bajo)
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Describe cómo se almacenan físicamente los datos en el disco.</strong></p>
+        <ul class="bullet-list">
+            <li>Estructuras de archivos</li>
+            <li>Índices y bloques</li>
+            <li>Asignación de espacio</li>
+            <li>Ubicación exacta en disco</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-database"></i> Nivel 2: Lógico (Conceptual)
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Describe QUÉ datos se almacenan y qué RELACIONES existen entre ellos, ocultando detalles físicos.</strong></p>
+        <ul class="bullet-list">
+            <li>Tablas y sus campos</li>
+            <li>Relaciones entre tablas</li>
+            <li>Atributos y tipos de datos</li>
+            <li>Restricciones de integridad</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-eye"></i> Nivel 3: Vistas (Externo)
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Muestra solo una PARTE de la base de datos a usuarios específicos para simplificar su interacción.</strong></p>
+        <ul class="bullet-list">
+            <li><strong>Cajero:</strong> Ve saldos y operaciones bancarias</li>
+            <li><strong>Cliente:</strong> Ve solo su propia cuenta</li>
+            <li><strong>Gerente:</strong> Puede ver TODA la información</li>
+        </ul>
+        <p style="margin-top: 12px; color: #888; font-size: 13px;"><em>Cada usuario tiene una "vista" personalizada según su rol y permisos.</em></p>
+    </div>
+</div>
+
+<div class="highlight success">
+    <i class="fas fa-check-circle"></i> Los tres niveles trabajan juntos: el físico almacena, el lógico organiza y el externo presenta información personalizada.
+</div>
+<div class="section-title">Tipos de Usuarios del SGBD</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-user"></i> Usuarios Normales (No Sofisticados)
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>No tienen conocimiento técnico profundo.</strong></p>
+        <ul class="bullet-list">
+            <li>Interactúan mediante programas de aplicación previamente escritos</li>
+            <li>No escriben código ni consultas SQL</li>
+            <li>Usan interfaces gráficas amigables</li>
+            <li>Ejemplo: Cajero usando software bancario, vendedor usando POS</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-laptop"></i> Programadores de Aplicaciones
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Profesionales informáticos que crean el software.</strong></p>
+        <ul class="bullet-list">
+            <li>Escriben programas y desarrollan interfaces</li>
+            <li>Conocen lenguajes de programación (Java, C#, Python, etc.)</li>
+            <li>Conectan aplicaciones con la base de datos</li>
+            <li>Manejan APIs y consultas SQL desde código</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-brain"></i> Usuarios Sofisticados
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Interactúan directamente sin escribir programas.</strong></p>
+        <ul class="bullet-list">
+            <li>Formulan consultas usando lenguajes de consulta (SQL, QBE)</li>
+            <li>Remiten consultas directamente al procesador de consultas</li>
+            <li>No necesitan intermediario de programador</li>
+            <li>Ejemplo: Analista de datos, investigador, ejecutivo consultando reportes</li>
+        </ul>
+    </div>
+</div>
+<div class="section-title">El Administrador de Bases de Datos (DBA)</div>
+
+<div class="definition">
+    Es la persona responsable de gestionar de manera centralizada los datos y los programas que los acceden. Es el "guardián" de la base de datos.
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-tasks"></i> Funciones del DBA
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <p><strong>Funciones estratégicas:</strong></p>
+        <ul class="bullet-list">
+            <li><strong>Definir el esquema:</strong> Estructura y organización de la base de datos</li>
+            <li><strong>Establecer estructura de acceso:</strong> Crear índices, optimizar consultas</li>
+            <li><strong>Autorizar permisos:</strong> Quién puede ver/modificar qué datos</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>Mantenimiento rutinario:</strong></p>
+        <ul class="bullet-list">
+            <li><strong>Realizar copias de seguridad (backups):</strong> Proteger contra pérdida de datos</li>
+            <li><strong>Gestionar espacio en disco:</strong> Monitorear y asignar almacenamiento</li>
+            <li><strong>Ajustar rendimiento (tuning):</strong> Optimizar velocidad y eficiencia</li>
+            <li><strong>Monitoreo:</strong> Vigilar el funcionamiento del SGBD</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-shield-alt"></i> Responsabilidades Clave
+        <span class="toggle-icon">›</span>
+    </div>
+    <div class="card-content">
+        <div class="badge badge-blue">Seguridad de datos</div>
+        <div class="badge badge-blue">Integridad de BD</div>
+        <div class="badge badge-green">Disponibilidad 24/7</div>
+        <div class="badge badge-green">Recuperación ante fallos</div>
+        <div class="badge badge-orange">Optimización de performance</div>
+        <div class="badge badge-orange">Gestión de usuarios</div>
+
+        <p style="margin-top: 15px;"><strong>El DBA debe garantizar:</strong> Que los datos sean seguros, accesibles, consistentes y rápidos de acceder.</p>
+    </div>
+</div>
+
+<div class="important">
+    <strong>⚠️ Nota:</strong> El DBA es una posición crítica. Sin un buen DBA, la base de datos se vuelve lenta, insegura y propensa a pérdida de datos.
+</div>
+
+
+            <!-- CAPÍTULO 2: SUBCONSULTAS -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Subconsultas</h2>
+
+                <div class="definition">
+                    Es una consulta anidada dentro de otra sentencia SQL. Se encierran entre paréntesis.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sliders-h"></i>Subconsultas Escalares
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Se usan con operadores:</strong> =, >, <, >=, <=, !=</li>
+                            <li><strong>Devuelven:</strong> Un solo valor</li>
+                            <li><strong>Ejemplo:</strong> Encontrar el producto con la cantidad máxima</li>
+                            <li><strong>Error común:</strong> Si devuelve más de un valor cuando se espera uno solo → ERROR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ul"></i>Subconsultas de Lista
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Se utilizan con:</strong> Cláusula IN</li>
+                            <li><strong>Devuelven:</strong> Múltiples valores (lista)</li>
+                            <li><strong>Ejemplo:</strong> Buscar productos cuya cantidad sea mayor a 100</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sliders-h"></i>Subconsultas Correlacionadas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Funcionamiento: Las subconsultas correlacionadas dependen de los valores de la consulta externa: para cada fila de la consulta externa, se ejecuta la subconsulta interna, pasando un valor de la externa a la interna, y se repite hasta evaluar todas las filas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">Modificación de Datos con Subconsultas</div>
+
+            <div class="definition">
+                Podés usar subconsultas para realizar cambios masivos basados en otras tablas. Es una forma poderosa de actualizar múltiples registros según condiciones complejas.
+            </div>
+
+            <div class="highlight">
+                <i class="fas fa-lightbulb"></i> <strong>Uso común:</strong> Sincronizar datos entre tablas, actualizar valores según cálculos de otras tablas, copiar información filtrada.
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-plus-square"></i> INSERT ... SELECT
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <p><strong>Inserta filas en una tabla destino basándose en el resultado de un SELECT de otra tabla.</strong></p>
+                    
+                    <p style="margin-top: 12px;"><strong>Sintaxis básica:</strong></p>
+                    <div class="formula">INSERT INTO TablaDestino (col1, col2, col3)
+            SELECT col1, col2, col3
+            FROM TablaOrigen
+            WHERE condición</div>
+
+                    <p style="margin-top: 15px;"><strong>Ejemplo práctico:</strong></p>
+                    <div class="formula">-- Copiar empleados de Argentina a una tabla de Customers
+            INSERT INTO Customers (Name, Country, Email)
+            SELECT EmployeeName, Country, EmployeeEmail
+            FROM Employees
+            WHERE Country = 'Argentina' AND Active = 1</div>
+
+                    <p style="margin-top: 15px;"><strong>Consideraciones importantes:</strong></p>
+                    <ul class="bullet-list">
+                        <li><strong>Tipos de datos:</strong> Las columnas del SELECT deben coincidir con tipos y cantidad de la tabla destino</li>
+                        <li><strong>Restricciones:</strong> Si hay claves primarias duplicadas, la inserción falla</li>
+                        <li><strong>Orden:</strong> Asegúrate de especificar las columnas en el mismo orden</li>
+                        <li><strong>Omitir columnas:</strong> Si una columna no aparece, toma el valor por defecto (DEFAULT) o NULL</li>
+                        <li><strong>Transacción:</strong> Considerar usar BEGIN TRANSACTION para revertir si hay error</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-trash"></i> DELETE con Subconsultas
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <p><strong>Elimina filas según condiciones complejas definidas en otra tabla.</strong></p>
+                    
+                    <p style="margin-top: 12px;"><strong>Opción 1: Usar WHERE ... IN con subconsulta</strong></p>
+                    <div class="formula">DELETE FROM Pedidos
+            WHERE ClienteID IN (
+                SELECT ClienteID FROM Clientes
+                WHERE País = 'España' AND Estado = 'Inactivo'
+            )</div>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">Elimina todos los pedidos de clientes españoles inactivos</p>
+
+                    <p style="margin-top: 15px;"><strong>Opción 2: Usar JOIN en FROM</strong></p>
+                    <div class="formula">DELETE FROM Pedidos
+            FROM Pedidos p
+            INNER JOIN Clientes c ON p.ClienteID = c.ClienteID
+            WHERE c.País = 'España' AND c.Estado = 'Inactivo'</div>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">Mismo resultado pero usando JOIN (más legible en SQL Server)</p>
+
+                    <p style="margin-top: 15px;"><strong>Cuidados críticos:</strong></p>
+                    <ul class="bullet-list">
+                        <li><strong>⚠️ Siempre verificar la subconsulta primero:</strong> Ejecuta el SELECT aparte para confirmar qué borrará</li>
+                        <li><strong>Usar transacciones:</strong> BEGIN TRANSACTION + ROLLBACK si es necesario</li>
+                        <li><strong>Respetar restricciones:</strong> Si hay claves foráneas, algunos borrados pueden estar prohibidos</li>
+                        <li><strong>Performance:</strong> Borrar muchos registros puede ser lento</li>
+                    </ul>
+
+                    <div class="important">
+                        <strong>🔴 PELIGRO:</strong> Un DELETE sin WHERE elimina TODA la tabla. Siempre especifica condiciones y prueba primero.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-edit"></i> UPDATE con Subconsultas
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <p><strong>Modifica valores usando datos de otra tabla como referencia.</strong></p>
+                    
+                    <p style="margin-top: 12px;"><strong>Opción 1: Usar subconsulta en WHERE (condicionar qué filas actualizar)</strong></p>
+                    <div class="formula">-- Aumentar precios solo a productos de proveedores españoles
+            UPDATE Productos
+            SET Precio = Precio * 1.15  -- Aumenta 15%
+            WHERE ProveedorID IN (
+                SELECT ProveedorID FROM Proveedores
+                WHERE País = 'España'
+            )</div>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">Aumenta precios solo de productos del proveedor especificado</p>
+
+                    <p style="margin-top: 15px;"><strong>Opción 2: Usar SET con subconsulta (actualizar valor calculado)</strong></p>
+                    <div class="formula">-- Actualizar stock de producto con el total de sus ventas
+            UPDATE Productos
+            SET StockVendido = (
+                SELECT SUM(Cantidad)
+                FROM Pedidos
+                WHERE Pedidos.ProductoID = Productos.ProductoID
+            )
+            WHERE ProductoID > 0</div>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">Calcula suma desde otra tabla e inserta el resultado</p>
+
+                    <p style="margin-top: 15px;"><strong>Opción 3: Usar JOIN (actualizar basándose en relaciones)</strong></p>
+                    <div class="formula">-- Actualizar el nombre del proveedor en la tabla de Productos
+            UPDATE Productos
+            SET NombreProveedor = p.Nombre
+            FROM Productos pr
+            INNER JOIN Proveedores p ON pr.ProveedorID = p.ProveedorID
+            WHERE pr.Precio > 100</div>
+                    <p style="margin-top: 10px; font-size: 13px; color: #666;">Sincroniza información entre tablas usando relaciones</p>
+
+                    <p style="margin-top: 15px;"><strong>Ejemplo avanzado: Actualizar múltiples columnas</strong></p>
+                    <div class="formula">-- Actualizar precio y categoría según datos del proveedor
+            UPDATE Productos
+            SET 
+                Precio = Precio * 1.10,
+                Categoría = (SELECT Especialidad FROM Proveedores WHERE ProveedorID = Productos.ProveedorID)
+            WHERE ProveedorID IN (
+                SELECT ProveedorID FROM Proveedores 
+                WHERE País = 'Brasil' AND Activo = 1
+            )</div>
+
+                    <p style="margin-top: 15px;"><strong>Mejores prácticas en UPDATE:</strong></p>
+                    <ul class="bullet-list">
+                        <li><strong>Verificar primero:</strong> Ejecuta un SELECT con las mismas condiciones para ver qué va a cambiar</li>
+                        <li><strong>Usar transacciones:</strong> BEGIN / COMMIT / ROLLBACK</li>
+                        <li><strong>Limitar filas:</strong> Usar WHERE específico, no actualizar TODA la tabla innecesariamente</li>
+                        <li><strong>Subconsultas correlacionadas:</strong> Pueden ser lentas si hay muchos registros</li>
+                        <li><strong>Cálculos complejos:</strong> Si la subconsulta devuelve NULL, el UPDATE pone NULL (salvo que uses ISNULL)</li>
+                    </ul>
+
+                    <div class="highlight success">
+                        <i class="fas fa-check-circle"></i> <strong>Truco:</strong> Usa ISNULL(subconsulta, valor_por_defecto) para manejar valores NULL en updates
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-exclamation-triangle"></i> Tabla Comparativa: INSERT vs DELETE vs UPDATE
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Operación</th>
+                            <th>Propósito</th>
+                            <th>Sintaxis Clave</th>
+                            <th>Riesgo</th>
+                        </tr>
+                        <tr>
+                            <td><strong>INSERT...SELECT</strong></td>
+                            <td>Copiar datos filtrados de otra tabla</td>
+                            <td>SELECT + WHERE</td>
+                            <td>Duplicados si claves ya existen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DELETE</strong></td>
+                            <td>Eliminar filas permanentemente</td>
+                            <td>IN (subconsulta) o JOIN</td>
+                            <td>⚠️ Pérdida irreversible de datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UPDATE</strong></td>
+                            <td>Modificar valores existentes</td>
+                            <td>SET + WHERE/JOIN/subconsulta</td>
+                            <td>Cambios inesperados, inconsistencias</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section-title">Funciones de Agregación y Agrupamiento</div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-calculator"></i> Funciones de Agregación
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Función</th>
+                            <th>¿Qué hace?</th>
+                        </tr>
+                        <tr>
+                            <td><code>COUNT(*)</code></td>
+                            <td>Cuenta todas las filas (incluye nulos)</td>
+                        </tr>
+                        <tr>
+                            <td><code>COUNT(A)</code></td>
+                            <td>Cuenta valores no nulos de columna A</td>
+                        </tr>
+                        <tr>
+                            <td><code>SUM(A)</code></td>
+                            <td>Suma valores (ignora nulos)</td>
+                        </tr>
+                        <tr>
+                            <td><code>AVG(A)</code></td>
+                            <td>Promedio (ignora nulos)</td>
+                        </tr>
+                        <tr>
+                            <td><code>MAX(A)</code></td>
+                            <td>Valor máximo (ignora nulos)</td>
+                        </tr>
+                        <tr>
+                            <td><code>MIN(A)</code></td>
+                            <td>Valor mínimo (ignora nulos)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-filter"></i> Cláusulas de Filtrado y Agrupamiento
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Cláusula</th>
+                            <th>¿Qué hace?</th>
+                        </tr>
+                        <tr>
+                            <td><strong>WHERE</strong></td>
+                            <td>Filtra filas ANTES de agrupar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GROUP BY</strong></td>
+                            <td>Agrupa filas por valores iguales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HAVING</strong></td>
+                            <td>Filtra GRUPOS después de agrupar (con funciones agregadas)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-project-diagram"></i> Subtotales Jerárquicos
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Función</th>
+                            <th>¿Qué hace?</th>
+                        </tr>
+                        <tr>
+                            <td><strong>ROLLUP</strong></td>
+                            <td>Subtotales jerárquicos de derecha a izquierda + total</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CUBE</strong></td>
+                            <td>TODAS las combinaciones posibles de subtotales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GROUPING()</strong></td>
+                            <td>Devuelve 1 si es subtotal, 0 si es detalle</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-sort"></i> Ordenamiento y Limitación de Resultados
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Cláusula</th>
+                            <th>¿Qué hace?</th>
+                        </tr>
+                        <tr>
+                            <td><strong>ORDER BY</strong></td>
+                            <td>Ordena resultados ASC (ascendente) o DESC (descendente)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TOP N</strong></td>
+                            <td>Limita a las primeras N filas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TOP N WITH TIES</strong></td>
+                            <td>TOP N pero incluye empates en el último valor</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-exclamation-triangle"></i> Funciones Anticuadas (Evitar)
+                    <span class="toggle-icon">›</span>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <tr>
+                            <th>Cláusula</th>
+                            <th>¿Qué hace?</th>
+                        </tr>
+                        <tr>
+                            <td><strong>COMPUTE</strong></td>
+                            <td>Genera totales sin agrupar (deprecated)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>COMPUTE BY</strong></td>
+                            <td>Genera subtotales por columna (deprecated)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- CAPÍTULO 3: ÍNDICES -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Índices</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-key"></i> ¿Qué es un Índice?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es una estructura de datos diseñada específicamente para mejorar la velocidad de acceso a los registros de una tabla.</p>
+                        <div class="formula">[Clave de búsqueda | Puntero]</div>
+                        <p style="margin-top: 12px;"><strong>Ventajas:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Archivo de índice es MUCHO más pequeño que el archivo de datos original</li>
+                            <li>Procesamiento más rápido</li>
+                            <li>Acceso directo sin búsquedas lineales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrow-up"></i> Clases Básicas de Índices
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Tipo de Índice</th>
+                                <th>¿Cómo funciona?</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Índices Ordenados</strong></td>
+                                <td>Las claves se almacenan en orden alfabético o numérico</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Índices de Hash</strong></td>
+                                <td>Las claves se distribuyen uniformemente en cajones (buckets) mediante función matemática</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-tachometer-alt"></i> Tiempos de Acceso
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Resumen técnico (b = cantidad de bloques de memoria):</strong></p>
+                        <table>
+                            <tr>
+                                <th>Tipo de Almacenamiento</th>
+                                <th>Fórmula</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Heap (Desordenado)</strong></td>
+                                <td>b/2 promedio</td>
+                                <td>Búsqueda lineal, muy lento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ordenado (Binaria)</strong></td>
+                                <td>log₂(b) promedio</td>
+                                <td>Mucho más eficiente</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i> Índice Primario (Clustered)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>La clave coincide con el orden físico en el que están guardados los registros en disco.</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Cantidad:</strong> Solo UNO por tabla</li>
+                            <li><strong>Eficiencia:</strong> Muy bueno para búsquedas de rango</li>
+                            <li><strong>Relación con clave primaria:</strong> Usualmente se basan en ella</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i> Índice Secundario (Non-Clustered)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>La clave especifica un orden distinto al orden físico.</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Cantidad:</strong> Puede haber MUCHOS por tabla</li>
+                            <li><strong>Densidad:</strong> SIEMPRE deben ser densos</li>
+                            <li><strong>Eficiencia:</strong> Útil para búsquedas puntuales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sitemap"></i> Árbol B+ (Estructura Moderna)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Estructura jerárquica para búsqueda extremadamente rápida.</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Equilibrio perfecto:</strong> Todos los caminos miden igual</li>
+                            <li><strong>Auto-reorganización:</strong> Se ajusta automáticamente</li>
+                            <li><strong>Dinámico:</strong> No requiere reorganizar todo periódicamente</li>
+                            <li><strong>Eficiente:</strong> Óptimo para búsquedas, inserciones y eliminaciones</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-link"></i> Índices Agrupados (Clustering Index)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> Es aquel índice cuya clave de búsqueda coincide con el orden físico (secuencial) en el que están guardados los registros en el archivo.</p>
+
+                        <p style="margin-top: 12px;"><strong>Sinonimia:</strong> En el contexto de la materia, a estos índices también se los denomina <strong>índices primarios</strong>.</p>
+
+                        <p style="margin-top: 12px;"><strong>Estructura:</strong> Aparece un registro en el índice por cada valor de la clave de búsqueda que existe en el archivo de datos.</p>
+
+                        <p style="margin-top: 12px;"><strong>Relación con los datos:</strong> Establece una correspondencia directa entre la organización del índice y cómo están físicamente distribuidos los datos en el disco.</p>
+
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-check-circle"></i> <strong>Características clave:</strong> Solo UNO por tabla, muy eficiente para rangos, orden lógico = orden físico.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-compress-arrows-alt"></i> Índice Denso vs Índice Disperso
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Índice Denso (Dense Index)</th>
+                                <th>Índice Disperso (Sparse Index)</th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Existe una <strong>entrada de índice por cada registro</strong> del archivo de datos.
+                                </td>
+
+                                <td>
+                                    Existe una <strong>entrada de índice por cada bloque de datos</strong>, no por cada registro.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Permite acceder directamente al registro buscado.
+                                </td>
+
+                                <td>
+                                    Primero localiza el bloque y luego realiza una búsqueda secuencial dentro de ese bloque.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Ocupa más espacio porque contiene muchas más entradas.
+                                </td>
+
+                                <td>
+                                    Ocupa mucho menos espacio al almacenar menos entradas.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Se utiliza principalmente en <strong>índices secundarios (Non-Clustered)</strong>.
+                                </td>
+
+                                <td>
+                                    Se utiliza principalmente en <strong>índices primarios o agrupados (Clustered)</strong>.
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <h4 style="margin-top:20px;">📌 Funcionamiento del Índice Disperso</h4>
+
+                        <ul class="bullet-list">
+                            <li><strong>Almacenamiento:</strong> Guarda solo una entrada por cada bloque de datos.</li>
+
+                            <li><strong>Búsqueda:</strong> Localiza en el índice la mayor clave menor o igual a la buscada.</li>
+
+                            <li><strong>Recorrido:</strong> Accede al bloque indicado y busca secuencialmente el registro.</li>
+                        </ul>
+
+                        <div class="highlight success" style="margin-top:15px;">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Recordá:</strong> El índice denso tiene <strong>una entrada por registro</strong>, mientras que el índice disperso tiene <strong>una entrada por bloque</strong>. Esa es la diferencia más importante para el examen.
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-rocket"></i> Ventajas de Eficiencia
+                        <span class="toggle-icon">›</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <ul class="bullet-list">
+                            <li><strong>Menos espacio:</strong> El archivo de índice ocupa muchos menos bloques que el archivo de datos.</li>
+
+                            <li><strong>Menos entradas:</strong> Al haber menos registros en el índice, es más liviano y rápido de procesar.</li>
+
+                            <li><strong>Simplicidad:</strong> Cada entrada contiene únicamente <strong>Clave + Puntero</strong>.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sync-alt"></i> Actualización del Índice (Mantenimiento)
+                        <span class="toggle-icon">›</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <h4>🟢 Inserción</h4>
+
+                        <table>
+                            <tr>
+                                <th>Índice Denso</th>
+                                <th>Índice Disperso</th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    • Si la clave no existe → se crea una nueva entrada.<br><br>
+
+                                    • Si la clave existe y guarda todos los punteros → se agrega el nuevo puntero.<br><br>
+
+                                    • Si solo apunta al primero → el nuevo registro se inserta físicamente después de los registros con esa clave.
+                                </td>
+
+                                <td>
+                                    Solo se actualiza cuando el nuevo registro pasa a ser el menor valor del bloque.
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <h4 style="margin-top:25px;">🔴 Borrado</h4>
+
+                        <table>
+
+                            <tr>
+                                <th>Índice Denso</th>
+                                <th>Índice Disperso</th>
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    • Se elimina el puntero correspondiente.<br><br>
+
+                                    • Si era el primer registro con esa clave, el índice pasa a apuntar al siguiente.
+                                </td>
+
+                                <td>
+                                    • Si la clave no estaba indexada → no se modifica.<br><br>
+
+                                    • Si era la única entrada → se reemplaza por la siguiente clave disponible.<br><br>
+
+                                    • Si apuntaba al registro eliminado → se actualiza al siguiente registro con la misma clave.
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i> Índices Multinivel
+                        <span class="toggle-icon">›</span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <p>
+                            Se utilizan cuando el índice primario es demasiado grande para cargarse completamente en memoria RAM.
+                        </p>
+
+                        <p><strong>Concepto:</strong></p>
+
+                        <p>
+                            Se trata al índice primario como si fuera un archivo secuencial y se construye un
+                            <strong>índice disperso</strong> por encima de él.
+                        </p>
+
+                        <table>
+
+                            <tr>
+                                <th>Componente</th>
+                                <th>Descripción</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Índice Interno</strong></td>
+                                <td>Es el índice primario original.</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Índice Externo</strong></td>
+                                <td>Índice disperso que apunta al índice interno.</td>
+                            </tr>
+
+                        </table>
+
+                        <ul class="bullet-list" style="margin-top:15px;">
+                            <li><strong>Escalabilidad:</strong> Si el índice externo también es muy grande, se puede crear otro nivel superior.</li>
+
+                            <li><strong>Propósito:</strong> Reducir la cantidad de accesos al disco y acelerar la búsqueda.</li>
+                        </ul>
+
+                        <div class="highlight success" style="margin-top:15px;">
+                            <i class="fas fa-bolt"></i>
+                            <strong>Idea clave:</strong> Es un índice sobre otro índice.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+<!-- CAPÍTULO 4: HASHING -->
+                <div class="chapter">
+                    <h2 class="chapter-title">4️⃣ Hashing (Asociación)</h2>
+
+                    <div class="definition">
+                        Técnica para organizar archivos que permite acceder a los datos <strong>DIRECTAMENTE</strong>, sin recorrer índices jerárquicos ni realizar búsquedas binarias, reduciendo la cantidad de operaciones de Entrada/Salida (E/S).
+                    </div>
+
+                    <!-- ¿QUÉ ES HASHING? -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-exchange-alt"></i> ¿Qué es la Asociación (Hashing)?
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                Es una técnica de organización de archivos que permite acceder a un registro de forma
+                                <strong>directa</strong>, sin necesidad de recorrer un índice jerárquico.
+                            </p>
+
+                            <table>
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th>Definición</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Cajón (Bucket)</strong></td>
+                                    <td>Unidad de almacenamiento (normalmente un bloque de disco) donde se guardan uno o más registros.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Función de Asociación (h)</strong></td>
+                                    <td>Función matemática que recibe una clave de búsqueda y devuelve la dirección del cajón donde se almacena el registro.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="formula">
+                                h(Ki) = Dirección del Cajón
+                            </div>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Idea clave:</strong> Hashing busca acceder directamente al dato sin recorrer un árbol o realizar búsquedas binarias.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- HASHING ESTÁTICO -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-lock"></i> Asociación Estática (Hashing Estático)
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                La Asociación Estática utiliza un <strong>conjunto fijo de cajones</strong>. La función
+                                <strong>h(K)</strong> siempre asigna las claves a ese mismo conjunto de direcciones.
+                            </p>
+
+                            <ul class="bullet-list">
+                                <li><strong>Número de cajones:</strong> Se define al crear el archivo y no cambia.</li>
+
+                                <li><strong>Función h:</strong> Mapea cada clave al mismo conjunto fijo de direcciones.</li>
+
+                                <li><strong>Problema principal:</strong> Cuando muchas claves llegan al mismo cajón aparecen las <strong>colisiones</strong> y los <strong>desbordamientos</strong>.</li>
+                            </ul>
+
+                            <div class="highlight warning" style="margin-top:15px;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>Recordá:</strong> En Hashing Estático el tamaño de la estructura NO cambia aunque aumente la cantidad de registros.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- OPERACIONES -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-cogs"></i> Operaciones Principales
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Operación</th>
+                                    <th>¿Cómo funciona?</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Búsqueda</strong></td>
+                                    <td>
+                                        Se calcula <strong>h(Ki)</strong> para obtener el cajón correspondiente.
+                                        Si existen colisiones, deben revisarse todos los registros del cajón hasta encontrar el correcto.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Inserción</strong></td>
+                                    <td>
+                                        Se calcula <strong>h(Ki)</strong> y el nuevo registro se almacena en el cajón obtenido.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Borrado</strong></td>
+                                    <td>
+                                        Se localiza el cajón mediante <strong>h(Ki)</strong>, se encuentra el registro y se elimina.
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-check-circle"></i>
+                                Todas las operaciones comienzan calculando la función
+                                <strong>h(K)</strong>.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- PROPÓSITOS -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-bullseye"></i> Propósitos de la Asociación
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Organización de Archivo Asociativo</strong></td>
+                                    <td>
+                                        Permite obtener directamente la dirección del bloque de disco donde se encuentra el registro buscado.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Índice Asociativo (Hash Index)</strong></td>
+                                    <td>
+                                        Organiza las claves de búsqueda junto con sus punteros.
+                                        <strong>Siempre es un índice secundario.</strong>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <!-- FUNCIONES DE ASOCIACIÓN -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-calculator"></i> Funciones de Asociación y Distribución
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                El objetivo de una función de asociación es distribuir las claves de la forma más eficiente posible,
+                                minimizando las colisiones y aprovechando correctamente el espacio disponible.
+                            </p>
+
+                            <table>
+
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Distribución Uniforme</strong></td>
+                                    <td>Cada cajón recibe aproximadamente la misma cantidad de claves.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Distribución Aleatoria</strong></td>
+                                    <td>Los valores obtenidos no deben seguir un orden externo para evitar agrupamientos.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Objetivo</strong></td>
+                                    <td>Reducir las colisiones y aprovechar al máximo el espacio disponible.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight danger" style="margin-top:15px;">
+                                <i class="fas fa-times-circle"></i>
+                                <strong>La peor función posible:</strong> aquella que asigna todas las claves al mismo cajón.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- COLISIONES -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-random"></i> Colisiones
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                Una <strong>colisión</strong> ocurre cuando dos o más claves diferentes producen el mismo valor de la función de asociación.
+                            </p>
+
+                            <div class="formula">
+                                h(K5) = h(K7)
+                            </div>
+
+                            <p style="margin-top:15px;">
+                                En este caso, ambas claves intentan almacenarse en el mismo cajón.
+                            </p>
+
+                            <div class="highlight warning" style="margin-top:15px;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Cuando existen colisiones es necesario aplicar un método para resolverlas.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- DESBORDAMIENTO -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-water"></i> Desbordamientos y Atascos
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                El <strong>desbordamiento</strong> ocurre cuando un cajón ya no tiene espacio para almacenar nuevos registros.
+                            </p>
+
+                            <p>Las causas más comunes son:</p>
+
+                            <ul class="bullet-list">
+                                <li>Mala distribución de la función hash.</li>
+                                <li>Demasiadas colisiones.</li>
+                                <li>Crecimiento de la base de datos.</li>
+                            </ul>
+
+                            <div class="highlight warning" style="margin-top:15px;">
+                                <i class="fas fa-info-circle"></i>
+                                El desbordamiento disminuye considerablemente el rendimiento del acceso directo.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- RESOLUCIÓN -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-tools"></i> Resolución de Desbordamientos
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Asociación Cerrada</th>
+                                    <th>Asociación Abierta</th>
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        Utiliza <strong>cajones de desbordamiento</strong> adicionales conectados mediante una lista enlazada (cadena de desbordamiento).
+                                    </td>
+
+                                    <td>
+                                        No utiliza bloques extra. Si el cajón está lleno, busca otro cajón libre, normalmente el siguiente en forma cíclica.
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        ✔ Más sencilla para mantener los datos relacionados.
+                                    </td>
+
+                                    <td>
+                                        ✔ Aprovecha únicamente los cajones originales.
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Recordá:</strong>
+                                <strong>Cerrada = usa cajones extra.</strong><br>
+                                <strong>Abierta = busca otro cajón disponible.</strong>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- CRECIMIENTO -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-chart-line"></i> Estrategias ante el Crecimiento de Datos
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                Como las bases de datos son dinámicas, el Hashing Estático debe prever cómo manejar el crecimiento de registros.
+                            </p>
+
+                            <table>
+
+                                <tr>
+                                    <th>Estrategia</th>
+                                    <th>Ventaja</th>
+                                    <th>Desventaja</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Tamaño Actual</strong></td>
+                                    <td>Se optimiza para la cantidad actual de registros.</td>
+                                    <td>El rendimiento disminuye cuando la base crece.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Tamaño Previsto</strong></td>
+                                    <td>Evita reorganizaciones futuras.</td>
+                                    <td>Desperdicia mucho espacio al comienzo.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Reorganización Periódica</strong></td>
+                                    <td>Permite reajustar completamente la estructura.</td>
+                                    <td>Es una operación lenta que recalcula todas las funciones hash y requiere bloquear el acceso al archivo.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight danger" style="margin-top:15px;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Durante una reorganización periódica normalmente se debe impedir el acceso al archivo hasta finalizar el proceso.
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- HASHING DINÁMICO -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-expand"></i> Asociación Dinámica (Hashing Extensible)
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                A diferencia del <strong>Hashing Estático</strong>, el Hashing Dinámico permite
+                                <strong>modificar la función de asociación y la cantidad de cajones</strong>
+                                para adaptarse automáticamente al crecimiento o disminución de la base de datos.
+                            </p>
+
+                            <table>
+
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Adaptabilidad</strong></td>
+                                    <td>Divide o fusiona cajones según el tamaño de la base de datos.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Bajo impacto</strong></td>
+                                    <td>La reorganización afecta únicamente a un cajón por vez.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Cajones bajo demanda</strong></td>
+                                    <td>Los cajones se crean únicamente cuando son necesarios.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Ventaja</strong></td>
+                                    <td>Mantiene la eficiencia espacial y evita reorganizaciones masivas.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-check-circle"></i>
+                                <strong>Idea clave:</strong> El Hashing Dinámico crece junto con la base de datos.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ASPECTOS TÉCNICOS -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-microchip"></i> Aspectos Técnicos
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Función h</strong></td>
+                                    <td>Genera valores en un rango amplio, normalmente enteros binarios de 32 bits.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Bits utilizados (i)</strong></td>
+                                    <td>Se utilizan los primeros <strong>i bits</strong> como prefijo asociativo.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Valor de i</strong></td>
+                                    <td>Puede aumentar o disminuir según crece o disminuye la base de datos.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Tabla de direcciones</strong></td>
+                                    <td>Los bits obtenidos actúan como desplazamiento dentro de la tabla de direcciones de cajones.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="formula">
+                                0 ≤ i ≤ b &nbsp;&nbsp;&nbsp; (b = 32 bits normalmente)
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- COMPARACIÓN -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-balance-scale"></i> Índices Ordenados vs Asociación (Hashing)
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <h4>📍 Consultas de Igualdad</h4>
+
+                            <div class="formula">
+                                WHERE Ai = c
+                            </div>
+
+                            <table>
+
+                                <tr>
+                                    <th>Índices Ordenados</th>
+                                    <th>Hashing</th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        El tiempo de búsqueda depende del tamaño de la base de datos.
+                                    </td>
+
+                                    <td>
+                                        El tiempo medio es prácticamente constante, independientemente del tamaño de la base.
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-trophy"></i>
+                                <strong>Ganador:</strong> Hashing.
+                            </div>
+
+                            <hr style="margin:25px 0;">
+
+                            <h4>📍 Consultas por Rango</h4>
+
+                            <div class="formula">
+                                WHERE Ai >= c1 AND Ai <= c2
+                            </div>
+
+                            <table>
+
+                                <tr>
+                                    <th>Índices Ordenados</th>
+                                    <th>Hashing</th>
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        Localiza el primer valor y continúa recorriendo los siguientes registros en orden.
+                                    </td>
+
+                                    <td>
+                                        No existe un "siguiente cajón", ya que las claves se distribuyen de forma aleatoria.
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight warning" style="margin-top:15px;">
+                                <i class="fas fa-trophy"></i>
+                                <strong>Ganador:</strong> Índices Ordenados (Árbol B+).
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ACCESOS MULTICLAVE -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-key"></i> Accesos Multiclave
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p>
+                                Cuando una consulta posee varias condiciones (por ejemplo, sucursal y saldo),
+                                existen tres estrategias para acceder a los datos.
+                            </p>
+
+                            <table>
+
+                                <tr>
+                                    <th>Estrategia</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Índice Simple</strong></td>
+                                    <td>
+                                        Se utiliza un solo índice para una condición y luego se filtran manualmente
+                                        los resultados para cumplir la segunda condición.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Intersección de Punteros</strong></td>
+                                    <td>
+                                        Se utilizan dos índices independientes. Luego se intersectan ambas listas
+                                        de punteros y solo permanecen los registros presentes en ambas.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Clave de Búsqueda Compuesta</strong></td>
+                                    <td>
+                                        Se crea un único índice utilizando la concatenación de varios atributos
+                                        (por ejemplo: NombreSucursal + Saldo).
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Recordá:</strong>
+
+                                <ul class="bullet-list" style="margin-top:10px;">
+                                    <li><strong>Índice Simple:</strong> filtra después.</li>
+                                    <li><strong>Intersección:</strong> combina punteros de dos índices.</li>
+                                    <li><strong>Clave Compuesta:</strong> crea un único índice con todos los atributos.</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- UNIDAD 4 -->
+                <div class="chapter">
+                    <h2 class="chapter-title">5️⃣ Optimización de Consultas</h2>
+
+                    <div class="definition">
+                        Proceso mediante el cual el SGBD analiza una consulta SQL, la optimiza y ejecuta utilizando el plan de menor costo posible.
+                    </div>
+
+                    <!-- Procesamiento -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-database"></i> Procesamiento de Consultas
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p><strong>Objetivo:</strong> Obtener el plan de ejecución más eficiente.</p>
+
+                            <table>
+                                <tr>
+                                    <th>Componente</th>
+                                    <th>Función</th>
+                                </tr>
+
+                                <tr>
+                                    <td>Usuario</td>
+                                    <td>Envía la consulta SQL.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Procesador</td>
+                                    <td>Interpreta la consulta.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Optimizador</td>
+                                    <td>Selecciona el mejor plan.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Motor de almacenamiento</td>
+                                    <td>Accede a los datos.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Ejecutor</td>
+                                    <td>Ejecuta el plan.</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <!-- Optimizadores -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-sliders-h"></i> Tipos de Optimizador
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Basado en Sintaxis</th>
+                                    <th>Basado en Costos</th>
+                                </tr>
+
+                                <tr>
+                                    <td>Heurístico.</td>
+                                    <td>Evalúa distintos planes.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Depende del SQL escrito.</td>
+                                    <td>Usa estadísticas.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Siempre genera el mismo plan.</td>
+                                    <td>Selecciona el plan de menor costo.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>No analiza índices.</td>
+                                    <td>Analiza índices, cardinalidad y selectividad.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Recordá:</strong> Sintaxis = cómo está escrito el SQL. Costos = cuál plan cuesta menos.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Etapas -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-project-diagram"></i> Etapas del Procesamiento
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <ol>
+                                <li><strong>Traducción:</strong> SQL → representación interna.</li>
+
+                                <li><strong>Optimización:</strong>
+                                    <ul class="bullet-list">
+                                        <li>Transformación lógica.</li>
+                                        <li>Plan de acceso.</li>
+                                    </ul>
+                                </li>
+
+                                <li><strong>Ejecución:</strong> Se ejecuta el plan elegido.</li>
+                            </ol>
+
+                        </div>
+                    </div>
+
+                    <!-- Álgebra -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-square-root-alt"></i> Álgebra Relacional
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Operación</th>
+                                    <th>Símbolo</th>
+                                </tr>
+
+                                <tr>
+                                    <td>Selección</td>
+                                    <td>σ</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Proyección</td>
+                                    <td>π</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Producto Cartesiano</td>
+                                    <td>×</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Join</td>
+                                    <td>⋈</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="formula">
+                                σ → ⋈ → π
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Fases -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-search"></i> Fases del Optimizador
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <ol>
+                                <li><strong>Análisis:</strong> WHERE, JOIN y condiciones.</li>
+
+                                <li><strong>Selección de índices:</strong> selectividad, cardinalidad y cantidad de registros.</li>
+
+                                <li><strong>Selección de JOIN:</strong> elige el orden con menor costo.</li>
+
+                            </ol>
+
+                        </div>
+                    </div>
+
+                    <!-- Costos -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-calculator"></i> Cálculo de Costos
+                            <span class="toggle-icon">›</span>
+                        </div>
+
+                        <div class="card-content">
+
+                            <p><strong>El optimizador estima:</strong></p>
+
+                            <ul class="bullet-list">
+                                <li>Índices disponibles.</li>
+                                <li>Orden de JOIN.</li>
+                                <li>Cardinalidad.</li>
+                                <li>Páginas lógicas.</li>
+                                <li>Accesos a disco.</li>
+                            </ul>
+
+                            <div class="formula">
+                                Costo = 1 acceso + niveles del índice
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Factores -->
+                    <div class="card">
+                        <div class="card-title">
+                            <i class="fas fa-microchip"></i> Factores del Costo
+                            <span class="toggle-icon">›</span>
+                        </div>
+                        <div class="card-content">
+
+                            <table>
+
+                                <tr>
+                                    <th>Factor</th>
+                                    <th>Importancia</th>
+                                </tr>
+
+                                <tr>
+                                    <td>Comunicaciones</td>
+                                    <td>Baja (BD distribuidas).</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Acceso a disco</td>
+                                    <td><strong>Más importante.</strong></td>
+                                </tr>
+
+                                <tr>
+                                    <td>CPU</td>
+                                    <td>Comparaciones, JOIN, ordenamientos.</td>
+                                </tr>
+
+                            </table>
+
+                            <div class="highlight success" style="margin-top:15px;">
+                                <i class="fas fa-star"></i>
+                                <strong>Para el examen:</strong> El mayor costo casi siempre proviene de los accesos a memoria secundaria (disco).
+                            </div>
+
+                        </div>
+                    </div>
+                <div class="card">
+    <div class="card-title">
+        <i class="fas fa-book"></i> Información del Catálogo
+        <span class="toggle-icon">›</span>
+    </div>
+
+    <div class="card-content">
+
+        <p>
+            El <strong>catálogo</strong> almacena estadísticas que el optimizador utiliza para estimar costos y elegir el mejor plan de ejecución.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Símbolo</th>
+                <th>Significado</th>
+            </tr>
+
+            <tr>
+                <td><strong>Nr</strong></td>
+                <td>Número de tuplas.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Tr</strong></td>
+                <td>Tamaño de una tupla (bytes).</td>
+            </tr>
+
+            <tr>
+                <td><strong>Fr</strong></td>
+                <td>Factor de bloqueo (tuplas por bloque).</td>
+            </tr>
+
+            <tr>
+                <td><strong>Br</strong></td>
+                <td>Número de bloques de la relación.</td>
+            </tr>
+
+            <tr>
+                <td><strong>V(A,r)</strong></td>
+                <td>Valores distintos del atributo A.</td>
+            </tr>
+
+            <tr>
+                <td><strong>SC(A,r)</strong></td>
+                <td>Selection Cardinality (tuplas promedio por igualdad).</td>
+            </tr>
+
+        </table>
+
+        <div class="highlight success" style="margin-top:15px;">
+            <i class="fas fa-star"></i>
+            <strong>Si A es clave:</strong><br>
+            V(A,r) = Nr<br>
+            SC(A,r) = 1
+        </div>
+
+    </div>
+</div>
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-sitemap"></i> Índices B+ y Costos
+        <span class="toggle-icon">›</span>
+    </div>
+
+    <div class="card-content">
+
+        <table>
+
+            <tr>
+                <th>Símbolo</th>
+                <th>Significado</th>
+            </tr>
+
+            <tr>
+                <td><strong>Fi</strong></td>
+                <td>Factor de ramificación.</td>
+            </tr>
+
+            <tr>
+                <td><strong>HTi</strong></td>
+                <td>Altura del árbol B+.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Lbi</strong></td>
+                <td>Bloques hoja.</td>
+            </tr>
+
+        </table>
+
+        <p style="margin-top:15px;"><strong>Búsqueda por igualdad</strong></p>
+
+        <div class="formula">
+            Costo = HTi + 1
+        </div>
+
+        <p style="margin-top:15px;"><strong>Búsqueda por rango</strong></p>
+
+        <table>
+
+            <tr>
+                <th>Índice Agrupado</th>
+                <th>No Agrupado</th>
+            </tr>
+
+            <tr>
+                <td>✔ Datos consecutivos → menor costo.</td>
+                <td>❌ Datos dispersos → mayor costo.</td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-search"></i> Algoritmos Básicos de Acceso
+        <span class="toggle-icon">›</span>
+    </div>
+
+    <div class="card-content">
+
+        <table>
+
+            <tr>
+                <th>Algoritmo</th>
+                <th>Descripción</th>
+            </tr>
+
+            <tr>
+                <td><strong>A1</strong></td>
+                <td>Búsqueda lineal (Br/2 promedio - Br peor caso).</td>
+            </tr>
+
+            <tr>
+                <td><strong>A2</strong></td>
+                <td>Búsqueda binaria (archivo ordenado).</td>
+            </tr>
+
+            <tr>
+                <td><strong>A3</strong></td>
+                <td>Índice primario por igualdad (HTi + 1).</td>
+            </tr>
+
+            <tr>
+                <td><strong>A4</strong></td>
+                <td>Índice primario no clave.</td>
+            </tr>
+
+            <tr>
+                <td><strong>A5</strong></td>
+                <td>Igualdad por índice secundario.</td>
+            </tr>
+
+            <tr>
+                <td><strong>A6</strong></td>
+                <td>Desigualdades sobre clave primaria.</td>
+            </tr>
+
+            <tr>
+                <td><strong>A7</strong></td>
+                <td>Desigualdades sobre clave secundaria.</td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+<div class="card">
+    <div class="card-title">
+        <i class="fas fa-project-diagram"></i> Evaluación de Expresiones y Heurísticas
+        <span class="toggle-icon">›</span>
+    </div>
+
+    <div class="card-content">
+
+        <p><strong>Evaluación:</strong> El SGBD construye un árbol de operadores y decide:</p>
+
+        <ul class="bullet-list">
+            <li>Algoritmos a utilizar.</li>
+            <li>Orden de ejecución.</li>
+            <li>Plan de menor costo.</li>
+        </ul>
+
+        <p><strong>Tipos de optimización:</strong></p>
+
+        <table>
+
+            <tr>
+                <th>Basada en Costos</th>
+                <th>Heurística</th>
+            </tr>
+
+            <tr>
+                <td>Calcula el costo de cada plan.</td>
+                <td>Aplica reglas generales de optimización.</td>
+            </tr>
+
+        </table>
+
+        <p style="margin-top:20px;"><strong>Reglas Heurísticas</strong></p>
+
+        <ul class="bullet-list">
+            <li><strong>Selección temprana:</strong> filtrar registros lo antes posible.</li>
+
+            <li><strong>Proyección temprana:</strong> reducir columnas cuanto antes.</li>
+
+            <li><strong>Evitar productos cartesianos:</strong> son muy costosos.</li>
+        </ul>
+
+        <div class="highlight success" style="margin-top:15px;">
+            <i class="fas fa-lightbulb"></i>
+            <strong>Para recordar:</strong> Seleccionar temprano, proyectar temprano y evitar productos cartesianos.
+        </div>
+
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

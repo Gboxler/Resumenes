@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos Aplicada - Segundo Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Base de Datos Aplicada</h1>
+            <p>Segundo Parcial: Transacciones, Concurrencia y Seguridad Informática</p>
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: TRANSACCIONES -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Transacciones</h2>
+
+                <div class="definition">
+                    Una transacción es un conjunto de operaciones relacionadas que se ejecutan como una sola unidad de trabajo. Debe ejecutarse completamente o no ejecutarse en absoluto.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shopping-cart"></i>Ejemplo: Compra de un Producto
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Se descuenta una unidad del stock.</li>
+                            <li>Se registra la venta.</li>
+                        </ul>
+                        <p style="margin-top: 12px;">Si alguna de las dos operaciones falla, todos los cambios deben deshacerse para evitar inconsistencias.</p>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> Una transacción funciona con la regla "todo o nada". Si una operación falla, deben deshacerse todos los cambios realizados.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shield-alt"></i>Propiedades ACID
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Atomicidad (Atomicity):</strong> Todo o nada. Si una operación falla, todas las operaciones realizadas deben revertirse.</p>
+                        <p><strong>Consistencia (Consistency):</strong> La base de datos debe pasar de un estado válido a otro estado válido, respetando todas las reglas de integridad.</p>
+                        <p><strong>Aislamiento (Isolation):</strong> Las transacciones que se ejecutan al mismo tiempo no deben interferir entre sí.</p>
+                        <p><strong>Durabilidad (Durability):</strong> Una vez confirmado un cambio mediante COMMIT, este permanece incluso ante fallas del sistema.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-circle-notch"></i>Estados de una Transacción
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Las transacciones pueden encontrarse en diferentes estados según el momento de su ejecución.</p>
+                        <ul class="bullet-list">
+                            <li><strong>Activa:</strong> Estado inicial mientras la transacción se está ejecutando.</li>
+                            <li><strong>Parcialmente comprometida:</strong> Se ejecutó la última instrucción, pero aún no se confirmó definitivamente mediante COMMIT.</li>
+                            <li><strong>Fallida:</strong> La transacción detectó un error y no puede continuar.</li>
+                            <li><strong>Abortada o Retrocedida:</strong> Se ejecuta un ROLLBACK, se deshacen los cambios realizados y la base de datos vuelve al estado anterior al inicio de la transacción.</li>
+                            <li><strong>Comprometida:</strong> La transacción finaliza correctamente y los cambios quedan guardados mediante COMMIT.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Luego de Abortada, la transacción puede:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Reiniciarse para intentar ejecutarse nuevamente.</li>
+                            <li>Cancelarse definitivamente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-terminal"></i>Control de Transacciones
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Implícitas</strong></td>
+                                <td>El sistema las inicia y finaliza automáticamente. Ejemplos: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Explícitas</strong></td>
+                                <td>El programador controla manualmente la transacción mediante <code>BEGIN TRANSACTION</code>, <code>COMMIT</code>, <code>ROLLBACK</code></td>
+                            </tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>Comandos principales:</strong></p>
+                        <ul class="bullet-list">
+                            <li>✔ <strong>BEGIN TRANSACTION:</strong> Inicia una transacción.</li>
+                            <li>✔ <strong>COMMIT:</strong> Confirma los cambios realizados.</li>
+                            <li>✔ <strong>ROLLBACK:</strong> Deshace todos los cambios realizados desde el inicio de la transacción.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Buenas Prácticas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Mantener las transacciones cortas.</li>
+                            <li>Dividir transacciones muy extensas.</li>
+                            <li>Utilizar índices adecuados para mejorar el rendimiento.</li>
+                            <li>Evitar transacciones anidadas cuando sea posible.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-history"></i>Algoritmo Deshacer/Rehacer (Undo/Redo)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Ante una falla, el sistema utiliza el <strong>Log</strong> para recuperar la base de datos.</p>
+                        <table>
+                            <tr>
+                                <th>Operación</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Deshacer (UNDO / Roll Back)</strong></td>
+                                <td>Deshace las transacciones que quedaron incompletas o no fueron confirmadas.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rehacer (REDO / Roll Forward)</strong></td>
+                                <td>Vuelve a aplicar los cambios de las transacciones que ya habían sido confirmadas.</td>
+                            </tr>
+                        </table>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-save"></i> <strong>Recuperación de Medio:</strong> Ante fallas de hardware (por ejemplo, rotura de disco), se utiliza un Backup y el Log para restaurar la información.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: CONCURRENCIA -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Concurrencia</h2>
+
+                <div class="definition">
+                    La concurrencia permite que varias transacciones se ejecuten al mismo tiempo. Es fundamental en sistemas multiusuario donde varias personas acceden simultáneamente a la base de datos.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bullseye"></i>Objetivos de la Concurrencia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Mejorar el rendimiento.</li>
+                            <li>Aprovechar mejor los recursos.</li>
+                            <li>Incrementar la productividad.</li>
+                            <li>Reducir tiempos de espera.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Problema principal:</strong> Cuando varias transacciones trabajan sobre los mismos datos al mismo tiempo, pueden producirse inconsistencias.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-equals"></i>Concurrencia y Secuencialidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La concurrencia permite que varias transacciones se ejecuten al mismo tiempo. Sin embargo, para mantener la consistencia de la base de datos, el resultado obtenido debe ser el mismo que si las transacciones se hubieran ejecutado de forma secuencial, es decir, una detrás de la otra.</p>
+                        <p style="margin-top: 12px;"><strong>Para verificar esta equivalencia existen dos criterios:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Secuencialidad por conflictos:</strong> se basa en analizar los conflictos entre transacciones. Existe un conflicto cuando dos transacciones acceden al mismo dato y al menos una de ellas lo modifica.</li>
+                            <li><strong>Secuencialidad por vistas:</strong> se cumple cuando el resultado final observado por los usuarios es exactamente el mismo que se obtendría en una ejecución secuencial.</li>
+                        </ul>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> aunque las transacciones se ejecuten concurrentemente, el resultado final debe ser equivalente al de una ejecución secuencial.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-check-double"></i>Serialización
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La serialización es el criterio que permite determinar si una ejecución concurrente es correcta.</p>
+                        <p style="margin-top: 12px;">Una ejecución es <strong>serializable</strong> cuando, aunque las transacciones se ejecuten al mismo tiempo, el resultado final es el mismo que se obtendría ejecutándolas una detrás de la otra (de forma secuencial).</p>
+                        <p style="margin-top: 12px;"><strong>Objetivo:</strong> mantener la consistencia de la base de datos y evitar resultados incorrectos producidos por la concurrencia. Generalmente, el control de la serialización es realizado por el planificador del SGBD.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-undo"></i>Planificaciones Recuperables
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una planificación es <strong>recuperable</strong> cuando, si T2 leyó datos de T1, entonces T2 debe esperar el COMMIT de T1 antes de realizar su propio COMMIT. Si una transacción no depende de otra, puede confirmar normalmente.</p>
+                        <p style="margin-top: 12px;"><strong>Objetivo:</strong> Evitar que una transacción confirme resultados basados en datos que luego podrían ser anulados.</p>
+                        <p style="margin-top: 15px;"><strong>Ejemplo:</strong></p>
+                        <div class="formula">T1 escribe A = 200
+T2 lee A = 200</div>
+                        <p>✅ Recuperable: T2 espera el COMMIT de T1 antes de confirmar.</p>
+                        <p style="margin-top: 10px;">❌ No recuperable: T2 confirmó datos que provenían de T1, pero luego T1 canceló sus cambios (ROLLBACK).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-ban"></i>Planificaciones Sin Cascada
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una planificación es <strong>sin cascada</strong> cuando una transacción solo puede leer datos que ya fueron confirmados mediante COMMIT.</p>
+                        <p style="margin-top: 12px;"><strong>Objetivo:</strong> Evitar retrocesos en cascada (Cascading Rollback) y lecturas sucias.</p>
+                        <p style="margin-top: 15px;"><strong>Ejemplo:</strong></p>
+                        <div class="formula">T1: escribe(A)  → Todavía NO hizo COMMIT
+T2: leer(A)     → ❌ No puede, debe esperar</div>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-check-circle"></i> Correcto (Sin Cascada): T2 solo puede leer A porque T1 ya confirmó ese dato.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-project-diagram"></i>Grafo de Precedencia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es una herramienta utilizada para determinar si una planificación es serializable por conflictos.</p>
+                        <p style="margin-top: 12px;"><strong>Construcción:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Cada nodo representa una transacción.</li>
+                            <li>Cada flecha (arista) representa un conflicto entre transacciones.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Regla:</strong></p>
+                        <p>✔ Si el grafo no tiene ciclos → la planificación es serializable.</p>
+                        <p>❌ Si el grafo tiene ciclos → la planificación no es serializable.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-exclamation-triangle"></i>Problemas de Concurrencia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Lectura Sucia (Dirty Read):</strong> Una transacción lee datos aún no confirmados por otra.</p>
+                        <p><strong>Lectura No Repetible:</strong> Ocurre cuando una transacción ejecuta dos veces la misma consulta y obtiene resultados diferentes porque otra transacción realizó un UPDATE o DELETE sobre esos datos y luego hizo COMMIT.</p>
+                        <p><strong>Lectura Fantasma (Phantom Read):</strong> Ocurre cuando una transacción ejecuta dos veces la misma consulta y obtiene una cantidad diferente de registros porque otra transacción agregó o eliminó registros y realizó COMMIT.</p>
+                        <p><strong>Actualización Perdida:</strong> Dos transacciones leen el mismo dato y ambas lo modifican, pero una sobrescribe los cambios de la otra, provocando que una actualización se pierda.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-lock"></i>Control de Concurrencia: Bloqueos (Locks)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Son mecanismos que permiten controlar la concurrencia y garantizar la serialización. Para ello utilizan bloqueos.</p>
+                        <p style="margin-top: 12px;"><strong>Bloqueo Compartido (Shared Lock - C):</strong> Permite únicamente la lectura de los datos. Varias transacciones pueden leer el mismo dato al mismo tiempo, pero no modificarlo.</p>
+                        <p><strong>Bloqueo Exclusivo (Exclusive Lock - X):</strong> Permite leer y modificar los datos, pero solo una transacción puede hacerlo a la vez. Mientras una transacción tiene este bloqueo, ninguna otra puede acceder al dato.</p>
+                        <p style="margin-top: 12px;"><strong>Matriz de Compatibilidad:</strong></p>
+                        <table>
+                            <tr>
+                                <th>Solicita</th>
+                                <th>Compartido (C)</th>
+                                <th>Exclusivo (X)</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Compartido (C)</strong></td>
+                                <td>✔ Sí</td>
+                                <td>✗ No</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exclusivo (X)</strong></td>
+                                <td>✗ No</td>
+                                <td>✗ No</td>
+                            </tr>
+                        </table>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-info-circle"></i> Estos mecanismos se utilizan para evitar inconsistencias en la base de datos y garantizar la serialización, asegurando que las transacciones no modifiquen simultáneamente los mismos datos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>Problemas con los Bloqueos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Inconsistencia por Tiempo de Desbloqueo:</strong> Se produce cuando una transacción libera un bloqueo demasiado pronto, permitiendo que otra transacción acceda a datos que todavía no representan un estado consistente.</p>
+                        <p style="margin-top: 12px;"><strong>Interbloqueo (Deadlock):</strong> Se produce cuando dos transacciones quedan esperando recursos bloqueados por la otra y ninguna puede continuar su ejecución. Para resolverlo, el sistema debe abortar o retroceder una de las transacciones, liberando sus bloqueos para que la otra pueda continuar.</p>
+                        <p style="margin-top: 12px;"><strong>Inanición (Starvation):</strong> Se produce cuando una transacción espera indefinidamente un recurso porque otras transacciones continúan obteniéndolo antes que ella.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sitemap"></i>Protocolos que Aseguran la Secuencialidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Para garantizar que una ejecución concurrente produzca el mismo resultado que una ejecución secuencial, el SGBD utiliza distintos protocolos de control de concurrencia. Todos estos protocolos establecen reglas que indican cuándo una transacción puede bloquear, desbloquear, leer o escribir datos.</p>
+                        <p style="margin-top: 12px;"><strong>Tipos principales:</strong></p>
+                        <ul class="bullet-list">
+                            <li>✔ Protocolos basados en bloqueos (Locks)</li>
+                            <li>✔ Protocolos basados en grafos (Protocolo de Árbol)</li>
+                            <li>✔ Protocolos basados en marcas temporales (Timestamp)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-redo-alt"></i>Protocolo de Bloqueo en Dos Fases (2PL)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>El protocolo más utilizado para garantizar la serialización.</strong> Consta de dos etapas:</p>
+                        <p style="margin-top: 12px;"><strong>Fase de crecimiento:</strong> La transacción obtiene los bloqueos que necesita. No puede liberar bloqueos.</p>
+                        <p><strong>Fase de decrecimiento:</strong> La transacción libera bloqueos. No puede obtener nuevos bloqueos.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            Una vez que libera su primer bloqueo, no puede pedir otro.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Ventaja:</strong> Garantiza la serialización.</p>
+                        <p><strong>Desventajas:</strong> Puede producir interbloqueos (Deadlocks) y retrocesos en cascada.</p>
+
+                        <p style="margin-top: 15px;"><strong>Variantes:</strong></p>
+                        <table>
+                            <tr>
+                                <th>Variante</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>PB2F Simple</strong></td>
+                                <td>Fase de crecimiento (obtiene bloqueos) y fase de decrecimiento (libera bloqueos). Garantiza serialización, pero puede producir deadlocks y retrocesos en cascada.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PB2F Estricto</strong></td>
+                                <td>Cumple las reglas del 2PL simple, pero además mantiene los bloqueos exclusivos (X) hasta que la transacción finaliza con COMMIT o ROLLBACK. Evita que otras transacciones lean datos modificados pero no confirmados, evitando los retrocesos en cascada.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PB2F Riguroso</strong></td>
+                                <td>Más estricto: mantiene todos los bloqueos (compartidos y exclusivos) hasta que la transacción finaliza con COMMIT o ROLLBACK. Evita lecturas incorrectas y simplifica la recuperación, pero reduce la concurrencia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PB2F Riguroso Refinado</strong></td>
+                                <td>Mantiene las características del 2PL riguroso, pero permite conversiones de bloqueos: <strong>Upgrade</strong> (de C a X, solo en fase de crecimiento) y <strong>Downgrade</strong> (de X a C, solo en fase de decrecimiento). Aumenta la concurrencia.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-tree"></i>Protocolos Basados en Grafos (Protocolo de Árbol)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Utilizan una estructura jerárquica (árbol) para determinar el orden en que se accede a los datos. Se emplean únicamente bloqueos exclusivos. El objetivo es asegurar la serialización evitando interbloqueos.</p>
+                        <p style="margin-top: 12px;"><strong>Reglas:</strong></p>
+                        <ul class="bullet-list">
+                            <li>El primer bloqueo puede realizarse sobre cualquier dato.</li>
+                            <li>Para bloquear un nodo hijo debe estar bloqueado previamente su nodo padre.</li>
+                            <li>Los bloqueos pueden liberarse en cualquier momento.</li>
+                            <li>Un dato desbloqueado no puede volver a bloquearse.</li>
+                        </ul>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Ventajas</th>
+                                <th>Desventajas</th>
+                            </tr>
+                            <tr>
+                                <td>✔ Garantiza la serialización por conflictos.<br>✔ Evita los interbloqueos.<br>✔ Permite liberar bloqueos antes que el protocolo 2PL.</td>
+                                <td>✔ Puede generar bloqueos innecesarios.<br>✔ Reduce la concurrencia.</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top: 12px; font-size: 13px; color: #666;"><strong>Ejemplo:</strong> si una transacción necesita acceder a J, puede verse obligada a bloquear también sus nodos padres.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock"></i>Protocolos Basados en Marcas Temporales (Timestamp)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Asignan una marca temporal a cada transacción antes de comenzar su ejecución. La marca puede obtenerse mediante el reloj del sistema o un contador lógico. Cada transacción recibe una marca única.</p>
+                        <p style="margin-top: 12px;"><strong>Ejemplo:</strong></p>
+                        <div class="formula">MT(T1) = 10
+MT(T2) = 20
+Como 10 < 20, T1 tiene prioridad sobre T2.</div>
+                        <p>Las operaciones deben ejecutarse respetando ese orden temporal.</p>
+
+                        <p style="margin-top: 15px;"><strong>Funcionamiento:</strong> para cada dato se almacenan dos marcas:</p>
+                        <ul class="bullet-list">
+                            <li><strong>MT-E(Q):</strong> Última transacción que escribió el dato.</li>
+                            <li><strong>MT-L(Q):</strong> Última transacción que leyó el dato.</li>
+                        </ul>
+                        <p>Estas marcas permiten decidir si una lectura o escritura es válida.</p>
+
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Ventajas</th>
+                                <th>Desventajas</th>
+                            </tr>
+                            <tr>
+                                <td>✔ Garantizan la serialización.<br>✔ Evitan conflictos entre transacciones.<br>✔ No producen interbloqueos.</td>
+                                <td>✔ Algunas transacciones pueden ser rechazadas y reiniciadas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>Granularidad Múltiple
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Agrupa varios elementos de datos como una única unidad de sincronización o bloqueo. Permite aplicar bloqueos sobre distintos niveles de una estructura jerárquica.</p>
+                        <p style="margin-top: 12px;"><strong>Estructura jerárquica:</strong> Base de Datos (raíz) → Zonas → Archivos o Tablas → Registros o Filas. Cada nivel superior contiene a los niveles inferiores.</p>
+                        <p style="margin-top: 12px;"><strong>Funcionamiento:</strong> A diferencia del Protocolo de Árbol clásico, donde cada nodo representa un dato independiente, en la granularidad múltiple un nodo padre representa a todos sus nodos hijos. Cuando una transacción bloquea un nodo, el bloqueo se hereda automáticamente a todos sus descendientes.</p>
+                        <p style="margin-top: 12px;"><strong>Ejemplo:</strong> si una transacción bloquea una tabla, la tabla queda bloqueada y también quedan bloqueados todos sus registros.</p>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Ventajas</th>
+                                <th>Desventajas</th>
+                            </tr>
+                            <tr>
+                                <td>✔ Facilita la administración de bloqueos.<br>✔ Reduce la cantidad de bloqueos que deben gestionarse.</td>
+                                <td>✔ Puede bloquear más datos de los necesarios.<br>✔ Puede disminuir la concurrencia.</td>
+                            </tr>
+                        </table>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> en lugar de bloquear registro por registro, se puede bloquear un nivel superior (por ejemplo una tabla completa) y el bloqueo se aplica automáticamente a todos sus elementos hijos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layers"></i>Niveles de Aislamiento (Estándar SQL-92)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los niveles de aislamiento determinan cuánto puede afectar una transacción a otra.</p>
+                        <table>
+                            <tr>
+                                <th>Nivel</th>
+                                <th>Lectura Sucia</th>
+                                <th>Lectura No Repetible</th>
+                                <th>Lectura Fantasma</th>
+                            </tr>
+                            <tr>
+                                <td><strong>READ UNCOMMITTED</strong></td>
+                                <td>❌ Puede ocurrir</td>
+                                <td>❌ Puede ocurrir</td>
+                                <td>❌ Puede ocurrir</td>
+                            </tr>
+                            <tr>
+                                <td><strong>READ COMMITTED</strong></td>
+                                <td>✔ Evitada</td>
+                                <td>❌ Puede ocurrir</td>
+                                <td>❌ Puede ocurrir</td>
+                            </tr>
+                            <tr>
+                                <td><strong>REPEATABLE READ</strong></td>
+                                <td>✔ Evitada</td>
+                                <td>✔ Evitada</td>
+                                <td>❌ Puede ocurrir</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SERIALIZABLE</strong></td>
+                                <td>✔ Evitada</td>
+                                <td>✔ Evitada</td>
+                                <td>✔ Evitada</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>READ UNCOMMITTED:</strong> Es el nivel más bajo, permite leer datos no confirmados.</p>
+                        <p><strong>READ COMMITTED:</strong> Solo permite leer datos confirmados.</p>
+                        <p><strong>REPEATABLE READ:</strong> Garantiza que una misma fila leída mantenga su valor durante toda la transacción.</p>
+                        <p><strong>SERIALIZABLE:</strong> Es el nivel más alto y más estricto, simula que las transacciones se ejecutan una después de otra.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: SEGURIDAD -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Seguridad Informática</h2>
+
+                <div class="definition">
+                    La seguridad informática busca proteger la información para garantizar que permanezca íntegra, disponible y accesible únicamente para usuarios autorizados. La información es uno de los activos más importantes de una organización.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-question-circle"></i>¿Por qué proteger la información?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La información es un recurso estratégico y crítico para la organización. Su protección contribuye a:</p>
+                        <ul class="bullet-list">
+                            <li>Eficiencia de la gestión.</li>
+                            <li>Ventajas competitivas.</li>
+                            <li>Toma de decisiones.</li>
+                            <li>Continuidad operativa.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-info-circle"></i> <strong>¿Por qué es frágil la información?</strong> Porque depende de medios tecnológicos que pueden fallar y de personas que pueden dañarla o utilizarla indebidamente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-microchip"></i>Impacto de la Informática
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El uso de sistemas informáticos genera nuevos riesgos para la información:</p>
+                        <ul class="bullet-list">
+                            <li>Es posible realizar operaciones sin generar documentación fuente.</li>
+                            <li>Es posible modificar información sin dejar huellas visibles.</li>
+                            <li>La gran velocidad de procesamiento amplifica la capacidad humana y el impacto de los errores.</li>
+                            <li>Los registros y pistas de auditoría son invisibles para el usuario común.</li>
+                            <li>Es más fácil robar información cuando se encuentra concentrada en medios electrónicos.</li>
+                            <li>La información electrónica es fácil de copiar, perder o destruir.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> La informatización aumenta la eficiencia, pero también incrementa los riesgos de pérdida, modificación o robo de información, por lo que se requieren mayores medidas de seguridad.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bullseye"></i>Objetivos de Seguridad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>✔ Integridad:</strong> La información solo puede ser modificada por usuarios autorizados.</p>
+                        <p><strong>✔ Disponibilidad:</strong> La información debe estar disponible cuando sea necesaria.</p>
+                        <p><strong>✔ Confidencialidad:</strong> La información solo puede ser conocida por personas autorizadas.</p>
+                        <p><strong>✔ Auditoría:</strong> Permite registrar y rastrear las actividades realizadas sobre la información.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-database"></i>Información a Proteger
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>✔ Digitalizada</th>
+                                <th>✔ No Digitalizada</th>
+                            </tr>
+                            <tr>
+                                <td>Servidores, computadoras, notebooks, discos, redes y comunicaciones.</td>
+                                <td>Documentos, planos, fórmulas, mapas, comunicaciones internas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gavel"></i>Marco Normativo
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Se compone de:</p>
+                        <ul class="bullet-list">
+                            <li>Políticas.</li>
+                            <li>Normas.</li>
+                            <li>Procedimientos.</li>
+                            <li>Estándares.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-exclamation-circle"></i>Factores de Riesgo
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>✔ Externos:</strong> Hackers, competidores, clientes, proveedores, traficantes de información.</p>
+                        <p style="margin-top: 12px;"><strong>✔ Internos:</strong> Empleados malintencionados, personal que busca beneficio propio, saboteadores.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shield"></i>Tipos de Seguridad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>✔ Seguridad Física:</strong> Protege instalaciones y equipamiento.</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;">Ejemplos: control de acceso físico, sistemas contra incendios, protección ante inundaciones.</p>
+                        <p style="margin-top: 15px;"><strong>✔ Seguridad Lógica:</strong> Protege sistemas y datos mediante usuarios, contraseñas, roles, permisos y perfiles.</p>
+
+                        <p style="margin-top: 15px;"><strong>Riesgos técnicos:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Intrusiones.</li>
+                            <li>Virus.</li>
+                            <li>Pérdida de datos.</li>
+                            <li>Fallas de recuperación.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Controles de seguridad:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Contraseñas.</li>
+                            <li>Perfiles de usuario.</li>
+                            <li>Auditorías.</li>
+                            <li>Backups.</li>
+                            <li>Control de accesos físicos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clipboard-list"></i>Desarrollo de un Plan de Seguridad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ol style="padding-left: 20px; color: #555; line-height: 1.8;">
+                            <li>Valuación de datos.</li>
+                            <li>Evaluación de riesgos.</li>
+                            <li>Determinación del alcance.</li>
+                            <li>Definición de medidas de seguridad.</li>
+                            <li>Implementación.</li>
+                            <li>Monitoreo y auditoría.</li>
+                            <li>Corrección y mejora.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-fire-extinguisher"></i>Plan de Contingencia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es el conjunto de procedimientos que permiten mantener la continuidad operativa ante incidentes o fallas.</p>
+                        <p style="margin-top: 12px;"><strong>Incluye:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Backups.</li>
+                            <li>Recuperación de datos.</li>
+                            <li>Equipamiento alternativo.</li>
+                            <li>Procedimientos documentados.</li>
+                            <li>Plan de recuperación por escrito.</li>
+                            <li>Pruebas periódicas.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Eventos contemplados por un Plan de Contingencia:</strong></p>
+                        <table>
+                            <tr>
+                                <th>✔ Naturales</th>
+                                <th>✔ Accidentales</th>
+                                <th>✔ Intencionales</th>
+                            </tr>
+                            <tr>
+                                <td>Inundaciones, rayos, epidemias, sismos, terremotos, huracanes, nevadas.</td>
+                                <td>Incendios, cortes eléctricos, derrumbes, explosiones, interrupción de telecomunicaciones, filtraciones, emanaciones tóxicas.</td>
+                                <td>Robo o hurto, vandalismo, sabotaje, espionaje industrial, bombas o artefactos explosivos, incendios provocados.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>¿Por qué Muchas Empresas No Se Preparan?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Falta de interés de la gerencia.</li>
+                            <li>Presupuestos insuficientes.</li>
+                            <li>Creencia de que "nunca va a pasar".</li>
+                            <li>Dificultad para medir los beneficios de la seguridad.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> La seguridad informática busca proteger la información garantizando Integridad, Disponibilidad, Confidencialidad y Auditoría, mediante controles físicos y lógicos, políticas de seguridad y planes de contingencia que permitan mantener la continuidad operativa ante incidentes o desastres.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const card = this.closest('.card');
+                if (!card) return;
+                
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+                
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resúmenes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+    <div class="container">
+        <div class="header">
+            <h1>📚 Resúmenes</h1>
+            <p>Elegí una materia para ver sus resúmenes de Primer y Segundo Parcial</p>
+        </div>
+
+        <div class="section-label">
+            <i class="fas fa-graduation-cap"></i> Materias
+        </div>
+
+        <div class="subjects-grid">
+            <!-- MATERIA: BASE DE DATOS APLICADA -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="subject-info">
+                    <h2>Base de Datos Aplicada</h2>
+                    <p>SGBD, subconsultas, índices, hashing, optimización, transacciones, concurrencia y seguridad.</p>
+                </div>
+                <div class="subject-links">
+                    <a class="parcial-btn celeste" href="FinalBDA/PrimerParcialBDA.html">1️⃣ Primer Parcial</a>
+                    <a class="parcial-btn rosa" href="FinalBDA/SegundoParcialBDA.html">2️⃣ Segundo Parcial</a>
+                </div>
+            </div>
+            <!-- MATERIA: DESARROLLO Y ARQUITECTURAS WEB -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="subject-info">
+                    <h2>Desarrollo y Arquitecturas Web</h2>
+                    <p>Manejo de estado, XML, objetos ASP, CORBA, DOM, HTML4 vs HTML5, cookies, HTML básico y evaluación de sitios.</p>
+                </div>
+                <div class="subject-links">
+                    <a class="parcial-btn celeste" href="FinalDAW/PrimerParcialDAW.html">1️⃣ Primer Parcial</a>
+                    <a class="parcial-btn rosa" href="FinalDAW/SegundoParcialDAW.html">2️⃣ Segundo Parcial</a>
+                </div>
+            </div>
+
+            <!-- Para agregar una nueva materia, copiá el bloque .subject-card de arriba,
+                 cambiá el ícono, el título, la descripción y los href de los dos botones. -->
+
+            <!-- EJEMPLO DE MATERIA A AGREGAR (marcador "próximamente") -->
+            <div class="subject-card soon">
+                <span class="badge-soon">Próximamente</span>
+                <div class="subject-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="subject-info">
+                    <h2>Nueva Materia</h2>
+                    <p>Agregá acá la descripción cuando tengas los resúmenes listos.</p>
+                </div>
+                <div class="subject-links">
+                    <a class="parcial-btn celeste" href="#" onclick="return false;">1️⃣ Primer Parcial</a>
+                    <a class="parcial-btn rosa" href="#" onclick="return false;">2️⃣ Segundo Parcial</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>Hecho con 💙 y 🩷</footer>
+    </div>
+</body>
+</html>

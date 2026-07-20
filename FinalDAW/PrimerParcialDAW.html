@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo y Arquitecturas Web - Primer Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="daw">
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Desarrollo y Arquitecturas Web</h1>
+            <p>Primer Parcial: Estado, Arquitecturas, Objetos ASP, CORBA, Cookies y HTML</p>
+        </div>
+
+        <div class="content">
+            <!-- CLASE 1: FUNDAMENTOS Y MANEJO DE ESTADO -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Fundamentos y Manejo de Estado</h2>
+
+                <div class="definition">
+                    HTTP es un protocolo <strong>Stateless</strong> (sin estado): cada petición es independiente y el servidor no recuerda nada de las anteriores por sí solo. Para simular que "recuerda" al usuario se usan mecanismos de manejo de estado como Session, Cookies y Application.
+                </div>
+
+                <div class="section-title">Mecanismos de Estado</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-clock"></i>Variables de Sesión (Session)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Persisten datos entre páginas, pero únicamente para esa sesión específica de ese usuario.</p>
+                        <ul class="bullet-list">
+                            <li><strong>Alcance:</strong> Privado, cada usuario tiene su propia Session.</li>
+                            <li><strong>Duración:</strong> Mientras dure la sesión del usuario (hasta que expire o se cierre el navegador).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cookie-bite"></i>Cookies
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Archivos de texto (máximo <strong>4KB</strong>) que almacenan información para el intercambio entre cliente y servidor.</p>
+                        <table>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>No Consistentes</strong></td>
+                                <td>Sin propiedad <code>Expires</code>. Mueren al cerrar el navegador (viven en RAM).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Consistentes</strong></td>
+                                <td>Con <code>Expires</code> definido. Se guardan en el disco rígido y persisten entre sesiones.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-globe"></i>Application
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Datos compartidos <strong>globales</strong> entre todos los usuarios de la aplicación (no son privados como Session).</p>
+                        <div class="highlight">
+                            <i class="fas fa-triangle-exclamation"></i> Como varios usuarios pueden acceder al mismo dato al mismo tiempo, requiere <strong>Lock</strong> y <strong>Unlock</strong> para evitar conflictos de concurrencia.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Archivos clave relacionados:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>Web.config</code>: Configuración específica de la aplicación web.</li>
+                            <li><code>Machine.config</code>: Configuración a nivel de servidor/máquina.</li>
+                            <li><code>Global.asax</code>: Maneja eventos globales de la aplicación (inicio, fin, sesión, errores).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">XML y Estructuras Jerárquicas</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>XML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Lenguaje de marcado <strong>case-sensitive</strong> (distingue mayúsculas de minúsculas) diseñado para <strong>transportar y almacenar datos</strong>, no para mostrarlos visualmente.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>PCDATA vs CDATA
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>PCDATA</th>
+                                <th>CDATA</th>
+                            </tr>
+                            <tr>
+                                <td>Datos <strong>procesados</strong> (Parsed Character Data) que el parser interpreta y que forman la jerarquía del documento.</td>
+                                <td>Bloques que el parser <strong>ignora</strong>, usados para incluir caracteres especiales sin que se interpreten como marcado.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-ruler"></i>XSD - Cardinalidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Un XSD (XML Schema Definition) valida la estructura de un XML. La cardinalidad indica cuántas veces puede aparecer un elemento.</p>
+                        <table>
+                            <tr>
+                                <th>Atributo</th>
+                                <th>Significado</th>
+                            </tr>
+                            <tr>
+                                <td><code>minOccurs</code></td>
+                                <td>Cantidad mínima de veces que debe aparecer el elemento.</td>
+                            </tr>
+                            <tr>
+                                <td><code>maxOccurs</code></td>
+                                <td>Cantidad máxima de veces que puede aparecer. El valor <code>unbounded</code> significa infinito (sin límite).</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLASE 2: ARQUITECTURAS Y MODELOS DE OBJETOS -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Arquitecturas y Modelos de Objetos</h2>
+
+                <div class="section-title">Objetos ASP (Cliente-Servidor)</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrow-right-to-bracket"></i>REQUEST
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Representa la <strong>entrada</strong> de datos que llegan del cliente al servidor.</p>
+                        <ul class="bullet-list">
+                            <li><strong>Form:</strong> Datos enviados por un formulario con método POST.</li>
+                            <li><strong>QueryString:</strong> Datos enviados en la URL (método GET).</li>
+                            <li><strong>Cookies:</strong> Datos enviados dentro de las cookies del cliente.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Métodos de envío:</strong> POST / GET</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrow-right-from-bracket"></i>RESPONSE
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Representa la <strong>salida</strong> de datos del servidor hacia el cliente.</p>
+                        <p style="margin-top: 12px;"><strong>Métodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>Write</code>: Escribe contenido en la respuesta.</li>
+                            <li><code>Redirect</code>: Redirige al cliente a otra página.</li>
+                            <li><code>Clear</code>: Limpia el buffer de salida.</li>
+                            <li><code>End</code>: Finaliza el procesamiento y envía la respuesta.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Propiedad:</strong> <code>Expires</code></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-id-badge"></i>SESSION
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Almacena datos <strong>privados</strong> para cada usuario individual.</p>
+                        <ul class="bullet-list">
+                            <li><code>SessionID</code>: Identificador único de la sesión del usuario.</li>
+                            <li><code>Abandon</code>: Finaliza la sesión actual.</li>
+                            <li><code>Timeout</code>: Tiempo de inactividad antes de que expire la sesión.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-server"></i>APPLICATION
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Almacena datos <strong>globales</strong>, compartidos por todos los usuarios de la aplicación.</p>
+                        <ul class="bullet-list">
+                            <li><code>Lock</code> / <code>Unlock</code>: Evitan que dos usuarios modifiquen el mismo dato al mismo tiempo.</li>
+                            <li><code>OnStart</code>: Evento disparado al iniciar la aplicación.</li>
+                            <li><code>OnEnd</code>: Evento disparado al finalizar la aplicación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-toolbox"></i>SERVER
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Provee herramientas y utilidades del servidor.</p>
+                        <ul class="bullet-list">
+                            <li><code>CreateObject</code>: Crea instancias de objetos/componentes en el servidor.</li>
+                            <li><code>MapPath</code>: Traduce una ruta virtual a una ruta física del servidor.</li>
+                            <li><code>ScriptTimeout</code>: Tiempo máximo de ejecución permitido para un script.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Sistemas Distribuidos - CORBA</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-diagram-project"></i>CORBA
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            CORBA (Common Object Request Broker Architecture) permite la comunicación entre objetos escritos en <strong>distintos lenguajes de programación</strong> y ejecutados en distintas plataformas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-network-wired"></i>ORB (Object Request Broker)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es el <strong>intermediario</strong> que gestiona la comunicación entre el objeto cliente y el objeto servidor, sin que cada uno necesite conocer los detalles técnicos del otro.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-right-left"></i>Stub y Skeleton
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Son los <strong>"traductores" locales</strong> que permiten que cliente y servidor se comuniquen a través del ORB.</p>
+                        <table>
+                            <tr>
+                                <th>Stub</th>
+                                <th>Skeleton</th>
+                            </tr>
+                            <tr>
+                                <td>Del lado del <strong>cliente</strong>: representa localmente al objeto remoto.</td>
+                                <td>Del lado del <strong>servidor</strong>: recibe la llamada y la reenvía al objeto real.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-contract"></i>IDL (Interface Description Language)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Lenguaje utilizado para <strong>definir interfaces neutras</strong>, independientes del lenguaje de programación, que describen qué operaciones expone un objeto distribuido.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gears"></i>Compiladores IDL
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Compiladores como <strong>Visibroker</strong> y <strong>Orbix</strong> generan automáticamente los Stubs y Skeletons a partir de la definición IDL, evitando escribirlos a mano.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">DOM y Ciclo de Vida</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sitemap"></i>Jerarquía del DOM
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Window → Document → Form → Control → Propiedades</div>
+                        <p style="margin-top: 12px;">Cada nivel contiene al siguiente: la ventana contiene el documento, el documento contiene los formularios, los formularios contienen controles, y cada control expone sus propiedades.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrows-spin"></i>Algoritmo del Servidor
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Recepción → Procesamiento → Devolución</div>
+                        <p style="margin-top: 12px;">El servidor recibe la petición del cliente, la procesa (ejecuta lógica, consulta datos) y devuelve una respuesta.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">HTML4 vs HTML5</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i> Comparativa HTML4 vs HTML5
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>HTML4</th>
+                                <th>HTML5</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Semántica</strong></td>
+                                <td>Etiquetas genéricas como <code>&lt;div&gt;</code></td>
+                                <td>Etiquetas con significado: <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multimedia</strong></td>
+                                <td>Requiere plugins externos (Flash)</td>
+                                <td>Soporte nativo: <code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Almacenamiento</strong></td>
+                                <td>Cookies (máx. 4KB)</td>
+                                <td>Web Storage (5-10MB), reemplaza a las cookies para guardar datos localmente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gráficos</strong></td>
+                                <td>Requiere herramientas externas</td>
+                                <td><code>&lt;canvas&gt;</code> para gráficos 2D/3D nativos</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLASE 3: COOKIES, HTML BÁSICO Y EVALUACIÓN DE SITIOS -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Cookies, HTML Básico y Evaluación de Sitios</h2>
+
+                <div class="section-title">Cookies: Lectura y Escritura</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-pen"></i>Escritura de Cookies
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Escritura simple:</strong></p>
+                        <div class="formula">Response.Cookies("Pais") = "Argentina"</div>
+                        <p style="margin-top: 15px;"><strong>Diccionarios (Subclaves):</strong> una misma cookie puede guardar varias subclaves.</p>
+                        <div class="formula">Response.Cookies("color")("Fondo") = "Verde"</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-magnifying-glass"></i>Lectura y Recursividad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Lectura de una subclave:</strong></p>
+                        <div class="formula">Request.Cookies("color")("Marcas")</div>
+                        <p style="margin-top: 15px;"><strong>Recorrido recursivo de subclaves:</strong> se verifica primero si la cookie tiene subclaves antes de recorrerlas.</p>
+                        <div class="formula">If HasKeys Then
+    For Each clave...
+        ' recorrer subclaves
+    Next
+End If</div>
+                    </div>
+                </div>
+
+                <div class="section-title">Cookies: Expiración</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hourglass-half"></i>No Consistente vs Consistente
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>No Consistente</th>
+                                <th>Consistente</th>
+                            </tr>
+                            <tr>
+                                <td>Sin <code>.Expires</code> → muere al cerrar el navegador (se guarda en RAM).</td>
+                                <td>Con <code>.Expires</code> definido → persiste en el disco rígido.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">HTML Básico</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-link"></i>Navegación
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Dentro de la misma página:</strong> <code>&lt;a href="#id"&gt;</code> (ancla)</li>
+                            <li><strong>Hacia otra página:</strong> <code>&lt;a href="url"&gt;</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>Listas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Ordenadas</th>
+                                <th>Desordenadas</th>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;ol&gt;</code> — atributos <code>type</code> ("1"/"A"/"I") y <code>start</code> (ej. <code>start="15"</code>)</td>
+                                <td><code>&lt;ul&gt;</code> — atributo <code>type</code> ("disc"/"circle"/"square")</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gear"></i>Detalles Técnicos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Acentos:</strong> directos (con <code>charset UTF-8</code>) o mediante entidades (<code>&amp;aacute;</code>, <code>&amp;eacute;</code>, <code>&amp;ntilde;</code>)</li>
+                            <li><strong>Sangrado:</strong> automático del navegador o controlado con CSS (<code>margin-left</code>, <code>padding-left</code>)</li>
+                            <li><strong>Comentarios:</strong> <code>&lt;!-- comentario --&gt;</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Conexión HTML + JavaScript</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-plug"></i>Vinculación e Interacción Básica
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>HTML:</strong> se enlaza el script externo dentro del <code>&lt;head&gt;</code>.</p>
+                        <div class="formula">&lt;script src="archivo.js"&gt;&lt;/script&gt;</div>
+                        <p style="margin-top: 15px;"><strong>JavaScript:</strong> las funciones se definen en el archivo <code>.js</code> externo.</p>
+                        <p style="margin-top: 12px;"><strong>Entrada/salida de datos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>prompt()</code>: solicita un dato de entrada al usuario.</li>
+                            <li><code>eval()</code>: convierte un texto en un valor numérico/evaluable.</li>
+                            <li><code>alert()</code>: muestra un mensaje de salida.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Evaluación de Sitios Web</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clipboard-check"></i>Criterios de Evaluación
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Tiempo de carga:</strong> debe ser razonable, no debe tardar mucho.</li>
+                            <li><strong>Coherencia visual:</strong> colores, fuentes y disposición consistentes en todo el sitio.</li>
+                            <li><strong>Propósito claro:</strong> debe entenderse de inmediato qué ofrece el sitio.</li>
+                            <li><strong>Enlaces alternativos:</strong> navegación interna, anclas, buscadores.</li>
+                            <li><strong>Regla de 3 clics:</strong> la información debe ser accesible sin necesitar muchos clics.</li>
+                            <li><strong>Usabilidad:</strong> interfaz intuitiva para el usuario.</li>
+                            <li><strong>Accesibilidad:</strong> debe incluir <code>alt</code> en imágenes, etiquetas semánticas, y evitar elementos obsoletos como <code>&lt;blink&gt;</code>.</li>
+                        </ul>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Idea clave:</strong> un buen sitio web se evalúa tanto por su rendimiento técnico (carga, accesibilidad) como por su diseño (coherencia, usabilidad, propósito claro).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

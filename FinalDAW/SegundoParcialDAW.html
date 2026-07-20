@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo y Arquitecturas Web - Segundo Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="daw">
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Desarrollo y Arquitecturas Web</h1>
+            <p>Segundo Parcial: Seguridad, Calidad Web y Big Data</p>
+        </div>
+
+        <div class="content">
+            <!-- 1RA PRESENTACIÓN: SEGURIDAD Y CALIDAD WEB -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Seguridad y Calidad Web</h2>
+
+                <div class="section-title">Seguridad Web (Pilares Fundamentales)</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shield-halved"></i>Pilares de la Seguridad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Confidencialidad:</strong> solo usuarios autorizados pueden acceder a la información.</p>
+                        <p><strong>Integridad:</strong> los datos no deben poder modificarse indebidamente.</p>
+                        <p><strong>Disponibilidad:</strong> la información debe poder accederse cuando se la necesite.</p>
+                        <p style="margin-top: 12px;"><strong>Medidas asociadas:</strong> Prevención, Corrección, Recuperación.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-signature"></i>No Repudio
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Es la imposibilidad de negar haber realizado una acción. Se garantiza, por ejemplo, mediante la <strong>firma digital</strong>.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Garantiza:</strong> Autenticidad, Integridad y No repudio.</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;"><strong>Ejemplo cotidiano:</strong> una carta certificada (queda constancia de que fue enviada y recibida, y quién la envió).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-lock"></i>Mecanismos de Protección
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Autenticación:</strong> verifica la identidad del usuario.</li>
+                            <li><strong>Control de accesos:</strong> determina qué puede hacer cada usuario.</li>
+                            <li><strong>Cifrado de datos:</strong> protege la confidencialidad de la información.</li>
+                            <li><strong>Hash:</strong> garantiza la integridad de los datos.</li>
+                            <li><strong>Firma digital:</strong> garantiza el no repudio.</li>
+                            <li><strong>Registro de auditoría:</strong> deja constancia de las acciones realizadas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>Niveles de Seguridad (Clásicos)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Desclasificado → Restringido → Confidencial → Secreto → Ultrasecreto</div>
+                        <p style="margin-top: 12px;">Cada nivel implica un grado creciente de restricción sobre quién puede acceder a la información.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-lock"></i>Modelos de Control de Acceso
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>MAC</strong> (Obligatorio)</td>
+                                <td>Basado en niveles de seguridad. El usuario no decide los permisos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DAC</strong> (Discrecional)</td>
+                                <td>El propietario del recurso administra los permisos de acceso.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RBAC</strong> (Por Roles)</td>
+                                <td>Los permisos se asignan a roles, y los usuarios heredan los permisos según el rol que tienen.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Mecanismos de Control (Top 3)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Privilegio mínimo:</strong> otorgar solo los permisos estrictamente necesarios.</li>
+                            <li><strong>Separación de privilegios:</strong> una acción crítica requiere múltiples autorizaciones.</li>
+                            <li><strong>Autenticación:</strong> verifica la identidad antes de dar acceso.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Calidad de Software y Web</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-star"></i>Modelo de Calidad de McCall (6 Características)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Funcionalidad</li>
+                            <li>Fiabilidad</li>
+                            <li>Usabilidad</li>
+                            <li>Eficiencia</li>
+                            <li>Mantenibilidad</li>
+                            <li>Portabilidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-diagram-project"></i>Tipos de Calidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Interna</strong></td>
+                                <td>Analiza el código fuente del software.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Externa</strong></td>
+                                <td>Analiza el software en ejecución.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>En Uso</strong></td>
+                                <td>Evalúa si el software satisface las necesidades reales del usuario.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hand-pointer"></i>Usabilidad ISO
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Capacidad del software para ser: <strong>comprendido</strong>, <strong>aprendido</strong>, <strong>usado</strong> y <strong>atractivo</strong> para el usuario.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-face-smile"></i>Atributos de Usabilidad (Nielsen)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Learnability:</strong> facilidad de aprendizaje.</li>
+                            <li><strong>Efficiency:</strong> eficiencia de uso.</li>
+                            <li><strong>Memorability:</strong> recuerdo en el tiempo (facilidad de recordar cómo usarlo).</li>
+                            <li><strong>Errors:</strong> tasa de errores.</li>
+                            <li><strong>Satisfaction:</strong> satisfacción del usuario.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cube"></i>Modelo WQM (Calidad Web)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Modelo tridimensional para evaluar la calidad web:</p>
+                        <ul class="bullet-list">
+                            <li><strong>Eje X:</strong> Características de calidad (los factores de McCall).</li>
+                            <li><strong>Eje Y:</strong> Características web.</li>
+                            <li><strong>Eje Z:</strong> Procesos del ciclo de vida.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-ruler-combined"></i>Evaluación de Calidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="margin-top: 12px;"><strong>Métricas según automatización:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Automatizables:</strong> se calculan con herramientas.</li>
+                            <li><strong>Semiautomatizadas:</strong> combinan herramientas con intervención humana.</li>
+                            <li><strong>Manuales:</strong> las calcula una persona.</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Métricas según correspondencia:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Directas:</strong> miden directamente un atributo (ej: cantidad de imágenes).</li>
+                            <li><strong>Indirectas:</strong> combinan varios atributos (ej: % de enlaces rotos).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-universal-access"></i>Usabilidad vs Accesibilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Usabilidad</th>
+                                <th>Accesibilidad</th>
+                            </tr>
+                            <tr>
+                                <td>Facilidad y eficiencia de uso del sitio para cualquier usuario.</td>
+                                <td>Acceso para personas con discapacidades (visuales, auditivas, cognitivas).</td>
+                            </tr>
+                        </table>
+                        <div class="important" style="margin-top: 15px;">
+                            <strong>⚠️ MUY IMPORTANTE:</strong> son conceptos distintos y complementarios — un sitio puede ser usable pero no accesible, o viceversa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2DA PRESENTACIÓN: BIG DATA, M2M E IOT -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Big Data, M2M e IoT</h2>
+
+                <div class="section-title">Fundamentos de Big Data</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-graduate"></i>Científico de Datos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Profesional con conocimientos en informática, matemáticas, estadística y análisis funcional. Su rol es transformar problemas de negocio en problemas analíticos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-database"></i>Las 3V de Big Data
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Volumen:</strong> enorme cantidad de datos (ej: Netflix, Facebook).</p>
+                        <p><strong>Velocidad:</strong> generación continua y análisis en tiempo real (transacciones, GPS, sensores).</p>
+                        <p><strong>Variedad:</strong> múltiples formatos (texto, audio, video, imágenes, bases de datos).</p>
+                        <p style="margin-top: 12px;"><strong>Veracidad (opcional, 4ta V):</strong> calidad y confiabilidad de los datos.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-tower-broadcast"></i>Fuentes de Big Data Más Voluminosas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Web y medios sociales</li>
+                            <li>M2M (machine-to-machine) e IoT</li>
+                            <li>Transacciones comerciales</li>
+                            <li>Biometría</li>
+                            <li>Datos de sensores</li>
+                            <li>Geolocalización</li>
+                            <li>Telecomunicaciones</li>
+                            <li>Videojuegos, casinos</li>
+                            <li>Smart grids</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table-list"></i>Cinco Categorías de Big Data
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Ejemplos</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Web y Medios Sociales</strong></td>
+                                <td>Clickstream, Twitter, Facebook</td>
+                            </tr>
+                            <tr>
+                                <td><strong>M2M e IoT</strong></td>
+                                <td>Medidores inteligentes, RFID, sensores GPS</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Transacciones</strong></td>
+                                <td>Facturación, registros médicos, llamadas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Biometría</strong></td>
+                                <td>Reconocimiento facial, datos genéticos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Humanos</strong></td>
+                                <td>Emails, voz, registros médicos</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Técnicas y Tecnologías</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-comment-dots"></i>Análisis de Datos de Texto
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>NLP (Procesamiento de Lenguaje Natural):</strong> analiza e interpreta significados, detecta temas.</p>
+                        <p style="margin-top: 10px;"><strong>Minería de Texto:</strong> descubre información útil en grandes volúmenes de texto (ej: análisis de comentarios).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-satellite-dish"></i>Sensores (IoT)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Monitorean entornos, ciudades y máquinas en tiempo real para permitir control y automatización.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-location-dot"></i>Geolocalización
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Combina GPS y dispositivos móviles para obtener ubicación y tiempo, usada en logística y seguimiento.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-triangle-exclamation"></i> Implica riesgos de privacidad para el usuario.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-signal"></i>RFID vs NFC
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>RFID</th>
+                                <th>NFC</th>
+                            </tr>
+                            <tr>
+                                <td>Etiquetas + lector por radiofrecuencia</td>
+                                <td>Comunicación a corta distancia (&lt;10cm)</td>
+                            </tr>
+                            <tr>
+                                <td>Control de stock, logística, inventarios</td>
+                                <td>Pagos móviles, SUBE, control de acceso</td>
+                            </tr>
+                            <tr>
+                                <td>—</td>
+                                <td>Rápido y fácil de usar</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-qrcode"></i>Códigos QR vs BIDI
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>QR</th>
+                                <th>BIDI</th>
+                            </tr>
+                            <tr>
+                                <td>Estándar ISO, código abierto, gratuito.</td>
+                                <td>Tecnología propietaria, de pago.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-server"></i>Hadoop (Big Data Processing)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="margin-top: 12px;"><strong>Componentes:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>HDFS:</strong> sistema de archivos distribuido.</li>
+                            <li><strong>MapReduce:</strong> procesamiento distribuido y paralelo.</li>
+                            <li><strong>Hadoop Common:</strong> bibliotecas y herramientas comunes.</li>
+                        </ul>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-check-circle"></i> <strong>Ventajas:</strong> almacenamiento distribuido entre múltiples máquinas y tolerancia a fallos mediante redundancia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Cloud Computing</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cloud"></i>Características Esenciales (NIST)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Autoservicio bajo demanda</li>
+                            <li>Acceso ubicuo a la red (desde cualquier dispositivo)</li>
+                            <li>Compartición de recursos</li>
+                            <li>Rápida elasticidad</li>
+                            <li>Servicio medido (pago por uso)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>3 Modelos de Servicio
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>SaaS</strong> (Software como Servicio)</td>
+                                <td>El proveedor maneja todo. Ej: Gmail, Yahoo Mail.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PaaS</strong> (Plataforma como Servicio)</td>
+                                <td>El usuario desarrolla, el proveedor maneja la infraestructura.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IaaS</strong> (Infraestructura como Servicio)</td>
+                                <td>El usuario controla el sistema operativo y las aplicaciones.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-building"></i>4 Modelos de Despliegue
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Nube privada:</strong> uso exclusivo de una organización.</li>
+                            <li><strong>Nube pública:</strong> acceso general, compartida entre organizaciones.</li>
+                            <li><strong>Nube híbrida:</strong> combina dos o más modelos.</li>
+                            <li><strong>Nube comunitaria:</strong> compartida por varias organizaciones con intereses comunes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Negocio y Datos</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>KPI (Key Performance Indicator)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Métricas ligadas a los objetivos estratégicos del negocio.</p>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Tienda Tradicional</th>
+                                <th>Ecommerce</th>
+                            </tr>
+                            <tr>
+                                <td>Ventas/hora, promedio por cliente, artículos/venta</td>
+                                <td>Tasa de abandono, tasa de conversión, tiempo en sitio, páginas visitadas, ubicación geográfica</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hands-holding-circle"></i>Crowdsourcing y Crowdfunding
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Colaboración masiva de personas vía Internet para aportar recursos, conocimientos o financiación.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Modalidades de Crowdfunding:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Donación</li>
+                            <li>Recompensa</li>
+                            <li>Precompra</li>
+                            <li>Equidad</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Plataformas:</strong> Kickstarter, Verkami, Goteo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-magnifying-glass-chart"></i>Minería de Datos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Descubre patrones, correlaciones, tendencias y modelos predictivos (minería web, de textos, de sentimientos).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
