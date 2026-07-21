@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías para el Desarrollo Web - Segundo Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="tw">
+    <div class="container">
+        <div class="header">
+            <h1>💜 Tecnologías para el Desarrollo Web</h1>
+            <p>Segundo Parcial: CSS, JavaScript, DOM, Usabilidad/UI y AJAX</p>
+        </div>
+
+        <div class="exam-note">
+            ⭐ Los capítulos marcados con este sello dorado corresponden a los temas que el profesor confirmó para el examen: HTML5, CSS3, JavaScript, diseño responsivo, AJAX y usabilidad/accesibilidad.
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: CSS -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ CSS - Cascading Style Sheets <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="definition">
+                    CSS (Cascading Style Sheets, "Hojas de Estilo en Cascada") es una tecnología utilizada para dotar de cualidades visuales y estéticas a una página web. Su concepto fundamental es aplicar estilos (colores, formas, márgenes, fuentes, etc.) a uno o varios documentos (generalmente HTML) de forma masiva y centralizada.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-water"></i>¿Por Qué se Llama "en Cascada"?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Aplicación de arriba a abajo:</strong> los estilos se aplican siguiendo un patrón jerárquico.</li>
+                            <li><strong>Herencia:</strong> los estilos se heredan de elementos padres a elementos hijos.</li>
+                            <li><strong>Resolución de ambigüedad:</strong> cuando hay conflictos entre estilos, se siguen normas específicas para resolverlos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-square"></i>Elementos de Bloque vs En Línea
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Bloque (Block)</th><th>En Línea (Inline)</th></tr>
+                            <tr>
+                                <td>Comienzan en una nueva línea. Ocupan todo el ancho disponible. Ejemplos: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>.</td>
+                                <td>Pueden comenzar en cualquier parte de una línea. Solo ocupan el ancho necesario. Ejemplos: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Selectores CSS</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-crosshairs"></i>¿Qué es un Selector CSS?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El selector CSS es el identificador en la hoja de estilos del elemento o elementos del DOM (Document Object Model) a los que se aplicarán los estilos.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-link"></i> El selector es el nexo de unión entre la hoja de estilos y los documentos HTML. Del buen manejo de selectores depende la eficiencia de la hoja de estilos, y permite aplicar estilos sin recurrir a otros lenguajes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hashtag"></i>1. Selectores Simples
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Son selectores básicos que seleccionan elementos directamente.</p>
+                        <table style="margin-top: 12px;">
+                            <tr><th>Selector</th><th>Descripción</th></tr>
+                            <tr><td><strong>De Elemento (Type)</strong></td><td>Selecciona por nombre de etiqueta (ej. todos los <code>&lt;p&gt;</code>).</td></tr>
+                            <tr><td><strong>De Clase (<code>.clase</code>)</strong></td><td>Selecciona elementos con una clase específica. Se puede usar en múltiples elementos.</td></tr>
+                            <tr><td><strong>De ID (<code>#id</code>)</strong></td><td>Selecciona un elemento único con un ID específico. Debe ser único en la página.</td></tr>
+                            <tr><td><strong>Universal (<code>*</code>)</strong></td><td>Selecciona todos los elementos.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-object-group"></i>2. Selectores Compuestos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Combinan selectores simples para mayor especificidad.</p>
+                        <ul class="bullet-list" style="margin-top: 12px;">
+                            <li><strong>Selector de Atributo:</strong> selecciona elementos según sus atributos (ej. inputs con determinado <code>type</code>, enlaces con <code>target</code> específico, elementos con un atributo presente).</li>
+                            <li><strong>Selector Descendiente:</strong> selecciona elementos dentro de otros elementos (sin importar el nivel de anidamiento).</li>
+                            <li><strong>Selector Hijo (Child Combinator):</strong> selecciona elementos que son hijos directos de otro.</li>
+                            <li><strong>Selector Hermano Adyacente:</strong> selecciona un elemento que sigue inmediatamente a otro.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>3. Selectores Complejos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Son combinaciones avanzadas de selectores, ya sea agrupando múltiples selectores separados por comas para aplicar el mismo estilo a varios elementos distintos, o encadenando selectores de tipo, clase y combinadores para apuntar a estructuras muy específicas del documento.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-wand-magic-sparkles"></i>4. Pseudo-clases y Pseudo-elementos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Pseudo-clases:</strong> seleccionan elementos en estados específicos.</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;"><code>:link</code> (no visitado), <code>:visited</code> (visitado), <code>:hover</code> (al pasar el mouse), <code>:active</code> (activo/presionado), <code>:first-child</code> (primer hijo), <code>:last-child</code> (último hijo), <code>:focus</code> (en foco).</p>
+                        <p style="margin-top: 15px;"><strong>Pseudo-elementos:</strong> seleccionan partes específicas de un elemento.</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;"><code>::first-letter</code> (primera letra), <code>::first-line</code> (primera línea), <code>::before</code> (antes del contenido), <code>::after</code> (después del contenido).</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Tres Formas de Usar CSS</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>Inline, Internal y External
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Forma</th><th>Características</th></tr>
+                            <tr>
+                                <td><strong>Inline</strong></td>
+                                <td>Los estilos se definen directamente en el elemento HTML usando el atributo <code>style</code>. Afecta solo al elemento específico, es menos eficiente para múltiples elementos y difícil de mantener.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Internal (Interno)</strong></td>
+                                <td>Los estilos se definen en un elemento <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code>. Afecta a toda la página, pero solo funciona en esa página. Más fácil de mantener que inline.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>External (Externo)</strong></td>
+                                <td>Los estilos se definen en un archivo <code>.css</code> separado, vinculado al HTML. Mejor práctica para proyectos medianos/grandes: reutilizable en múltiples páginas, fácil de mantener y actualizar, reduce redundancia de código.</td>
+                            </tr>
+                        </table>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-check-circle"></i> <strong>Ventajas de CSS Externo:</strong> un archivo CSS para múltiples HTML, los cambios se aplican en todo el sitio, mejor rendimiento (cache del navegador) y separación de responsabilidades.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Layout</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table-cells"></i>¿Qué es un Layout?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La palabra "layout" se traduce como disposición, plan, diseño o esquema. En diseño web, el layout es la representación de un plano sobre el cual se va a dibujar la distribución de un espacio específico o determinado.</p>
+                        <p style="margin-top: 12px;"><strong>Importancia:</strong> sirve como base fundamental para una página web, es el producto inicial de un sitio web y define cómo se distribuyen los elementos dentro de la página.</p>
+                        <p style="margin-top: 12px;"><strong>Flujo de desarrollo:</strong> el diseñador crea el layout (esquema/boceto) → lo presenta al cliente para aprobación/modificación/rechazo → se desarrolla la página web basándose en el layout aprobado.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-border-all"></i>Tipos de Layouts Comunes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Tipo</th><th>Estructura</th></tr>
+                            <tr><td><strong>Una columna</strong></td><td>Header, Contenido y Footer apilados verticalmente.</td></tr>
+                            <tr><td><strong>Dos columnas</strong></td><td>Header arriba, luego Sidebar junto a Contenido, y Footer abajo.</td></tr>
+                            <tr><td><strong>Tres columnas</strong></td><td>Header arriba, luego una barra izquierda, el Contenido central y una barra derecha, y Footer abajo.</td></tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Elementos típicos de un layout:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Header:</strong> logotipo, navegación principal, información de la empresa.</li>
+                            <li><strong>Navigation:</strong> menú principal, enlaces a secciones.</li>
+                            <li><strong>Sidebar:</strong> widgets, enlaces secundarios, información adicional.</li>
+                            <li><strong>Main Content:</strong> artículos, información principal.</li>
+                            <li><strong>Footer:</strong> copyright, enlaces secundarios, información de contacto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sliders"></i>Propiedades CSS Importantes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Texto y fuentes:</strong> <code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, <code>text-align</code>, <code>line-height</code>, <code>text-decoration</code>.</p>
+                        <p style="margin-top: 12px;"><strong>Box Model (modelo de caja):</strong> <code>margin</code> (espacio exterior), <code>padding</code> (espacio interior), <code>border</code>, <code>width</code>, <code>height</code>.</p>
+                        <p style="margin-top: 12px;"><strong>Colores y fondo:</strong> <code>background-color</code>, <code>background-image</code>, <code>opacity</code>.</p>
+                        <p style="margin-top: 12px;"><strong>Posicionamiento:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>static</code>: flujo normal (predeterminado).</li>
+                            <li><code>relative</code>: relativo a su posición normal.</li>
+                            <li><code>absolute</code>: relativo al contenedor padre.</li>
+                            <li><code>fixed</code>: fijo en la ventana.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Display:</strong> <code>block</code>, <code>inline</code>, <code>inline-block</code> (híbrido), <code>flex</code>, <code>grid</code>, <code>none</code> (oculto).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: JAVASCRIPT -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Introducción a JavaScript <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="definition">
+                    JavaScript es un lenguaje de programación que se utiliza principalmente para aportar dinamismo a sitios y aplicaciones web. Funciona en complemento con HTML y CSS, permitiendo crear nuevas funcionalidades e interacciones avanzadas con los usuarios, e interactuar con otras aplicaciones o servicios de backend.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>Lenguaje Interpretado
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>A diferencia de un lenguaje compilado, JavaScript es un lenguaje interpretado: se ejecuta por medio de un programa intérprete.</p>
+                        <p style="margin-top: 10px;">Los navegadores son los programas que se encargan de interpretar y ejecutar el código JavaScript. Cuando accedemos a una página, el navegador lee y ejecuta todos los archivos que conforman la aplicación (HTML, CSS, JS).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-globe"></i>Sitios Web vs Aplicaciones Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Sitios Web</th><th>Aplicaciones Web</th></tr>
+                            <tr>
+                                <td>Ofrecen principalmente información estática, sin modificación de contenido según las acciones del usuario. Hoy es poco común crear solo sitios estáticos.</td>
+                                <td>Permiten a los usuarios llevar a cabo diversas tareas. Son entornos interactivos y dinámicos, en continuo mantenimiento y actualización. Ejemplos: MercadoLibre, Youtube, Gmail, Facebook.</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Características de las Aplicaciones Web:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Funcionalidades diversas:</strong> distintas tareas que usuarios y clientes pueden realizar.</li>
+                            <li><strong>Interactividad:</strong> animaciones y transiciones complejas.</li>
+                            <li><strong>Respuestas a eventos:</strong> capturar y enviar datos mediante formularios.</li>
+                            <li><strong>APIs y Backend:</strong> consumen servicios de backend y/o base de datos para cargar y administrar información.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>Front-End y Back-End
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Front-End (Cliente):</strong> parte de la aplicación que se ejecuta en el navegador, con la que interactúan los usuarios. Construido con HTML, CSS y JavaScript, integrando los tres lenguajes en un único producto. Tecnologías: HTML5, CSS3, JavaScript, frameworks (React, Angular, Vue), librerías y herramientas.</p>
+                        <p style="margin-top: 12px;"><strong>Back-End (Servidor):</strong> lado del servidor responsable de la gestión de datos. Aloja servicios y APIs, administra la información de la página. Tecnologías: Node.js, PHP, Laravel; bases de datos (MySQL, PostgreSQL); servidores (Apache, Nginx).</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-arrows-left-right"></i> JavaScript facilita la comunicación e intercambio de información con APIs u otras aplicaciones mediante solicitudes HTTP.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock-rotate-left"></i>Historia de JavaScript
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>1995:</strong> primera aparición pública de JavaScript, utilizado como herramienta del navegador Netscape Navigator. Objetivo original: permitir agregar programas a páginas web.</p>
+                        <p style="margin-top: 12px;"><strong>Evolución:</strong> ES1 (1997), ES2 (1998), ES3 (1999), ES5 (2009, actualizaciones significativas), ES6 (2015, mejoras importantes en sintaxis y funcionalidad).</p>
+                        <p style="margin-top: 10px;">Actualmente JavaScript se encuentra en la versión 11 y en desarrollo de la 12, con enfoque en las versiones ES6 y posteriores.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-not-equal"></i>Diferencia con Java
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Java:</strong> funciona a través de declaraciones que se establecen a partir de un sistema de clases en tiempo de compilación.</p>
+                        <p style="margin-top: 10px;"><strong>JavaScript:</strong> se basa en un sistema de tiempo de ejecución donde cada dato distinto puede representar valores booleanos, cadenas de texto (strings) o valores numéricos.</p>
+                        <div class="important" style="margin-top: 12px;">
+                            A pesar de los nombres similares, Java y JavaScript son lenguajes completamente diferentes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cubes"></i>Elementos Básicos de JavaScript
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Datos:</strong> valores numéricos, cadenas, booleanos.</li>
+                            <li><strong>Variables:</strong> contenedores para almacenar datos.</li>
+                            <li><strong>Objetos:</strong> estructuras complejas con propiedades.</li>
+                            <li><strong>Arrays:</strong> colecciones de datos.</li>
+                            <li><strong>Funciones:</strong> bloques de código reutilizables.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Sintaxis: Reglas Básicas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Espacios en blanco y nuevas líneas:</strong> no se tienen en cuenta (igual que en HTML). El código se puede escribir en una o múltiples líneas.</li>
+                            <li><strong>Case sensitive:</strong> se distinguen mayúsculas de minúsculas (<code>nombre</code> ≠ <code>Nombre</code>).</li>
+                            <li><strong>Comentarios:</strong> de una línea con <code>//</code>, y de múltiples líneas entre <code>/*</code> y <code>*/</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-key"></i>Palabras Reservadas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Son palabras clave que se emplean para crear las instrucciones en JavaScript y que, por lo tanto, no pueden ser utilizadas de manera arbitraria como nombres de variables.</p>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;"><code>break</code>, <code>case</code>, <code>catch</code>, <code>continue</code>, <code>default</code>, <code>let</code>, <code>delete</code>, <code>do</code>, <code>else</code>, <code>finally</code>, <code>for</code>, <code>function</code>, <code>if</code>, <code>in</code>, <code>instanceof</code>, <code>new</code>, <code>return</code>, <code>switch</code>, <code>this</code>, <code>throw</code>, <code>try</code>, <code>typeof</code>, <code>var</code>, <code>void</code>, <code>while</code>, <code>with</code>.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-box"></i>Variables
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una variable representa un área en la memoria que puede modificar su contenido durante la ejecución de un programa. En las variables se guardan diferentes tipos de datos que empleamos en la aplicación.</p>
+                        <p style="margin-top: 12px;"><strong>Declaración:</strong> declarar una variable significa su creación, usando las palabras reservadas <code>var</code>, <code>let</code> o <code>const</code>, seguidas del nombre de la variable.</p>
+                        <p style="margin-top: 10px;"><strong>Reglas para los nombres:</strong> evitar espacios y caracteres especiales; es case sensitive.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hashtag"></i>Valores y Tipos de Datos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los dos tipos de datos más comunes para empezar son:</p>
+                        <ul class="bullet-list">
+                            <li><strong>Number:</strong> un valor numérico que puede ser entero o decimal.</li>
+                            <li><strong>String:</strong> un valor compuesto por uno o más caracteres, definido entre comillas simples o dobles.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-equals"></i>Asignación e Inicialización
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Asignación:</strong> en una variable podemos asignar distintos tipos de valores mediante el operador de asignación, el símbolo <code>=</code>.</p>
+                        <p style="margin-top: 10px;"><strong>Inicializar variables:</strong> podemos declarar una variable y asignarle un valor inicial en el mismo proceso.</p>
+                        <p style="margin-top: 10px;"><strong>Asignación de múltiples variables:</strong> se puede declarar varias variables en una instrucción, comenzando con <code>var</code>/<code>let</code>/<code>const</code> y separando las variables con comas (también se puede expresar en múltiples líneas para mayor claridad).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-lock"></i>let vs const
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Las declaraciones con <code>let</code> y <code>const</code> ofrecen controles adicionales para las variables: en esencia, evitan la creación de dos variables con el mismo nombre.</p>
+                        <p style="margin-top: 10px;"><strong>let:</strong> puede recibir varias asignaciones a lo largo de la aplicación; su valor puede cambiar en diferentes momentos.</p>
+                        <p style="margin-top: 10px;"><strong>const:</strong> solo puede ser asignada una vez, en el momento de su declaración. Impide cualquier modificación de su valor posteriormente.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calculator"></i>Operadores Aritméticos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Suma (+):</strong> suma dos números.</li>
+                            <li><strong>Resta (-):</strong> resta un número de otro.</li>
+                            <li><strong>Multiplicación (*):</strong> multiplica dos números.</li>
+                            <li><strong>División (/):</strong> divide un número entre otro.</li>
+                            <li><strong>Módulo (%):</strong> devuelve el resto de una división.</li>
+                            <li><strong>Incremento (++):</strong> aumenta el valor de una variable en uno.</li>
+                            <li><strong>Decremento (--):</strong> disminuye el valor de una variable en uno.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-link"></i>Operaciones con Números y con Strings
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Con números:</strong> con variables de valores numéricos se pueden realizar operaciones matemáticas: sumas, restas, multiplicaciones, divisiones, etc.</p>
+                        <p style="margin-top: 10px;"><strong>Con strings (concatenación):</strong> con variables de tipo string se pueden concatenar los valores, es decir, combinarlos mediante el operador <code>+</code>.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-triangle-exclamation"></i> <strong>Sumando números y letras:</strong> sumando dos números se obtiene el resultado numérico. Sin embargo, si se suma un número y una string, el resultado será un string. De igual manera, si se suma palabras con números, el resultado será una concatenación de texto.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Operadores de Comparación y Lógicos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Operadores de comparación:</strong> comparan valores y devuelven un resultado verdadero o falso.</p>
+                        <ul class="bullet-list">
+                            <li><strong>Igual a (==):</strong> compara si dos valores son iguales.</li>
+                            <li><strong>Igual valor, igual tipo (===):</strong> compara si dos valores son iguales en valor y en tipo.</li>
+                            <li><strong>No igual (!=):</strong> compara si dos valores no son iguales.</li>
+                            <li><strong>Distinto valor o distinto tipo (!==):</strong> compara si dos valores son diferentes en valor o en tipo.</li>
+                            <li><strong>Mayor que (&gt;):</strong> compara si un valor es mayor que otro.</li>
+                            <li><strong>Menor que (&lt;):</strong> compara si un valor es menor que otro.</li>
+                            <li><strong>Mayor o igual a (&gt;=):</strong> compara si un valor es mayor o igual que otro.</li>
+                            <li><strong>Menor o igual a (&lt;=):</strong> compara si un valor es menor o igual que otro.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Operadores lógicos:</strong> se utilizan para determinar la lógica entre variables o valores. Son fundamentales para tomar decisiones en la programación y se utilizan comúnmente en estructuras de control como condicionales y bucles.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-terminal"></i>Sentencias: prompt(), console.log() y alert()
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una sentencia es un bloque de código que le dice al navegador que realice una acción específica. Las instrucciones se ejecutan una por una, en el orden que fueron escritas (flujo secuencial), y cada instrucción debe estar separada por punto y coma (<code>;</code>).</p>
+                        <p style="margin-top: 12px;"><strong>prompt():</strong> abre un cuadro de diálogo que permite al usuario introducir información. Es posible agregar un mensaje que aparecerá encima del campo de texto. Devuelve una cadena (string) con lo que el usuario escribió.</p>
+                        <p style="margin-top: 10px;"><strong>console.log():</strong> imprime en la consola del navegador el mensaje que se le proporciona como argumento. En Chrome se accede haciendo clic derecho → "Inspeccionar" → pestaña "Consola".</p>
+                        <p style="margin-top: 10px;"><strong>alert():</strong> muestra una ventana emergente sobre la página con el mensaje pasado como parámetro. El valor que se muestra al usuario se denomina salida.</p>
+                        <p style="margin-top: 12px;"><strong>Visualización de datos:</strong> JavaScript puede mostrar datos en una ventana de alerta, en el documento HTML, o en un elemento HTML específico.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gears"></i>Funciones
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una función es un bloque de código que puede ser ejecutado cuando ocurre un evento (por ejemplo, cuando se presiona un botón). Se definen con la palabra clave <code>function</code>, seguida por un nombre y las instrucciones encerradas entre llaves <code>{ }</code>. El nombre puede contener letras, números y guión bajo.</p>
+                        <p style="margin-top: 10px;">Las funciones pueden tener <strong>parámetros</strong> (nombres de variables separados por comas dentro de los paréntesis) que permiten pasarles valores.</p>
+                        <p style="margin-top: 10px;"><strong>Formas de ejecución:</strong> cuando ocurre un evento, cuando es llamada por una instrucción JavaScript, o de manera automática.</p>
+                        <p style="margin-top: 12px;"><strong>Function Return:</strong> cuando JavaScript encuentra una instrucción <code>return</code>, la función deja de ejecutarse. Las funciones a menudo devuelven un valor producto de las instrucciones que efectuaron, y ese valor lo usará la instrucción que la llamó.</p>
+                        <p style="margin-top: 12px;"><strong>Reutilización:</strong> las funciones se crean para reutilizar código, usando el mismo código con distintos argumentos para producir resultados diferentes. Una función puede usarse igual que las variables en fórmulas, asignaciones y cálculos.</p>
+                        <p style="margin-top: 12px;"><strong>Bloques de código:</strong> son instrucciones que se ejecutan juntas (por ejemplo, una función) y están encerradas entre llaves <code>{ }</code>. Se utilizan en funciones, condicionales, bucles y otros constructos de control de flujo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cube"></i>Objetos, Propiedades y Métodos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Un objeto es una variable especial que puede contener muchos valores. Los valores se escriben como pares nombre:valor, llamados propiedades. Múltiples propiedades se separan por comas.</p>
+                        <p style="margin-top: 10px;"><strong>Propiedades:</strong> atributos o características de un objeto (ej: un auto tiene nombre, modelo, color, peso).</p>
+                        <p style="margin-top: 10px;"><strong>Métodos:</strong> acciones o funciones que puede realizar un objeto (ej: un auto puede arrancar, frenar, apagar).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>Manipulación del HTML y Ubicación del Código
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>JavaScript puede cambiar el contenido del HTML, los atributos, los estilos, y puede ocultar o mostrar elementos.</p>
+                        <p style="margin-top: 10px;"><strong>document.getElementById():</strong> se utiliza para acceder a elementos del HTML por su <code>id</code> y modificarlos desde JavaScript.</p>
+                        <p style="margin-top: 10px;"><strong>innerHTML:</strong> propiedad usada para cambiar el contenido de un elemento HTML.</p>
+                        <p style="margin-top: 12px;"><strong>Ubicación del código:</strong> puede estar en las secciones <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> de un documento HTML, escrito entre <code>&lt;script&gt;</code> y <code>&lt;/script&gt;</code>, o en un archivo externo con extensión <code>.js</code>, vinculado con la etiqueta <code>&lt;script&gt;</code> y el atributo <code>src</code>.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-toolbox"></i>Herramientas Recomendadas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Editores de código:</strong> Visual Studio Code, Sublime Text, Atom.</p>
+                        <p style="margin-top: 10px;"><strong>Frameworks:</strong> Bootstrap 5, Bulma, Tailwind CSS.</p>
+                        <p style="margin-top: 10px;"><strong>Librerías:</strong> moment JS, Sweet Alert, Axios.</p>
+                        <p style="margin-top: 10px;"><strong>Servidores:</strong> Live Server (VS Code), XAMPP, WampServer.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-diagram-project"></i>Relación entre HTML, CSS y JavaScript
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>HTML:</strong> aporta, a través de sus etiquetas, la estructura básica del sitio web. Funciona en consonancia y en relación con CSS y JS.</p>
+                        <p style="margin-top: 10px;"><strong>CSS:</strong> se utiliza para darle el estilo que se quiere mostrar en el sitio web a través de la definición de formato y diseño de la presentación.</p>
+                        <p style="margin-top: 10px;"><strong>JavaScript:</strong> utiliza a ambos lenguajes (HTML y CSS) para controlar el comportamiento y funcionalidad de los elementos del sitio web.</p>
+                        <div class="highlight success" style="margin-top: 12px;">
+                            <i class="fas fa-check-circle"></i> Estos tres lenguajes trabajan juntos para crear una experiencia web completa e interactiva.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>Algoritmo y Programa
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Algoritmo:</strong> una serie de pasos o funciones organizados que son necesarios para llevar a cabo una operación o acción específica (ej: en una suma, el algoritmo consiste en tomar un valor, añadirlo a otro y obtener un resultado).</p>
+                        <p style="margin-top: 10px;"><strong>Programa:</strong> un conjunto de instrucciones interpretadas por una computadora. En JavaScript, cada instrucción debe estar separada por punto y coma (<code>;</code>).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: DOM -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ DOM - Document Object Model</h2>
+
+                <div class="definition">
+                    El DOM (Document Object Model) es una representación estructurada del documento HTML en forma de árbol. Cada elemento HTML en el documento se convierte en un nodo en este árbol. El DOM es una interfaz que permite a JavaScript interactuar con los elementos HTML del documento, accediendo a ellos, modificándolos, eliminándolos o creando nuevos elementos.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sitemap"></i>Nodos del DOM
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El DOM está conformado por todas las etiquetas que posee el documento HTML. Para acceder a cada uno de estos nodos se utiliza el objeto <code>document</code>, que contiene toda la estructura de nodos del documento.</p>
+                        <p style="margin-top: 12px;"><strong>Tipos principales de nodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Nodo Documento:</strong> el nodo raíz que contiene todo el documento.</li>
+                            <li><strong>Nodo Elemento:</strong> cada etiqueta HTML del documento.</li>
+                            <li><strong>Nodo Atributo:</strong> los atributos de los elementos HTML.</li>
+                            <li><strong>Nodo Texto:</strong> el contenido de texto dentro de los elementos.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-file"></i> <strong>El objeto document</strong> es el punto de entrada principal para acceder y manipular el DOM. Representa el documento HTML cargado en el navegador y contiene todos los métodos necesarios para interactuar con sus nodos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-magnifying-glass"></i>Métodos para Acceder a Elementos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Método</th><th>Descripción</th></tr>
+                            <tr><td><code>getElementById()</code></td><td>Devuelve el elemento con el ID especificado (busca un elemento único por su atributo <code>id</code>).</td></tr>
+                            <tr><td><code>getElementsByTagName()</code></td><td>Devuelve una colección con todos los elementos con el nombre de etiqueta especificado.</td></tr>
+                            <tr><td><code>getElementsByClassName()</code></td><td>Devuelve una colección de todos los elementos que contienen la clase especificada.</td></tr>
+                            <tr><td><code>getElementsByName()</code></td><td>Devuelve una lista de elementos que tienen el atributo <code>name</code> especificado.</td></tr>
+                            <tr><td><code>querySelector()</code></td><td>Devuelve el primer elemento que coincide con el selector CSS especificado.</td></tr>
+                            <tr><td><code>querySelectorAll()</code></td><td>Devuelve una lista de todos los elementos que coinciden con el selector CSS especificado.</td></tr>
+                        </table>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-scale-balanced"></i> <strong>Clasificación:</strong> <code>getElementById()</code>, <code>getElementsByTagName()</code>, <code>getElementsByClassName()</code> y <code>getElementsByName()</code> son métodos más antiguos (aunque funcionan, se consideran menos modernos). <code>querySelector()</code> y <code>querySelectorAll()</code> son métodos modernos y recomendados: utilizan selectores CSS y son más flexibles y poderosos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-plus"></i>Métodos para Crear y Manipular Nodos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Para crear nodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>createElement()</code>: crea un nuevo nodo elemento con el nombre de etiqueta especificado.</li>
+                            <li><code>createTextNode()</code>: crea un nuevo nodo de texto con el contenido especificado.</li>
+                            <li><code>createAttribute()</code>: crea un nuevo nodo de atributo con el nombre especificado.</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Para manipular nodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>appendChild()</code>: añade un nuevo nodo secundario al final del nodo especificado.</li>
+                            <li><code>removeChild()</code>: elimina el nodo secundario especificado del nodo padre.</li>
+                            <li><code>replaceChild()</code>: reemplaza un nodo secundario existente con uno nuevo.</li>
+                            <li><code>insertBefore()</code>: inserta un nuevo nodo secundario antes del nodo secundario especificado.</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Para manipular atributos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>getAttribute()</code>: devuelve el valor del atributo especificado de un elemento.</li>
+                            <li><code>setAttribute()</code>: establece o modifica el valor del atributo especificado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bell"></i>Eventos y Listeners
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una particularidad importante del DOM es que se pueden añadir "listeners" (escuchadores) a diferentes elementos. Los listeners escuchan posibles eventos que pueden darse en distintas etiquetas o elementos.</p>
+                        <p style="margin-top: 10px;">Un evento es una acción que ocurre en un elemento, como hacer clic, escribir en un campo de formulario, cargar una página, mover el mouse, etc.</p>
+                        <p style="margin-top: 12px;"><strong>Métodos para gestionar eventos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>addEventListener()</code>: registra un evento en un objeto específico, asociando una función a un evento particular. Cuando ocurre el evento, la función se ejecuta. Permite añadir múltiples listeners al mismo evento en un mismo elemento.</li>
+                            <li><code>removeEventListener()</code>: remueve del objeto un detector de evento previamente registrado con <code>addEventListener</code>.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Tipos de eventos comunes:</strong></p>
+                        <p style="font-size: 13px; color: #666;"><code>click</code>, <code>submit</code>, <code>change</code>, <code>mouseover</code>, <code>mouseout</code>, <code>keydown</code>, <code>keyup</code>, <code>load</code>, <code>focus</code>, <code>blur</code>.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-water"></i> <strong>Flujo de eventos:</strong> Captura (el evento viaja desde el nodo raíz hasta el elemento destino) → Objetivo (el evento llega al elemento que fue disparado) → Burbuja (el evento viaja desde el elemento destino hacia el nodo raíz).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-pen"></i>Manipulación de Contenido y Estilos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>innerHTML:</strong> modifica el contenido HTML completo de un elemento, incluyendo cualquier elemento secundario.</p>
+                        <p style="margin-top: 10px;"><strong>textContent:</strong> modifica solo el contenido de texto de un elemento, sin interpretar etiquetas HTML.</p>
+                        <p style="margin-top: 12px;"><strong>Manipulación de estilos:</strong> accediendo a la propiedad <code>style</code> del elemento se pueden modificar estilos individuales, cambiando propiedades CSS como color, tamaño de fuente, fondo, entre otros.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-route"></i>Navegación por el Árbol del DOM
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>parentNode</code>: accede al nodo padre de un elemento.</li>
+                            <li><code>childNodes</code>: accede a todos los nodos secundarios de un elemento.</li>
+                            <li><code>firstChild</code>: accede al primer nodo secundario.</li>
+                            <li><code>lastChild</code>: accede al último nodo secundario.</li>
+                            <li><code>nextSibling</code>: accede al nodo hermano siguiente.</li>
+                            <li><code>previousSibling</code>: accede al nodo hermano anterior.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 4: USABILIDAD E INTERFAZ DE USUARIO -->
+            <div class="chapter">
+                <h2 class="chapter-title">4️⃣ Usabilidad e Interfaz de Usuario <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-face-smile"></i>Experiencia del Usuario (UX)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La experiencia del usuario no se trata del funcionamiento interno de un producto o servicio, sino de cómo funciona en el exterior: es cómo se siente interactuar con el producto. Es la interacción que una persona tiene cuando entra en contacto con un producto o servicio.</p>
+                        <p style="margin-top: 10px;"><strong>Aspectos clave:</strong> ¿Es difícil hacer cosas simples? ¿Es fácil de descifrar? ¿Cómo se siente al interactuar con el producto?</p>
+                        <p style="margin-top: 10px;">Cada producto utilizado por alguien crea una experiencia de usuario, ya sea un objeto físico, software, libro o cualquier interfaz.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-universal-access"></i>Usabilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>En términos generales, la usabilidad es la forma en que el diseño de un objeto facilita o no su uso. Se refiere a la capacidad de un software de ser atractivo, comprendido y finalmente usado por el usuario.</p>
+                        <p style="margin-top: 10px;">La usabilidad depende tanto del producto como del usuario: no puede verificarse solo desde la perspectiva del producto, sino que requiere considerar la interacción entre ambos.</p>
+                        <div class="definition" style="margin-top: 12px;">
+                            Según la norma ISO 9241-111, la usabilidad es la medida en la cual un producto puede ser usado por determinados usuarios para conseguir objetivos específicos con efectividad, eficiencia y satisfacción en un contexto específico de uso.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock-rotate-left"></i>Historia de la Usabilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Se inició alrededor de 1900, durante la Revolución Industrial, con la incorporación creciente de máquinas y herramientas: fue importante optimizar la facilidad de uso y la eficiencia de las máquinas para mejorar la producción de bienes y servicios. Esta es la raíz de la usabilidad moderna.</p>
+                        <p style="margin-top: 10px;">Años después se aplicó para mejorar la facilidad de uso de los primeros aparatos de telecomunicación como el telégrafo y el telegrama, y se empezó a aplicar en el campo de la ergonomía, donde las máquinas y herramientas debían coincidir con las características fisiológicas, anatómicas y psicológicas del trabajador.</p>
+                        <p style="margin-top: 10px;">A partir de 1990, la usabilidad crece de forma exponencial y comienzan a surgir conceptos como diseño de interacción y arquitectura de información.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-puzzle-piece"></i>Componentes de la Usabilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Facilidad de Aprendizaje (Learnability):</strong> ¿qué tan fácil resulta llevar a cabo tareas básicas la primera vez que se enfrenta al diseño?</li>
+                            <li><strong>Eficiencia:</strong> una vez aprendido, ¿cuánto tardan los usuarios en la realización de tareas?</li>
+                            <li><strong>Calidad de ser recordado (Memorability):</strong> después de no usarlo un tiempo, ¿cuánto tardan en volver a adquirir el conocimiento necesario para usarlo eficientemente?</li>
+                            <li><strong>Eficacia:</strong> ¿pueden los usuarios lograr sus objetivos?</li>
+                            <li><strong>Satisfacción:</strong> ¿cómo se sienten los usuarios al usar el producto?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>Usabilidad vs Accesibilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La accesibilidad extiende el alcance del diseño para que sea efectivo para un número mayor de personas, mientras que la usabilidad se enfoca en facilitar el uso para los usuarios objetivo.</p>
+                        <p style="margin-top: 10px;">Una página web accesible es aquella que pone su usabilidad a disposición de absolutamente todos los visitantes, incluyendo personas con discapacidades. Sin accesibilidad, la usabilidad de una página web es inalcanzable para personas con discapacidad.</p>
+                        <p style="margin-top: 10px;">La accesibilidad se ve limitada por factores como discapacidades permanentes o temporales, nivel de conocimientos y experiencia, o limitaciones del software, hardware o entorno de uso.</p>
+                        <div class="important" style="margin-top: 12px;">
+                            Usabilidad y accesibilidad son resultado de un diseño centrado en los usuarios que conforman la audiencia del producto o servicio.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>10 Reglas de Usabilidad Web de Jakob Nielsen
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Visibilidad del estado del sistema:</strong> el sistema siempre debe mantener informados a los usuarios sobre lo que está sucediendo, con comentarios apropiados en un tiempo razonable.</li>
+                            <li><strong>Relación entre el sistema y el mundo real:</strong> usar frases y conceptos familiares al usuario, siguiendo las convenciones del mundo real, con información en orden natural y lógico.</li>
+                            <li><strong>Control y libertad del usuario:</strong> los usuarios eligen funciones por error y necesitarán una "salida de emergencia" claramente marcada para dejar el estado no deseado.</li>
+                            <li><strong>Consistencia y estándares:</strong> no debería haber dudas sobre si acciones, situaciones o palabras diferentes significan en realidad la misma cosa.</li>
+                            <li><strong>Prevención de errores:</strong> mejor que un buen diseño de mensajes de error es un diseño cuidadoso que prevenga la ocurrencia de problemas.</li>
+                            <li><strong>Reconocimiento antes que recuerdo:</strong> el usuario no debería tener que recordar información dada en una parte del proceso para seguir adelante; las instrucciones deben estar a la vista o ser fácilmente recuperables.</li>
+                            <li><strong>Flexibilidad y eficiencia de uso:</strong> la presencia de aceleradores permite una interacción más rápida a los usuarios expertos, permitiendo adaptar el sistema para usos frecuentes.</li>
+                            <li><strong>Estética y diseño minimalista:</strong> los diálogos no deben contener información irrelevante o poco usada; cada unidad extra compite con la información relevante y disminuye su visibilidad.</li>
+                            <li><strong>Ayudar a reconocer, diagnosticar y recuperarse de errores:</strong> los mensajes de error deben entregarse en lenguaje claro y simple, indicando el problema con precisión y sugiriendo una solución constructiva.</li>
+                            <li><strong>Ayuda y documentación:</strong> debería ser fácil de buscar, estar enfocada en las tareas del usuario, con una lista concreta de pasos y no ser demasiado extensa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-magnifying-glass-chart"></i>Métodos para Medir y Mejorar la Usabilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Inspección de usabilidad:</strong> expertos se centran en una lista de áreas de diseño que han demostrado ser problemáticas para los usuarios.</li>
+                            <li><strong>Inspección pluralista:</strong> usuarios, desarrolladores y gente de factores humanos se reúnen para discutir y evaluar paso a paso un escenario de tareas.</li>
+                            <li><strong>Inspección de consistencia:</strong> diseñadores expertos examinan productos o proyectos para garantizar la consistencia, verificando que las cosas estén hechas tal como fueron diseñadas.</li>
+                            <li><strong>Análisis de actividades:</strong> empleado en etapas preliminares de desarrollo para lograr el sentido de la situación; un investigador observa trabajar a un usuario en el campo.</li>
+                            <li><strong>Análisis de tareas:</strong> aprender acerca de los objetivos y formas de trabajar de los usuarios, y del entorno (físico, social, cultural, tecnológico).</li>
+                            <li><strong>Grupos de enfoque:</strong> debate donde un moderador dirige a un grupo de participantes mediante preguntas sobre un tema en particular.</li>
+                            <li><strong>Encuestas/Cuestionarios:</strong> costo reducido, no requieren equipo de prueba; los resultados reflejan la usabilidad percibida.</li>
+                            <li><strong>Métodos de prototipado:</strong> utilizados en las primeras etapas de desarrollo para validar y perfeccionar la usabilidad de un sistema.</li>
+                            <li><strong>Métodos de ensayo:</strong> generalmente grabados en video, proporcionan tiempo de finalización de tareas y permiten observar actitudes.</li>
+                            <li><strong>Prueba remota de usabilidad:</strong> explota el ambiente de los usuarios, transformándolo en un laboratorio.</li>
+                            <li><strong>Pensando en voz alta:</strong> conseguir que un usuario verbalice sus procesos de pensamiento a medida que desempeña una tarea.</li>
+                            <li><strong>Paseo cognitivo:</strong> usado para evaluar la facilidad de aprendizaje del sistema y comprender el proceso de pensamiento y toma de decisión del usuario.</li>
+                            <li><strong>Benchmarking:</strong> considera características clave como tiempo para hacer la tarea principal, tiempo para arreglar errores, tiempo para aprender y funcionalidad del sistema.</li>
+                            <li><strong>Personas:</strong> personajes ficticios creados para representar a los diferentes tipos de usuarios dentro de una demografía específica, utilizados en varias etapas del diseño.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Optimización de UX en 4 Pasos</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-tag"></i>Paso 1: Definir Personas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una persona es una representación ficticia de los usuarios más comunes, basada en un conjunto compartido de tareas críticas comunes. Con una buena persona, se debe poder responder cualquier pregunta en el diseño o la investigación de UX para alinear las necesidades del usuario con las funciones o características del proyecto.</p>
+                        <p style="margin-top: 10px;"><strong>Dos tipos de personas:</strong> basadas en tareas críticas de usabilidad (tendrán tareas críticas especificadas) y de marketing o desarrollo de productos (no se incluyen en tareas críticas).</p>
+                        <p style="margin-top: 10px;"><strong>Las personas deben incluir:</strong> imagen (para personalizar y humanizar), tareas críticas (típicamente no más de 3), escenario (específico para la tarea), dispositivos (qué dispositivo suele utilizar), experiencia de dominio (si conoce el tema), y medio ambiente (contexto en el que interactúa).</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-lightbulb"></i> Las personas guían decisiones de diseño, sirven como herramienta para controles de calidad preventivos y aseguran que todos estén de acuerdo con el objetivo final. El mayor error de los equipos de UX es no tener una persona o conjunto de personas cuidadosamente definida.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>Paso 2: Análisis de Datos de UX de Comportamiento
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los datos de UX de comportamiento son de naturaleza cuantitativa. Se utilizan para identificar qué comportamientos ocurren o no en un sitio web, y qué cantidades y tipos de interacción están ocurriendo.</p>
+                        <p style="margin-top: 10px;">Los datos <strong>QUÉ</strong> junto con los datos de <strong>POR QUÉ</strong> (que provienen de pruebas de usabilidad) dan una visión completa de la actividad del sitio.</p>
+                        <p style="margin-top: 10px;">Incluyen datos de conversión de Google Analytics, CoreMetrics o herramientas relacionadas. Comprender qué atrae a los visitantes y si se convierten en clientes es importante para entender ciertos comportamientos de UX.</p>
+                        <p style="margin-top: 10px;">El <strong>índice de rebote</strong> (porcentaje de rebote de las páginas de contenido) puede indicar qué tan bien el contenido satisface las necesidades de los visitantes. Las <strong>visitas por navegador</strong> muestran qué navegadores son más utilizados para ver las páginas del sitio.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-flask"></i>Paso 3: Pruebas de Usabilidad y UX
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El objetivo es descubrir el <strong>POR QUÉ</strong> de los comportamientos: qué partes de las tareas críticas funcionan bien para los usuarios, qué partes no funcionan bien, qué confunde o les causa inquietud, y si se cumplen sus expectativas para la experiencia. Se hace observando a personas reales que coinciden con las personas definidas cuando intentan realizar sus tareas críticas.</p>
+                        <p style="margin-top: 12px;"><strong>Tipos de pruebas:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Prueba de usabilidad moderada:</strong> un moderador se conecta mediante comunicaciones bidireccionales en tiempo real con un sujeto de prueba. Permite hacer seguimiento, agregar datos críticos de POR QUÉ, probar con testers remotos, reducir costos y tiempo, y aprovechar intercepciones del sitio para probar con visitantes reales. Requiere herramientas de conexión en línea (Skype, Webex, GoToMeeting, JoinMe) y de captura/grabación (Camtasia, SnagIt, Adobe Captivate).</li>
+                            <li><strong>Prueba de usabilidad no moderada.</strong></li>
+                            <li><strong>Test de 5 segundos:</strong> los visitantes tardan muy poco tiempo (en algunos casos una fracción de segundo, tan solo 50 milisegundos) para juzgar la calidad de un sitio web.</li>
+                            <li><strong>Test de click.</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clipboard-check"></i>Paso 4: Analizar Resultados y Hacer Recomendaciones
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Se buscan patrones que se alineen con comportamientos indeseables y se identifican oportunidades de optimización.</p>
+                        <p style="margin-top: 10px;"><strong>Tipos comunes de problemas de UX de comportamiento:</strong> errores de navegación o confusión donde el flujo del proceso no está alineado con el mapa mental del usuario, y otras cuestiones heurísticas según el sitio.</p>
+                        <div class="important" style="margin-top: 12px;">
+                            Solo porque los datos de investigación de comportamiento y UX parecen proporcionar recomendaciones de optimización, nunca se debe asumir que el análisis es correcto.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>Signos de Problemas en la Definición de Persona
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>La persona no provino de observaciones reales del usuario.</li>
+                            <li>La persona no tiene datos procesables.</li>
+                            <li>La persona no tiene objetivos específicos.</li>
+                            <li>La persona no proporciona métricas claras para el éxito.</li>
+                            <li>La persona no coincide con el rango de edad.</li>
+                            <li>La persona es demasiado genérica.</li>
+                            <li>La persona es demasiado específica.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gears"></i>Ingeniería de Software y Usabilidad
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La Ingeniería del Software se centró casi exclusivamente en atributos funcionales del sistema, lo que resultaba en usabilidad deficiente. Ahora está dirigida a un público cada vez más amplio, con usuarios cada vez menos expertos en el manejo de sistemas informáticos.</p>
+                        <p style="margin-top: 10px;">En los estándares ISO sobre calidad del software ya se distingue entre <strong>calidad inherente del software</strong> y <strong>calidad de uso</strong>.</p>
+                        <div class="definition" style="margin-top: 12px;">
+                            La Ingeniería de Usabilidad es una aproximación al desarrollo de sistemas en la que se especifican niveles cuantitativos de usabilidad a priori (métricas), y el sistema se construye para alcanzar dichos niveles. Proporciona un modo práctico de asegurar que el software desarrollado alcanza un cierto nivel de usabilidad, basada en la evaluación mediante test de usabilidad con usuarios.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Interfaz de Usuario (UI)</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-desktop"></i>¿Qué es la Interfaz de Usuario?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>La interfaz de usuario es la vista que permite a un usuario interactuar de manera efectiva con un sistema. Una buena UI permite dar una buena UX, pero no lo es todo: es un instrumento.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock-rotate-left"></i>Historia de la Interfaz de Usuario
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Vannevar Bush</strong> propuso una herramienta llamada Memex: una mesa con teclado y palancas que permitiría la consulta de datos almacenados en microfilms proyectados en pantallas translúcidas, incluyendo la posibilidad de que el usuario realizara modificaciones (creador además de consultor).</p>
+                        <p style="margin-top: 10px;"><strong>Douglas Engelbart</strong> sentó las bases de la forma actual de interactuar con los computadores. A principios de los 60 desarrolló una combinación de computadora, teclado y pantalla con múltiples ventanas como base para la interacción hombre-máquina, además del principio Point & Click.</p>
+                        <p style="margin-top: 10px;">En <strong>1973</strong>, XEROX PARC desarrolló una computadora con GUI (Graphical User Interface) basada en ventanas, iconos, menús y cursores (WIMP), probada en el Xerox Alto y comercializada en el Xerox Star (1981).</p>
+                        <p style="margin-top: 10px;">En <strong>1979</strong>, MacOS siguió los trabajos de XEROX. El Apple Lisa (1984) fue el punto de partida para versiones más influenciadas por Xerox.</p>
+                        <p style="margin-top: 10px;"><strong>Microsoft</strong> creó el sistema operativo en modo texto DOS (MS-DOS). Su primera apuesta por el entorno gráfico fue Windows 1.0 (1985), seguido por Windows 2 (1987) y Windows 3 (1990).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Funciones Principales de la Interfaz
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Puesta en marcha y apagado, control de las funciones manipulables del equipo, manipulación de archivos y directorios, herramientas de desarrollo de aplicaciones, comunicación con otros sistemas, información de estado, configuración de la propia interfaz y entorno, intercambio de datos entre aplicaciones, control de acceso, y sistema de ayuda interactivo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-window-restore"></i>Tipos de Interfaz de Usuario
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Según la forma de interactuar del usuario:</strong> intérpretes de comando, interfaces gráficas, interfaces táctiles.</p>
+                        <p style="margin-top: 10px;"><strong>Según su construcción:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Interfaces de hardware:</strong> pulsadores, botones, teclas, reguladores, pantallas, diales, medidores, marcadores, instrumentos.</li>
+                            <li><strong>Interfaces de software:</strong> programas o parte de ellos que permiten expresar una orden a la computadora o visualizar su respuesta.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 5: AJAX -->
+            <div class="chapter">
+                <h2 class="chapter-title">5️⃣ AJAX <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="definition">
+                    AJAX no es una tecnología en sí misma, sino un conjunto de técnicas que permiten la comunicación asíncrona con el servidor, facilitando la interacción sin interrumpir la interfaz del usuario. Aunque se llama AJAX (Asynchronous JavaScript and XML), hoy en día se usa principalmente JSON en lugar de XML para el intercambio de datos.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>Web Clásica vs Web Moderna
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Antes de AJAX (Web Clásica)</th><th>Con AJAX (Web Moderna)</th></tr>
+                            <tr>
+                                <td>Cada acción del usuario recargaba toda la página, resultando en una experiencia lenta y un consumo innecesario de recursos de red. El usuario tenía que esperar la recarga completa, interrumpiendo su flujo de trabajo.</td>
+                                <td>Permite la carga parcial de datos sin recargar la página, mejorando significativamente la experiencia del usuario y la eficiencia en el uso de la red, con interacciones más fluidas y rápidas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cubes"></i>Componentes de AJAX
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>JavaScript:</strong> para la lógica de cliente y la gestión de eventos.</li>
+                            <li><strong>XMLHttpRequest o Fetch API:</strong> para realizar solicitudes asincrónicas al servidor.</li>
+                            <li><strong>JSON o XML:</strong> para el formato de intercambio de datos.</li>
+                            <li><strong>DOM:</strong> para actualizar dinámicamente la página sin recargarla.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-thumbs-up"></i>Beneficios y Cuándo Usar AJAX
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Beneficios:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Experiencia de usuario fluida:</strong> interacción sin interrupciones causadas por recargas de página.</li>
+                            <li><strong>Menor carga en red:</strong> solo se transfieren los datos necesarios, no toda la página.</li>
+                            <li><strong>Interfaces interactivas:</strong> permite autocompletado, validaciones en tiempo real y actualizaciones inmediatas.</li>
+                            <li><strong>Separación frontend/backend:</strong> facilita una arquitectura más limpia donde ambos son independientes.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Cuándo usar AJAX:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Actualización de contenido sin recargar la página.</li>
+                            <li>Interacciones en tiempo real con el servidor.</li>
+                            <li>Validación de formularios sin recargar.</li>
+                            <li>Carga de datos bajo demanda.</li>
+                            <li>Aplicaciones web que requieren una experiencia similar a la de una aplicación de escritorio.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-network-wired"></i>XMLHttpRequest
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es un objeto integrado en el navegador que permite comunicarse con el servidor mientras el usuario sigue usando la página. Es la tecnología que se usaba antes de la API Fetch.</p>
+                        <p style="margin-top: 10px;"><strong>Características:</strong> permite realizar peticiones HTTP asincrónicas (el navegador no se bloquea mientras se espera la respuesta), proporciona eventos para monitorear el estado de la solicitud, y devuelve la respuesta del servidor que puede ser parseada (convertida a objetos JavaScript).</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-scale-balanced"></i> Es ampliamente soportado en navegadores antiguos, pero su sintaxis es más compleja y menos intuitiva que Fetch, y requiere más código para manejar errores y estados.
+                        </div>
+
+                        <p style="margin-top: 15px;"><strong>readyState:</strong> ciclo de vida con diferentes estados.</p>
+                        <table>
+                            <tr><th>Valor</th><th>Estado</th><th>Descripción</th></tr>
+                            <tr><td>0</td><td>UNSENT</td><td>La solicitud ha sido creada pero aún no se ha ejecutado.</td></tr>
+                            <tr><td>1</td><td>OPENED</td><td>La solicitud ha sido abierta.</td></tr>
+                            <tr><td>2</td><td>HEADERS_RECEIVED</td><td>Se han recibido los encabezados de la respuesta.</td></tr>
+                            <tr><td>3</td><td>LOADING</td><td>Se están recibiendo los datos de la respuesta.</td></tr>
+                            <tr><td>4</td><td>DONE</td><td>La solicitud se ha completado (el valor más importante).</td></tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>status:</strong> indica el resultado de la solicitud HTTP.</p>
+                        <table>
+                            <tr><th>Código</th><th>Significado</th></tr>
+                            <tr><td>200</td><td>OK - la solicitud fue exitosa.</td></tr>
+                            <tr><td>401</td><td>Unauthorized - se requiere autenticación.</td></tr>
+                            <tr><td>403</td><td>Forbidden - el acceso al recurso está prohibido.</td></tr>
+                            <tr><td>404</td><td>Not Found - el recurso no fue encontrado.</td></tr>
+                            <tr><td>500</td><td>Internal Server Error - hubo un error en el servidor.</td></tr>
+                        </table>
+                        <p style="margin-top: 10px; font-size: 13px; color: #666;">Se verifica que <code>status === 200</code> para confirmar que la solicitud fue exitosa.</p>
+
+                        <p style="margin-top: 15px;"><strong>Flujo básico de una solicitud:</strong></p>
+                        <ol style="padding-left: 20px; color: #555; line-height: 1.8;">
+                            <li>Crear un objeto XMLHttpRequest.</li>
+                            <li>Especificar el método HTTP y la URL de la solicitud.</li>
+                            <li>Establecer un manejador de evento para cuando llegue la respuesta.</li>
+                            <li>Verificar que <code>readyState === 4</code> (solicitud completada).</li>
+                            <li>Verificar que <code>status === 200</code> (respuesta exitosa).</li>
+                            <li>Procesar los datos de la respuesta.</li>
+                            <li>Enviar la solicitud al servidor.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bolt"></i>API Fetch
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Fetch es una sintaxis moderna basada en Promises para hacer solicitudes HTTP. Es la alternativa moderna a XMLHttpRequest.</p>
+                        <table style="margin-top: 12px;">
+                            <tr><th>Ventajas</th><th>Desventajas</th></tr>
+                            <tr>
+                                <td>Sintaxis más limpia y legible. Usa Promises para un manejo mejor de errores. Compatible con async/await. Método integrado en navegadores modernos. Manejo de errores más intuitivo.</td>
+                                <td>No es soportada en navegadores muy antiguos (IE11 y anteriores). Requiere polyfills para navegadores antiguos.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hourglass-half"></i>Promises (Promesas)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Una Promise es un objeto especial en JavaScript que representa que algo va a pasar en el futuro: encapsula el resultado de una operación asincrónica.</p>
+                        <p style="margin-top: 12px;"><strong>Estados de una Promise:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Pendiente (pending):</strong> la operación aún no ha terminado, está en espera de un resultado.</li>
+                            <li><strong>Cumplida (fulfilled):</strong> la operación terminó exitosamente, la Promise se resolvió con un valor.</li>
+                            <li><strong>Rechazada (rejected):</strong> la operación terminó con un error, la Promise fue rechazada con un motivo.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Métodos para trabajar con Promises:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>.then()</code>: se ejecuta cuando la Promise se cumple, recibe el resultado como parámetro.</li>
+                            <li><code>.catch()</code>: se ejecuta cuando la Promise es rechazada, recibe el error como parámetro.</li>
+                            <li><code>.finally()</code>: se ejecuta siempre, sin importar si la Promise se cumplió o fue rechazada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrows-rotate"></i>Comunicación Asincrónica
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Permite que el navegador siga respondiendo a las acciones del usuario mientras se procesa una solicitud al servidor en segundo plano.</p>
+                        <p style="margin-top: 10px;"><strong>Ventajas:</strong> la interfaz no se congela mientras se espera la respuesta del servidor, mejor experiencia de usuario, y permite realizar múltiples solicitudes en paralelo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-right-left"></i>Proceso de Parseo y Actualización del DOM
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Parseo:</strong> proceso de convertir una cadena de texto (como JSON o XML) en un objeto de JavaScript que puede ser manipulado.</p>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li><code>JSON.parse()</code>: convierte una cadena JSON en un objeto JavaScript.</li>
+                            <li><code>JSON.stringify()</code>: convierte un objeto JavaScript en una cadena JSON.</li>
+                        </ul>
+                        <p style="margin-top: 10px;">El parseo es necesario porque los datos que vienen del servidor están en formato de texto y necesitan convertirse a estructuras de datos que JavaScript pueda entender y manipular.</p>
+                        <p style="margin-top: 12px;"><strong>Actualización del DOM con AJAX:</strong> una vez recibida la respuesta del servidor y parseados los datos, se actualiza la página utilizando métodos del DOM como <code>appendChild()</code> para añadir elementos dinámicamente, modificando <code>innerHTML</code> para cambiar contenido existente, o creando nuevos elementos con <code>createElement()</code> a los que se les asigna contenido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

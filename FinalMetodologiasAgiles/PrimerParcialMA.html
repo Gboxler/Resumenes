@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologías Ágiles - Primer Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ma">
+    <div class="container">
+        <div class="header">
+            <h1>🏃 Metodologías Ágiles</h1>
+            <p>Primer Parcial: Agile Inception, Manifiesto Ágil, User Stories, Kanban, Scrum y ScrumBan</p>
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: AGILE INCEPTION Y FUNDAMENTOS -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Agile Inception y Fundamentos de Agile</h2>
+
+                <div class="section-title">Agile Inception</div>
+
+                <div class="definition">
+                    Agile Inception es la fase inicial para alinear al equipo, definir la visión, los objetivos y el alcance de forma clara antes de comenzar un proyecto ágil.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-compass"></i>Elementos Clave de Agile Inception
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Definir el "por qué":</strong> responder ¿Por qué estamos aquí? ¿A quién beneficia el proyecto? ¿Qué queremos lograr y cómo mediremos el éxito?</li>
+                            <li><strong>Elevator Pitch:</strong> breve presentación del proyecto en 30 segundos, clara, inspiradora y convincente.</li>
+                            <li><strong>Caja del producto:</strong> imaginar cómo se promocionaría el producto en una revista, visualizando sus beneficios, atributos clave y valor.</li>
+                            <li><strong>Qué NO es el producto:</strong> delimitar explícitamente lo que NO incluye el proyecto, para evitar malentendidos y expectativas erróneas.</li>
+                            <li><strong>Identificar "vecinos":</strong> mapear actores involucrados, recursos disponibles, restricciones, equipo, stakeholders, presupuesto, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-star"></i>Beneficios de Agile Inception
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Permite empezar con claridad y alineación.</li>
+                            <li>Define lo esencial antes del desarrollo.</li>
+                            <li>Facilita la comunicación y reduce riesgos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">¿Qué es Agile?</div>
+
+                <div class="definition">
+                    Las metodologías ágiles son un modo de organizar equipos para que trabajen de manera colaborativa, entregando valor periódicamente en pequeños incrementos (iteraciones) durante el ciclo de vida de un proyecto. Se basan en un desarrollo iterativo e incremental, donde los requerimientos y soluciones evolucionan mediante la colaboración de equipos multifuncionales auto organizados.
+                </div>
+
+                <div class="section-title">Orígenes de Agile</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-people-group"></i>Año 2001 - Reunión en Utah
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Un grupo de 17 representantes de las principales empresas de software se reúne en Utah, EE.UU., para compartir sus mejores prácticas y encontrar la manera más eficiente de entregar software.</p>
+                        <p style="margin-top: 12px;"><strong>Participantes:</strong> desarrolladores, escritores y consultores de la industria.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scroll"></i>Manifiesto Ágil
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Documento que reúne los principios y valores de un conjunto de herramientas para mejorar la gestión de proyectos a través de la agilidad y el máximo rendimiento. Fue publicado en <strong>2001</strong>.</p>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-circle-info"></i> <strong>Aclaración importante:</strong> la publicación en 2001 no significa que sea el origen de las metodologías ágiles ni que antes no existieran. Representa el reconocimiento de la necesidad de un lineamiento común que agrupara las diferentes metodologías ágiles que ya existían. Desde entonces, el movimiento ágil ha continuado evolucionando.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Los 4 Valores del Manifiesto Ágil
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El Manifiesto Ágil establece 12 principios agrupados en estos 4 valores fundamentales:</p>
+                        <ul class="bullet-list">
+                            <li>Los individuos y su interacción, <strong>por encima de</strong> los procesos y las herramientas.</li>
+                            <li>Un producto que funciona, <strong>frente a</strong> la documentación exhaustiva.</li>
+                            <li>La colaboración con el cliente, <strong>por encima de</strong> la negociación contractual.</li>
+                            <li>La respuesta al cambio, <strong>por encima de</strong> el seguimiento de un plan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>Ventajas de la Gestión Ágil de Proyectos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Mejora la calidad del producto:</strong> garantiza entregas de mayor calidad a través de iteraciones y revisiones continuas.</li>
+                            <li><strong>Aumenta la satisfacción del cliente:</strong> el cliente participa constantemente en el proceso y ve avances frecuentes.</li>
+                            <li><strong>Equipo de trabajo más motivado:</strong> los equipos están más comprometidos y empoderados en la toma de decisiones.</li>
+                            <li><strong>Promueve el trabajo colaborativo:</strong> fomenta la comunicación y cooperación entre los miembros del equipo.</li>
+                            <li><strong>Permite el uso de métricas más relevantes:</strong> facilita la medición de indicadores clave que reflejan el avance real del proyecto.</li>
+                            <li><strong>Reduce los costos:</strong> optimiza recursos y minimiza desperdicios a través de la eficiencia operativa.</li>
+                            <li><strong>Mayor capacidad de adaptación a cambios:</strong> permite ajustarse rápidamente a nuevos requisitos o cambios del mercado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">Agilidad y Tipos de Proyectos</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bolt"></i>¿Qué es Agilidad?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Hacer lo mejor posible en el tiempo definido y con el costo establecido, trabajando con un equipo motivado que entrega productos funcionales desde el primer momento.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-box"></i>Tipos de Proyectos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Producto Repetitivo</th>
+                                <th>Producto Único</th>
+                            </tr>
+                            <tr>
+                                <td>Podemos aprender del pasado, conocemos procesos previos y podemos optimizar tiempos, costos y procesos.</td>
+                                <td>No tenemos idea clara de lo que vamos a realizar, no sabemos qué cambios necesitaremos y pueden pasar mil cosas en el transcurso del tiempo.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>Problema de Proyectos Únicos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>El problema:</strong> no tenemos una idea clara de lo que vamos a realizar, no sabemos qué cambios necesitaremos, pueden pasar mil cosas en el transcurso del tiempo.</p>
+                        <div class="important" style="margin-top: 12px;">
+                            <strong>Restricciones fijas en metodologías tradicionales:</strong> intentan mantener Alcance, Tiempo y Costo fijos simultáneamente, lo que resulta en atrasos, culpas y clientes enojados.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-draw-polygon"></i>Triángulo de Restricciones Agile
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Alcance es variable:</strong> no es fijo como en metodologías tradicionales.</li>
+                            <li><strong>Tiempo y Costo se fijan:</strong> estos dos parámetros se determinan al inicio del proyecto.</li>
+                            <li><strong>Calidad es fija:</strong> siempre se mantiene un estándar de calidad.</li>
+                        </ul>
+                        <div class="highlight success" style="margin-top: 15px;">
+                            <i class="fas fa-check-circle"></i> <strong>Resultado esperado:</strong> en el tiempo estipulado tenemos funcionalidad, aunque el alcance completo pueda reducirse (lo que quedó afuera no era importante).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>Diferencia vs Metodologías Tradicionales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Metodologías Tradicionales</th>
+                                <th>Metodologías Agile</th>
+                            </tr>
+                            <tr>
+                                <td>Requisitos → Análisis → Diseño → Construcción → Puesta en marcha (cliente contento al inicio, enojado al final por atrasos y culpas)</td>
+                                <td>Visualizar → Encontrar lo importante → Detallarlo → Ponerlo en funcionamiento → Paretizar (iterativo, entrega constante de valor)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: USER STORIES -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ User Stories, Errores y Buenas Prácticas</h2>
+
+                <div class="definition">
+                    Las User Stories (historias de usuario) representan los requisitos del usuario.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bug"></i>Errores Comunes de las User Stories
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Error</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>1. Falta de criterios de aceptación</strong></td>
+                                <td>Historias sin criterios claros dificultan comprender el trabajo esperado, resultando en entregas incompletas o de baja calidad.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Historias como tareas</strong></td>
+                                <td>Se confunden con listas técnicas y se pierde el enfoque en el valor al usuario. Recomendación: redactar historias centradas en la necesidad del usuario.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Falta de definición de "Done"</strong></td>
+                                <td>No se aclara qué significa "hecho", generando percepciones diferentes sobre cuándo está terminado. Solución: acordar una definición clara.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Dependencias ocultas</strong></td>
+                                <td>No se identifican dependencias entre historias o equipos, impactando en bloqueos del sprint. Acción: detectar dependencias durante el refinamiento.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Priorización deficiente</strong></td>
+                                <td>Priorizar sin considerar valor al negocio resulta en funcionalidades irrelevantes. Consejo: alinear prioridad con impacto real.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6. Baja colaboración con el PO</strong></td>
+                                <td>Poca comunicación con el Product Owner y requisitos que cambian durante el sprint. Mejora: mantener comunicación frecuente.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7. Refinamiento superficial</strong></td>
+                                <td>Historias mal preparadas que aumentan incertidumbre y tiempo de desarrollo. Solución: sesiones de refinamiento regulares.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Buenas Prácticas Recomendadas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Establecer criterios de aceptación claros:</strong> definir exactamente qué se espera de cada historia.</li>
+                            <li><strong>Definir qué significa "Done":</strong> acordar una definición común de cuándo una historia está completada.</li>
+                            <li><strong>Enfocar las historias en el usuario:</strong> centrar el valor y beneficio para el usuario, no en detalles técnicos.</li>
+                            <li><strong>Detectar dependencias tempranas:</strong> identificar bloqueos potenciales durante la planificación.</li>
+                            <li><strong>Priorizar según valor de negocio:</strong> alinear las historias con el impacto real en el negocio.</li>
+                            <li><strong>Fomentar colaboración con el PO:</strong> mantener comunicación frecuente con el Product Owner.</li>
+                            <li><strong>Refinar el backlog constantemente:</strong> realizar sesiones de refinamiento regulares para mejorar historias.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: KANBAN -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Kanban</h2>
+
+                <div class="definition">
+                    Kanban (término de origen japonés que significa "tarjeta visual") es una técnica de gestión visual, o sistema de información basado en señales. Nace en Toyota (Lean Manufacturing).
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bullseye"></i>Objetivo y Problemas que Evita
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Objetivo:</strong> gestionar de manera general cómo se van completando las tareas y mejorar los procesos y la gestión de proyectos.</p>
+                        <p style="margin-top: 12px;"><strong>Problemas que evita:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Cuellos de botella</li>
+                            <li>Tiempos muertos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-award"></i>Principios de Kanban
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Calidad garantizada:</strong> todo lo que se hace debe salir bien a la primera, sin margen de error. No se premia la rapidez, sino la calidad final. Es más costoso arreglar algo mal hecho que hacerlo bien desde el inicio.</p>
+                        <p style="margin-top: 12px;"><strong>Reducción del desperdicio:</strong> hacer solamente lo justo y necesario, pero hacerlo bien. Reducción de todo lo superficial o secundario (principio <strong>YAGNI</strong>).</p>
+                        <p style="margin-top: 12px;"><strong>Mejora continua:</strong> no es solo un método de gestión, sino también un sistema de mejora en el desarrollo de proyectos según los objetivos a alcanzar.</p>
+                        <p style="margin-top: 12px;"><strong>Flexibilidad:</strong> lo siguiente a realizar se decide del backlog (tareas pendientes), pudiéndose priorizar según las necesidades del momento y responder a tareas imprevistas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>Pasos para Configurar Kanban
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Estructura del equipo:</strong> un "Dinamizador" (similar al Scrum Master) y el equipo propiamente dicho.</li>
+                            <li><strong>Artefactos:</strong> tablero o Kanban Board, tarjetas para identificar tareas y WIP (Work In Progress).</li>
+                            <li><strong>Reuniones:</strong> breves (máximo 15 minutos) y de pie. Reuniones diarias para plantear qué está haciendo, qué va a hacer y qué problemas tiene. Reuniones de retrospectiva para evaluar qué va bien, qué va mal y qué mejorar.</li>
+                            <li><strong>WIP (Work In Progress):</strong> elemento clave. Define cuántas tareas, como máximo, se pueden realizar en cada fase del ciclo de trabajo.</li>
+                            <li><strong>Flujo de trabajo:</strong> definir cómo avanzan las tareas en los proyectos.</li>
+                            <li><strong>Visualización:</strong> ver las fases del ciclo de producción.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table-columns"></i>El Tablero Kanban
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Estructura:</strong> visible y accesible para todos. Cada columna representa un estado concreto del flujo de tareas (desde inicio hasta finalización).</p>
+                        <p style="margin-top: 12px;"><strong>Número de columnas:</strong> tantas como estados por los que pasa una tarea.</p>
+                        <p style="margin-top: 12px;"><strong>Flujo continuo:</strong> no se compone de tarjetas que se desplazan, sino que nuevas tareas (mejoras, incidencias, nuevas funcionalidades) se acumulan en la sección inicial y se priorizan en reuniones con el cliente.</p>
+                        <p style="margin-top: 12px;"><strong>Priorización:</strong> en reuniones periódicas, se priorizan y se colocan las tareas en la sección más oportuna.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-flag-checkered"></i>"Stop Starting, Start Finishing"
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">"Stop Starting, Start Finishing"</div>
+                        <p style="margin-top: 12px;"><strong>Lema principal de Kanban:</strong> se prioriza el trabajo que está en curso en vez de empezar nuevas tareas.</p>
+                        <p style="margin-top: 10px;"><strong>Regla fundamental:</strong> no se puede abrir una nueva tarea sin finalizar otra.</p>
+                        <p style="margin-top: 10px;"><strong>Objetivo:</strong> responder al problema habitual de tener muchas tareas abiertas pero con un bajo ratio de finalización.</p>
+                        <p style="margin-top: 10px;"><strong>Enfoque:</strong> cerrar tareas antes de empezar la siguiente (similar al modelo secuencial o en cascada).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table-columns"></i>Herramientas Digitales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Trello:</strong> plataforma para equipos remotos o distribuidos geográficamente que necesitan utilizar un Kanban Board digital en lugar de físico.</p>
+                        <div class="highlight success" style="margin-top: 12px;">
+                            <i class="fas fa-check-circle"></i> <strong>Ventaja:</strong> permite que equipos remotos trabajen con la metodología Kanban sin estar en la misma ubicación.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 4: SCRUM Y SCRUMBAN -->
+            <div class="chapter">
+                <h2 class="chapter-title">4️⃣ Scrum y ScrumBan</h2>
+
+                <div class="section-title">Scrum</div>
+
+                <div class="definition">
+                    Scrum es un proceso en el que se aplican de manera regular un conjunto de prácticas para trabajar colaborativamente en equipo y obtener el mejor resultado posible de un proyecto. Incrementa tanto la velocidad como la flexibilidad para el desarrollo de nuevos productos.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-football"></i>Analogía del Rugby y Aplicación
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Analogía del Rugby:</strong> el ciclo de vida del proyecto (requisitos, diseño, integración) se traslada a un "campo de rugby", donde un jugador le pasa el balón a otro y así sucesivamente hasta llegar a la meta.</p>
+                        <p style="margin-top: 12px;"><strong>Aplicación indicada:</strong> especialmente indicado para proyectos en entornos complejos donde se necesitan resultados pronto, requisitos cambiantes o poco definidos, y donde la innovación, competitividad, flexibilidad y productividad son fundamentales.</p>
+                        <p style="margin-top: 12px;"><strong>Característica clave:</strong> se realizan entregas parciales y regulares del producto final, priorizadas por el beneficio que aportan al receptor del proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-users"></i>Roles de Scrum
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>🐷 Roles de Cerdos (comprometidos)</th>
+                                <th>🐔 Roles de Gallinas (involucrados)</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Scrum Master:</strong> facilitador que quita escollos, asegura y guía en el proceso.</td>
+                                <td><strong>Gerentes:</strong> administradores de la organización.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Product Owner:</strong> dueño del producto, representa la voz del cliente.</td>
+                                <td><strong>Stakeholders:</strong> clientes e inversionistas que permiten que exista el proyecto.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Team (Equipo):</strong> responsables de crear el producto.</td>
+                                <td><strong>Users:</strong> usuarios finales del producto.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-boxes-stacked"></i>Artefactos de Scrum
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Product Backlog:</strong> lista priorizada de objetivos/requisitos que representa la visión y expectativas del cliente. Es una planificación estratégica que evoluciona a lo largo de toda la vida del producto/proyecto. Contiene objetivos de alto nivel expresados como historias de usuario. Responsabilidad del Product Owner.</li>
+                            <li><strong>Sprint Backlog:</strong> subconjunto de objetivos/requisitos del Product Backlog seleccionado para la iteración actual y su plan de tareas. Elaborado por el equipo en la reunión de Sprint Planning. Las tareas deben ser suficientemente pequeñas para detectar progreso o estancamiento diariamente.</li>
+                            <li><strong>Burndown Charts:</strong> gráficos que muestran el avance del equipo durante el sprint.</li>
+                            <li><strong>User Stories:</strong> requisitos expresados desde la perspectiva del usuario.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-check"></i>Sprint Planning Meeting
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="font-size: 13px; color: #666;">1 hora por semana de iteración</p>
+                        <p style="margin-top: 10px;"><strong>QUÉ:</strong> el Product Owner presenta los requisitos priorizados, pone nombre a la meta de la iteración y propone los principales a desarrollar. El equipo examina la lista y selecciona los prioritarios.</p>
+                        <p style="margin-top: 10px;"><strong>CÓMO:</strong> el equipo planifica la iteración y define las tareas necesarias (Sprint Backlog). Se autoasignan tareas y se auto organizan para trabajar.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-comments"></i>Daily Scrum Meeting
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="font-size: 13px; color: #666;">Máximo 15 minutos, diarios</p>
+                        <p style="margin-top: 10px;"><strong>Objetivo:</strong> facilitar transferencia de información y colaboración. Cada miembro responde:</p>
+                        <ul class="bullet-list">
+                            <li>¿Qué he hecho desde la última reunión para ayudar al equipo?</li>
+                            <li>¿Qué voy a hacer a partir de ahora para ayudar al equipo?</li>
+                            <li>¿Qué impedimentos tengo o voy a tener?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clipboard-check"></i>Sprint Review
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="font-size: 13px; color: #666;">Demostración de requisitos completados</p>
+                        <p style="margin-top: 10px;">Se revisan resultados obtenidos, problemas identificados y cómo se resolvieron. Se presenta al cliente los requisitos completados en forma de incremento de producto listo para entregar. El cliente identifica adaptaciones necesarias y replanifica el proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-rotate-left"></i>Sprint Retrospective
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="margin-top: 10px;">Reunión con el objetivo de mejorar continuamente la productividad y calidad. El equipo analiza:</p>
+                        <ul class="bullet-list">
+                            <li>¿Qué cosas han funcionado bien?</li>
+                            <li>¿Cuáles hay que mejorar?</li>
+                            <li>¿Qué cosas quiere probar en la siguiente iteración?</li>
+                            <li>¿Qué ha aprendido?</li>
+                            <li>¿Cuáles son los problemas que podrían impedir progresar?</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Resultados:</strong> plan de acciones de mejora, nuevas buenas prácticas, acuerdos de equipo actualizados, impedimentos a escalar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-stopwatch"></i>Características del Sprint
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Duración:</strong> 2 a 4 semanas.</p>
+                        <p style="margin-top: 10px;"><strong>Regla clave:</strong> la fecha de finalización y las tareas no deben cambiar una vez iniciado el sprint.</p>
+                        <p style="margin-top: 10px;"><strong>Ciclo continuo:</strong> Daily Scrum cada 24 horas para sincronización continua.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-key"></i>Principios Clave de Scrum
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Trabajo colaborativo:</strong> el equipo es auto organizado y autoasigna tareas.</li>
+                            <li><strong>Entregas incrementales:</strong> incrementos de producto preparados para ser entregados al finalizar cada sprint.</li>
+                            <li><strong>Inspección y adaptación:</strong> revisión continua de resultados y adaptación basada en feedback del cliente.</li>
+                            <li><strong>Mejora continua:</strong> retrospectivas para identificar e implementar mejoras en el proceso.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">ScrumBan</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shuffle"></i>¿Qué es ScrumBan?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            ScrumBan es un híbrido metodológico que combina elementos de Scrum y Kanban. Es más difícil de aplicar que ambas metodologías por separado, pero permite adaptarse mejor a diferentes contextos de proyectos.
+                        </div>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-circle-info"></i> <strong>Interpretación clave:</strong> aplicar ScrumBan es agregar a Kanban elementos de Scrum, no al revés.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Cuándo Usar Cada Metodología
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Usar Scrum cuando...</th>
+                                <th>Usar Kanban cuando...</th>
+                            </tr>
+                            <tr>
+                                <td>Tenemos un proyecto que podemos visualizar e ir entregando por partes en intervalos de tiempo fijos.</td>
+                                <td>No podemos planificar el intervalo pero necesitamos disminuir el tiempo de entrega.</td>
+                            </tr>
+                            <tr>
+                                <td>Tenemos un equipo multifuncional.</td>
+                                <td>Tenemos un equipo pequeño (que puede ser una única persona).</td>
+                            </tr>
+                            <tr>
+                                <td>Necesitamos roles definidos.</td>
+                                <td>No necesitamos roles definidos.</td>
+                            </tr>
+                            <tr>
+                                <td>No se aceptan cambios inesperados en el sprint.</td>
+                                <td>Aceptamos cambios que pueden aparecer en cualquier momento.</td>
+                            </tr>
+                            <tr>
+                                <td>Es más prescriptivo (tiene más reglas por cumplir). Su poder radica en que está muy organizado.</td>
+                                <td>Es más adaptativo. Su poder radica en que permite reducir el Lead Time (tiempo desde que ingresa una tarea hasta que se termina).</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-stairs"></i>Estructura de ScrumBan
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Paso 1 - Base Kanban:</strong> partimos de Kanban, establecemos lo más básico que hay que hacer.</li>
+                            <li><strong>Paso 2 - Agregar Sprint Review:</strong> aplicamos elementos de Scrum cuando los necesitamos. Si queremos mostrar avances periódicamente, agregamos la Review de Scrum a Kanban. Cada cierta cantidad de tiempo mostramos lo que está en la columna "Hecho" del tablero.</li>
+                            <li><strong>Paso 3 - Agregar Product Owner:</strong> si las tareas del tablero se empiezan a mezclar y no se tiene claro qué es urgente o importante, agregamos un Product Owner que organice el trabajo (Backlog).</li>
+                            <li><strong>Paso 4 - Agregar Retrospectivas:</strong> si necesitamos mejora continua para hacer cada vez mejor las cosas, agregamos las retrospectivas de Scrum.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-puzzle-piece"></i>Características de ScrumBan
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Flexibilidad:</strong> permite adaptar la metodología según las necesidades del proyecto.</li>
+                            <li><strong>Enfoque híbrido:</strong> combina la rigidez y organización de Scrum con la adaptabilidad de Kanban.</li>
+                            <li><strong>Complejidad:</strong> es más difícil de implementar que usar Scrum o Kanban por separado, requiere mayor comprensión de ambas metodologías.</li>
+                            <li><strong>Filosofía:</strong> se comienza con lo básico de Kanban y se van agregando elementos de Scrum según las necesidades reales del proyecto.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

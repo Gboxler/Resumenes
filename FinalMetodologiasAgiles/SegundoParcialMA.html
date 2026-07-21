@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologías Ágiles - Segundo Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ma">
+    <div class="container">
+        <div class="header">
+            <h1>🏃 Metodologías Ágiles</h1>
+            <p>Segundo Parcial: Mitos, Lean, XP, Técnicas de Estimación y Design Sprint</p>
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: MITOS Y PRÁCTICAS DE LA AGILIDAD -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ Conclusiones: Mitos sobre lo Ágil</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock-rotate-left"></i>Mito 1 - Las metodologías ágiles son nuevas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="important">
+                            <strong>Falso.</strong> Las metodologías ágiles tienen raíces en prácticas de hace décadas (desde 1943 en Toyota con Kanban, pasando por Scrum en los 90s, hasta el Agile Manifesto en 2001). Son una evolución de metodologías previas, no una invención reciente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-lines"></i>Mito 2 - No requieren documentación
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="important">
+                            <strong>Falso.</strong> Es una confusión semántica con el segundo valor del Manifiesto Ágil: "Software funcionando sobre documentación exhaustiva". La documentación tiene un enorme valor para los equipos.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Las preguntas clave son:</strong> ¿Cuándo documentar? y ¿Cuánto documentar?</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-diagram-project"></i>Mito 3 - La agilidad no requiere planificación
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="important">
+                            <strong>Falso.</strong> La planificación es esencial en un modelo ágil. La diferencia no es si planificar o no, sino cuánto y cómo planificar.
+                        </div>
+                        <p style="margin-top: 12px;">Agile usa el <strong>"Planning Onion"</strong> (planificación en capas): cada nivel se lleva a cabo en la medida correcta.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-lightbulb"></i> La planificación en Agile es más intensa que en modelos predictivos porque es una actividad constante realizada en todo momento, no solo al comienzo del proyecto.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-wand-magic-sparkles"></i>Mito 4 - La agilidad es la solución a todos los problemas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="important">
+                            <strong>Falso.</strong> Un modelo ágil NO corregirá problemas de gestión, calidad, ingeniería de software, clima organizacional, motivación y compromiso.
+                        </div>
+                        <p style="margin-top: 12px;">Estos problemas deben corregirse de antemano, y solo entonces podemos esperar una buena fluidez de los modelos ágiles en una organización.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Metodologías Más Utilizadas (Uso de Ciclos de Vida)</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-bar"></i>Ranking de Uso
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Metodología</th>
+                                <th>% de Uso</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Scrum</strong></td>
+                                <td>51% (la más usada)</td>
+                            </tr>
+                            <tr>
+                                <td>Agile genérico</td>
+                                <td>35%</td>
+                            </tr>
+                            <tr>
+                                <td>Kanban</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Híbrido</td>
+                                <td>17%</td>
+                            </tr>
+                            <tr>
+                                <td>Cascada</td>
+                                <td>15%</td>
+                            </tr>
+                            <tr>
+                                <td>Lean, Extreme Programming, Prototipaje</td>
+                                <td>10% cada uno</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Prácticas de la Agilidad (Lo que Realmente Es Ser Ágiles)</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>Valores, Principios y Prácticas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Valores:</strong> Personas, Interacciones, Adaptación, Software funcionando, Colaboración con el cliente, Transparencia, Inspección, Respuesta ante el cambio.</p>
+                        <p style="margin-top: 12px;"><strong>Principios:</strong> Satisfacción del cliente, Simplicidad, Personas motivadas, Entrega continua, Feedback, Conversación cara a cara, Unión entre desarrolladores y negocio.</p>
+                        <p style="margin-top: 12px;"><strong>Prácticas:</strong> Scrum, Kanban, DevOps, TDD, Planeación, Daily, Historias de Usuario, Product Owner.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: LEAN ÁGIL -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Lean Ágil</h2>
+
+                <div class="definition">
+                    Lean es una metodología ligera enfocada en la eficiencia, el aprendizaje continuo y la entrega rápida de valor al cliente.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-industry"></i>Orígenes de Lean
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Nace del Sistema de Producción de Toyota (TPS) en los años 50.</p>
+                        <p style="margin-top: 10px;">Se basa en la eliminación de desperdicios y mejora continua (<strong>Kaizen</strong>).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>Lean en el Desarrollo Ágil
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Adaptación de los principios de Lean a la industria del software. Busca maximizar valor, minimizar desperdicios y mejorar el flujo de trabajo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>7 Principios de Lean
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Eliminar Desperdicios:</strong> todo lo que no agrega valor al cliente debe eliminarse: código innecesario, funcionalidades no usadas, demoras, reprocesos.</li>
+                            <li><strong>Ampliar el Aprendizaje:</strong> validación temprana, ciclos cortos de retroalimentación, entregas frecuentes y prototipos.</li>
+                            <li><strong>Decidir lo más tarde posible:</strong> tomar decisiones importantes solo cuando se dispone de la mayor cantidad de información.</li>
+                            <li><strong>Entregar lo más rápido posible:</strong> entregas tempranas generan feedback que permite adaptarse rápidamente a las necesidades del cliente.</li>
+                            <li><strong>Empoderar al equipo:</strong> los equipos deben ser autónomos, colaborativos y responsables de sus decisiones.</li>
+                            <li><strong>Construir calidad desde el inicio:</strong> integración continua, pruebas automatizadas y prácticas de desarrollo que aseguren la calidad desde el principio.</li>
+                            <li><strong>Ver el todo:</strong> optimización del sistema completo, no de partes individuales. Se busca eficiencia general.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-thumbs-up"></i>Ventajas de Lean
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Menor tiempo de entrega</li>
+                            <li>Mayor calidad</li>
+                            <li>Mejora en la colaboración</li>
+                            <li>Mayor satisfacción del cliente</li>
+                            <li>Alta adaptabilidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>Desafíos de Lean
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Cambio cultural profundo</li>
+                            <li>Requiere compromiso organizacional</li>
+                            <li>Demanda liderazgo distribuido y madurez en procesos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: EXTREME PROGRAMMING (XP) -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Extreme Programming (XP)</h2>
+
+                <div class="definition">
+                    XP (Extreme Programming) es una metodología ágil creada por Kent Beck que busca mejorar la calidad del software y la capacidad de adaptación al cambio. Se basa en ciclos cortos de desarrollo y feedback constante. Está orientada principalmente a equipos de desarrollo de software.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bullseye"></i>Objetivos de XP
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>✓ Entregar software funcional rápidamente</li>
+                            <li>✓ Reducir errores mediante pruebas constantes</li>
+                            <li>✓ Facilitar cambios en los requerimientos</li>
+                            <li>✓ Mejorar la comunicación entre cliente y equipo</li>
+                            <li>✓ Aumentar la calidad del código</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-heart"></i>Valores Fundamentales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Comunicación:</strong> colaboración continua entre todos los participantes.</li>
+                            <li><strong>Simplicidad:</strong> desarrollar solo lo necesario.</li>
+                            <li><strong>Feedback:</strong> retroalimentación rápida y frecuente.</li>
+                            <li><strong>Coraje:</strong> capacidad para refactorizar y cambiar.</li>
+                            <li><strong>Respeto:</strong> trabajo colaborativo y confianza mutua.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-toolbox"></i>Principales Prácticas XP
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Pair Programming (Programación en parejas)</li>
+                            <li>TDD - Test Driven Development (Desarrollo guiado por pruebas)</li>
+                            <li>Integración Continua</li>
+                            <li>Refactorización Constante</li>
+                            <li>Pequeñas Entregas Frecuentes</li>
+                            <li>Propiedad Colectiva del Código</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-people-arrows"></i>Pair Programming
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Dos desarrolladores trabajan juntos en una misma tarea.</li>
+                            <li>Uno escribe código y el otro revisa en tiempo real.</li>
+                            <li>Mejora la calidad y reduce errores.</li>
+                            <li>Favorece el aprendizaje y la colaboración.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-flask"></i>TDD - Test Driven Development
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Red → Green → Refactor</div>
+                        <ul class="bullet-list" style="margin-top: 12px;">
+                            <li>Primero se escribe una prueba (Red: falla porque el código aún no existe).</li>
+                            <li>Luego se desarrolla el código mínimo necesario (Green: la prueba pasa).</li>
+                            <li>Finalmente se refactoriza el código (Refactor: se mejora sin romper la prueba).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-arrows-rotate"></i>Integración Continua
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>El código se integra varias veces al día.</li>
+                            <li>Las pruebas automáticas verifican que todo funcione.</li>
+                            <li>Permite detectar errores rápidamente.</li>
+                            <li>Reduce problemas de integración al final del proyecto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-sync"></i>Ciclo de Trabajo en XP
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Recolección de historias → Planificación iterativa → Desarrollo y pruebas → Entrega incremental → Feedback del cliente</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-thumbs-up"></i>Ventajas de XP
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Alta calidad del software</li>
+                            <li>Mayor satisfacción del cliente</li>
+                            <li>Adaptación rápida a cambios</li>
+                            <li>Menor cantidad de errores</li>
+                            <li>Entrega continua de valor</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-triangle-exclamation"></i>Desventajas o Desafíos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Requiere gran compromiso del cliente</li>
+                            <li>Puede ser difícil en equipos grandes</li>
+                            <li>Necesita disciplina técnica constante</li>
+                            <li>La programación en parejas puede generar resistencia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>XP vs Metodologías Tradicionales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>XP</th>
+                                <th>Tradicionales</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Iteraciones</strong></td>
+                                <td>Cortas</td>
+                                <td>Largas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Participación del cliente</strong></td>
+                                <td>Activa</td>
+                                <td>Limitada</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cambios</strong></td>
+                                <td>Aceptados durante desarrollo</td>
+                                <td>Dificultosos después del inicio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentación</strong></td>
+                                <td>Liviana y práctica</td>
+                                <td>Exhaustiva</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 4: TÉCNICAS DE ESTIMACIÓN ÁGIL -->
+            <div class="chapter">
+                <h2 class="chapter-title">4️⃣ Técnicas de Estimación Ágil</h2>
+
+                <div class="section-title">Planning Poker</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>¿Qué es y Cómo Funciona?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Planning Poker es una técnica colaborativa para estimar esfuerzo. Cada miembro del equipo asigna un valor de esfuerzo a tareas o historias de usuario, usando cartas con la serie de Fibonacci modificada: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Cómo funciona:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Se presenta una historia de usuario.</li>
+                            <li>Se aclaran dudas y se define qué significa "hecho".</li>
+                            <li>Cada miembro elige una carta en secreto.</li>
+                            <li>Todos revelan sus cartas al mismo tiempo.</li>
+                            <li>Se discuten las diferencias y se vuelve a votar si es necesario.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bullseye"></i>Objetivos y Beneficios
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p style="margin-top: 12px;"><strong>Objetivos:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Promover la participación del equipo</li>
+                            <li>Aumentar la precisión de las estimaciones</li>
+                            <li>Fomentar la discusión técnica y colaboración</li>
+                            <li>Detectar incertidumbres y riesgos ocultos</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Beneficios:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Estimaciones más precisas y consensuadas</li>
+                            <li>Mejor comprensión de los requerimientos</li>
+                            <li>Reducción del sesgo de anclaje o jerarquías</li>
+                            <li>Actividad lúdica que fortalece el equipo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-lightbulb"></i>Ejemplo Práctico
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Historia:</strong> "Como usuario, quiero restablecer mi contraseña"</p>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li>Dev A vota: 3 (sencillo, conoce el sistema)</li>
+                            <li>Dev B vota: 8 (hay dudas con el envío de correos)</li>
+                            <li>QA vota: 5 (por validaciones y pruebas)</li>
+                        </ul>
+                        <div class="highlight success" style="margin-top: 12px;">
+                            <i class="fas fa-check-circle"></i> → Se discute, se aclara, se vota de nuevo y se consensúa <strong>5</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-circle-question"></i>Aclaraciones Importantes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>¿Solo para Scrum?</strong> No. Planning Poker no es exclusivo de Scrum, aunque es muy común en este marco de trabajo. Es una herramienta de estimación ágil que puede ser utilizada en cualquier metodología ágil que requiera la estimación colaborativa del esfuerzo.</p>
+                        <p style="margin-top: 12px;"><strong>¿Por qué es versátil?</strong></p>
+                        <ul class="bullet-list">
+                            <li>Porque no está atado al marco de Scrum</li>
+                            <li>Facilita la colaboración</li>
+                            <li>Fomenta la conversación y el entendimiento compartido</li>
+                            <li>Ayuda a tomar decisiones rápidas y consensuadas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-spa"></i>Serie de Fibonacci en Planning Poker
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">0, 1, 2, 3, 5, 8, 13, 20, 40, 100</div>
+                        <p style="margin-top: 12px;"><strong>Se usa porque:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Refleja la incertidumbre aumentada en tareas más grandes.</li>
+                            <li>Los números más separados evitan falsas precisiones.</li>
+                            <li>Facilita las discusiones cuando hay grandes diferencias en las estimaciones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">T-Shirt Sizing</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shirt"></i>¿Qué es y Qué Tamaños Usa?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Técnica de estimación <strong>relativa</strong> (no absoluta). Estima tareas/historias de usuario usando tallas de remeras: usa tamaños relativos entre tareas, no números concretos de horas o días.</p>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Talla</th>
+                                <th>Significado</th>
+                            </tr>
+                            <tr>
+                                <td><strong>XS</strong> (Extra Small)</td>
+                                <td>Tarea trivial, menos de 1 hora</td>
+                            </tr>
+                            <tr>
+                                <td><strong>S</strong> (Small)</td>
+                                <td>Tarea simple, medio día</td>
+                            </tr>
+                            <tr>
+                                <td><strong>M</strong> (Medium)</td>
+                                <td>Tarea estándar, 1 día</td>
+                            </tr>
+                            <tr>
+                                <td><strong>L</strong> (Large)</td>
+                                <td>Tarea compleja, 2-3 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XL</strong> (Extra Large)</td>
+                                <td>Muy compleja, más de 3 días o requiere descomposición</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XXL</strong> (ocasional)</td>
+                                <td>Para tareas muy grandes</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>Pasos para Implementar T-Shirt Sizing
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Paso 1 - Preparar el Backlog:</strong> listar todas las tareas, historias o ítems a estimar. Mejor si ya están bien definidas.</li>
+                            <li><strong>Paso 2 - Definir una Referencia por Tamaño:</strong> el equipo acuerda ejemplos concretos para cada talla. Los valores no son fijos, varían según el equipo. Lo importante es el consenso interno.</li>
+                            <li><strong>Paso 3 - Comparar Tareas Entre Sí:</strong> analizar cada historia/ítem, compararla con las referencias discutidas. Preguntarse: ¿Es más grande/pequeña que M? ¿Se parece a S? Si es muy ambigua → probablemente XL o requiere descomposición.</li>
+                            <li><strong>Paso 4 - Asignar la Talla:</strong> por consenso abierto, votación rápida (a mano alzada) o herramientas virtuales (Miro, Trello).</li>
+                            <li><strong>Paso 5 - Reorganizar si es Necesario:</strong> a medida que se estima más, revisar tallas anteriores y asegurar que las comparaciones sigan siendo coherentes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-check"></i>¿Cuándo Conviene Usarlo?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Cuando se quiere hacer una estimación rápida y general.</li>
+                            <li>En reuniones de grooming del backlog (actualización y mejora antes del siguiente sprint).</li>
+                            <li>Para priorizar tareas sin entrar en detalles técnicos.</li>
+                            <li>En equipos multidisciplinarios donde desarrolladores y stakeholders necesitan un lenguaje común.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Ventajas y Desventajas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Ventajas</th>
+                                <th>Desventajas</th>
+                            </tr>
+                            <tr>
+                                <td>Rápida y fácil de entender.<br>Fomenta la colaboración.<br>Menos intimidante que números.<br>Útil en etapas tempranas del proyecto.</td>
+                                <td>Menos precisa que otras técnicas.<br>Puede ser subjetiva si no hay referencias claras.<br>No sirve directamente para medir horas ni cronogramas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Three-Point Estimation</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calculator"></i>¿Qué es y Fórmula (PERT)?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Técnica de estimación que considera la incertidumbre basada en tres escenarios diferentes: el Optimista (O), el Más probable (M) y el Pesimista (P). Calcula una estimación ponderada; también es conocida como fórmula PERT.
+                        </div>
+                        <div class="formula" style="margin-top: 12px;">Estimación final = (O + 4M + P) / 6</div>
+                        <p style="margin-top: 12px;">Esta fórmula da más peso al escenario más probable, reconociendo que ese es el resultado más realista. Además, puede complementarse con varianza y desviación estándar para obtener un análisis más completo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>Medición del Riesgo
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="formula">Varianza: σ² = ((P - O) / 6)²
+Desviación estándar: σ = (P - O) / 6</div>
+                        <p style="margin-top: 12px;">Estas métricas indican cuánto podría variar la estimación respecto a su valor promedio. Si la desviación estándar es baja, significa que la tarea es predecible. En cambio, si es alta, la tarea es incierta o arriesgada.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gears"></i>¿Cómo se Aplica?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Primero se selecciona la tarea a estimar, luego se definen tres escenarios: el Optimista, el Más probable y el Pesimista. Una vez se tienen estos tres valores, se aplica la fórmula para obtener la estimación final. De manera opcional, se pueden calcular la varianza y desviación estándar para entender mejor el riesgo asociado.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-lightbulb"></i>Ejemplo Práctico
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Supongamos una tarea donde estimamos:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Optimista: 2 horas</li>
+                            <li>Más probable: 4 horas</li>
+                            <li>Pesimista: 10 horas</li>
+                        </ul>
+                        <div class="formula" style="margin-top: 12px;">(2 + 4×4 + 10) / 6 = 4.67 horas
+Desviación estándar: (10 - 2) / 6 = 1.33</div>
+                        <p style="margin-top: 12px;">Esto significa que esperamos 4.67 horas en promedio, pero con una variabilidad de ±1.33 horas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Ventajas, Desventajas y Cuándo Usarla
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Ventajas:</strong> considera riesgo e incertidumbre de forma explícita, algo que otras técnicas no hacen. Aumenta la precisión en tareas complejas y justifica mejor las estimaciones ante stakeholders. También es útil en gestión de proyectos con cronogramas ajustados.</p>
+                        <p style="margin-top: 12px;"><strong>Desventajas:</strong> requiere más tiempo que otras técnicas de estimación, necesita experiencia previa para hacer buenas estimaciones y puede ser difícil definir correctamente los escenarios Optimista y Pesimista, especialmente si el equipo no tiene historial con tareas similares.</p>
+                        <p style="margin-top: 12px;"><strong>¿Cuándo conviene usarla?</strong> Es ideal para tareas con alta incertidumbre, cuando se necesita justificar estimaciones ante stakeholders, en proyectos complejos o con alto riesgo, y cuando es fundamental medir y manejar el riesgo de manera cuantitativa.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Wideband Delphi</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-group"></i>¿Qué es y Cómo Funciona?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Técnica de estimación colaborativa y anónima basada en el método Delphi clásico. Su propósito es buscar consenso entre expertos mediante múltiples rondas de estimación. Es especialmente útil en proyectos con alta incertidumbre donde se necesita combinar la experiencia y conocimiento de varios profesionales.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Cómo funciona:</strong> se selecciona un moderador que guía el proceso. Se forma un grupo de expertos en el tema a estimar y se presenta el problema o tarea. Los expertos realizan una primera ronda de estimaciones de forma anónima, lo que evita que personas dominantes influyan en otros. El moderador analiza y presenta las diferencias encontradas. Se realizan nuevas rondas de estimación basadas en la discusión anterior, repitiendo el ciclo hasta lograr un consenso. Finalmente, se registra la estimación final acordada.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-user-tie"></i>Rol del Moderador
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Su responsabilidad es facilitar el proceso sin influir en las estimaciones que hacen los expertos:</p>
+                        <ul class="bullet-list">
+                            <li>Recoge las estimaciones anónimas de todos los participantes.</li>
+                            <li>Presenta los resultados y diferencias encontradas de manera objetiva.</li>
+                            <li>Organiza y guía las discusiones de una forma estructurada.</li>
+                            <li>Decide cuándo es el momento adecuado para detener las rondas de estimación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-scale-balanced"></i>Ventajas y Desventajas
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Ventajas</th>
+                                <th>Desventajas</th>
+                            </tr>
+                            <tr>
+                                <td>Mejora la precisión al reunir varias opiniones de diferentes expertos.<br>Minimiza sesgos gracias al anonimato.<br>Considera múltiples perspectivas.<br>Fomenta aprendizaje y alineación del equipo.<br>Útil en entornos con alto grado de incertidumbre.</td>
+                                <td>Requiere mucho tiempo y organización.<br>Necesita el compromiso de varios expertos disponibles simultáneamente.<br>Puede ser ineficiente si no se modera bien.<br>Difícil de aplicar con presión de tiempo.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-check"></i>¿Cuándo Usar Wideband Delphi?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Ideal para estimaciones en proyectos complejos o inciertos donde la complejidad hace difícil estimar de forma individual. Especialmente recomendada para tareas críticas donde los errores son costosos y no se pueden permitir estimaciones pobres. Funciona bien cuando se dispone de expertos con conocimiento profundo del dominio. También es valiosa para justificar las estimaciones ante stakeholders, ya que el consenso de expertos proporciona credibilidad y respaldo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 5: DESIGN SPRINT -->
+            <div class="chapter">
+                <h2 class="chapter-title">5️⃣ Design Sprint</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-week"></i>¿Qué es el Design Sprint?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            El Design Sprint es un proceso de cinco días creado por Jake Knapp. Knapp comenzó a desarrollar la metodología mientras trabajaba en Google y posteriormente la perfeccionó en Google Ventures (GV), donde adquirió su forma definitiva junto a John Zeratsky y Braden Kowitz. Fue documentado en el libro <strong>Sprint (2016)</strong>.
+                        </div>
+                        <p style="margin-top: 12px;">Posteriormente surgieron adaptaciones, como el <strong>Design Sprint 2.0</strong> propuesto por AJ&Smart, que reduce el proceso a cuatro días. La versión de cinco días de Knapp sigue siendo la referencia original.</p>
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Premisa central:</strong> en vez de debatir meses sobre qué construir, el equipo dedica cinco días a diseñar y testear una solución con usuarios reales. Si la propuesta no resulta adecuada, el equipo lo descubre en cinco días en lugar de hacerlo después de varios meses de desarrollo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-question"></i>¿Para Qué Sirve?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es útil cuando existe una pregunta crítica sin respuesta y el equipo necesita decidir antes de comprometer recursos:</p>
+                        <ul class="bullet-list">
+                            <li>Validar una idea de producto antes de invertir meses de ingeniería.</li>
+                            <li>Rediseñar un flujo existente que genera fricción o abandono de usuarios.</li>
+                            <li>Explorar un nuevo mercado o funcionalidad sin construir nada real.</li>
+                            <li>Desbloquear equipos estancados que llevan semanas debatiendo sin decidir.</li>
+                            <li>Alinear stakeholders de distintas áreas alrededor de una solución común.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-thumbs-up"></i>¿Por Qué es Útil?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Reduce el riesgo antes de desarrollar:</strong> si la propuesta no resulta adecuada, el equipo lo descubre en cinco días en lugar de hacerlo después de varios meses de desarrollo.</li>
+                            <li><strong>Elimina los debates improductivos:</strong> al imponer tiempos fijos y un Decider con voto final, el Sprint evita las reuniones circulares donde todos opinan pero nadie decide.</li>
+                            <li><strong>Genera evidencia, no suposiciones:</strong> el viernes de testing reemplaza semanas de discusión interna con feedback real de cinco usuarios.</li>
+                            <li><strong>Alinea al equipo:</strong> al trabajar juntos cinco días, todos comparten el mismo contexto, las mismas decisiones y el mismo aprendizaje.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-ban"></i>¿Cuándo NO Usar Design Sprint?
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Cuando el problema ya está validado y solo resta construir.</li>
+                            <li>Cuando no hay acceso a usuarios reales para el viernes: sin feedback genuino el proceso pierde su valor central.</li>
+                            <li>Cuando la solución es puramente técnica (arquitectura, infraestructura).</li>
+                            <li>Cuando el equipo clave no puede comprometerse cinco días completos.</li>
+                            <li>Cuando se quiere reemplazar la estrategia a largo plazo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías para el Desarrollo Web - Primer Parcial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="tw">
+    <div class="container">
+        <div class="header">
+            <h1>💜 Tecnologías para el Desarrollo Web</h1>
+            <p>Primer Parcial: Aplicaciones Web, Historia de HTML, HTML5, CSS, Formularios y Eventos</p>
+        </div>
+
+        <div class="exam-note">
+            ⭐ Los capítulos marcados con este sello dorado corresponden a los temas que el profesor confirmó para el examen: HTML5, CSS3, JavaScript, diseño responsivo, AJAX y usabilidad/accesibilidad.
+        </div>
+
+        <div class="content">
+            <!-- CAPÍTULO 1: ¿QUÉ ES UNA APLICACIÓN WEB? -->
+            <div class="chapter">
+                <h2 class="chapter-title">1️⃣ ¿Qué es una Aplicación Web?</h2>
+
+                <div class="definition">
+                    Una aplicación web es un conjunto de funcionalidades que permite a los usuarios realizar tareas a través de un navegador. A lo largo del tiempo, la web ha evolucionado, pasando de ser un sistema estático con solo texto (Web 1.0) a permitir la interacción con el usuario (Web 2.0). En la Web 3.0, que es semántica, se da un papel importante a la inteligencia artificial y la personalización.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>Evolución de la Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Versión</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Web 1.0</strong></td>
+                                <td>Información estática expresada en texto, sin interacción.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Web 2.0</strong></td>
+                                <td>Permite la interacción entre el usuario y la información, como en blogs, foros y redes sociales.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Web 3.0</strong></td>
+                                <td>Conocida como la web semántica, integra inteligencia artificial y personalización.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-vr-cardboard"></i>El Metaverso
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El metaverso es una realidad virtual inmersiva, donde los usuarios interactúan mediante avatares. Características como la interconexión e ininterrupción permiten una experiencia más integrada entre el mundo físico y digital.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-shield-halved"></i> La Web 3.0 también está relacionada con la seguridad a través de blockchain.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gears"></i>Funcionalidad de las Aplicaciones Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Las aplicaciones web transformaron la web de un entorno estático a uno interactivo. Estas aplicaciones están alojadas en servidores y permiten la interacción con el usuario, trabajando con un <strong>front end</strong> (interfaz) y un <strong>back end</strong> (servidor).</p>
+                        <p style="margin-top: 12px;">La evolución de herramientas como PHP y JavaScript facilitó la creación de aplicaciones dinámicas como Google y Facebook.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-server"></i>Arquitectura Cliente-Servidor
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los clientes solicitan servicios a los servidores.</p>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Cliente Ligero</th>
+                                <th>Cliente Rico</th>
+                            </tr>
+                            <tr>
+                                <td>El servidor gestiona los datos.</td>
+                                <td>El cliente gestiona la lógica de la aplicación.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code"></i>El Desarrollador Front End
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Trabaja con herramientas como HTML, CSS y JavaScript para crear la interfaz de usuario, utilizando frameworks como React y Angular.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-lightbulb"></i> La usabilidad y accesibilidad son claves para una buena experiencia de usuario, y el control de versiones con Git es esencial para gestionar el código y colaborar en proyectos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-code-compare"></i>Diferencia entre Aplicación Web y Página Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Página Web</th>
+                                <th>Aplicación Web</th>
+                            </tr>
+                            <tr>
+                                <td>Es un documento estático que muestra información al usuario, como texto e imágenes. No permite interacción compleja, solo visualización.</td>
+                                <td>Es un programa interactivo accesible a través de un navegador, que permite a los usuarios realizar tareas como llenar formularios, hacer compras o gestionar cuentas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: TECNOLOGÍAS CLIENTE/SERVIDOR, SERVICIOS WEB Y APIS -->
+            <div class="chapter">
+                <h2 class="chapter-title">2️⃣ Tecnologías Cliente/Servidor, Servicios Web y APIs</h2>
+
+                <div class="section-title">Tecnologías del Lado del Cliente</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-code"></i>HTML, CSS y JavaScript
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>HTML:</strong> lenguaje de marcado utilizado para crear páginas web y aplicaciones. Sus elementos forman la estructura de la página, representando texto, imágenes, formularios, entre otros.</p>
+                        <p style="margin-top: 10px;"><strong>CSS:</strong> se usa para controlar el diseño y la apariencia de los elementos HTML, permitiendo la personalización de la presentación visual de una página web.</p>
+                        <p style="margin-top: 10px;"><strong>JavaScript:</strong> lenguaje de programación dinámico e interpretado, utilizado para añadir interactividad a las páginas web. Se puede incluir dentro de elementos HTML o como archivos externos.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cubes"></i>Frameworks y Librerías del Cliente
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Angular (SPA de Angular):</strong> framework de desarrollo de aplicaciones web, mantenido por Google, que facilita la creación de aplicaciones de una sola página (SPA) y aplicaciones web progresivas (PWA).</p>
+                        <p style="margin-top: 10px;"><strong>React:</strong> biblioteca centrada en la creación de interfaces de usuario. Permite integrar HTML directamente dentro de su código JavaScript.</p>
+                        <p style="margin-top: 10px;"><strong>Vue:</strong> framework para crear interfaces de usuario interactivas. Se utiliza en aplicaciones de una sola página y puede combinarse con herramientas y bibliotecas adicionales para crear aplicaciones sofisticadas.</p>
+                        <p style="margin-top: 10px;"><strong>Blazor WebAssembly:</strong> permite la creación de aplicaciones web interactivas del lado cliente utilizando .NET y WebAssembly. Funciona en todos los navegadores modernos y permite la interoperabilidad con JavaScript.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Tecnologías del Lado del Servidor</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-server"></i>JSP, Python, PHP y ASP.NET
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>JSP (Java Server Pages):</strong> lenguaje desarrollado por SUN Microsystems, que combina XML y scriptless para la creación de páginas dinámicas en Java.</p>
+                        <p style="margin-top: 10px;"><strong>Python:</strong> lenguaje de código abierto con diversas bibliotecas para el desarrollo web, utilizado en aplicaciones y sitios dinámicos.</p>
+                        <p style="margin-top: 10px;"><strong>PHP:</strong> lenguaje de programación que se incrusta dentro de HTML y genera contenido dinámico. Es ampliamente utilizado en plataformas como Wikipedia y Facebook.</p>
+                        <p style="margin-top: 10px;"><strong>ASP.NET:</strong> entorno de desarrollo de aplicaciones web que soporta múltiples lenguajes como VB, C# y Python, y se integra bien con bases de datos y servicios en la nube como SQL Server y Azure.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">Servicios Web y APIs</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-network-wired"></i>Servicios Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los servicios web permiten la comunicación entre sistemas a través de la web. Utilizan protocolos como <strong>SOAP</strong> y <strong>XML</strong>, permitiendo ejecutar métodos de un sistema de manera remota, como consultar tasas de cambio en un servicio externo.</p>
+                        <p style="margin-top: 12px;"><strong>Cómo funcionan:</strong> cuando un sistema invoca un método remoto, un proxy se encarga de enviar la solicitud al servidor, que la procesa y devuelve el resultado en un formato compatible.</p>
+                        <p style="margin-top: 12px;"><strong>XML:</strong> formato de texto que presenta datos de manera estructurada y jerárquica, usado en servicios web para transferir información.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-plug"></i>APIs
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="definition">
+                            Una API es una interfaz que permite que las aplicaciones interactúen entre sí, facilitando el intercambio de datos y funcionalidades de manera segura.
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Cómo funciona:</strong> una aplicación cliente hace una solicitud a la API, que a su vez consulta un servidor para obtener la información. La respuesta se envía de vuelta a la aplicación que hizo la solicitud.</p>
+                        <p style="margin-top: 12px;"><strong>Diferencia entre Web Services y APIs:</strong> los servicios web facilitan la interacción entre computadoras a través de la red, mientras que las APIs son interfaces que permiten la comunicación entre aplicaciones.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Consideraciones para el Desarrollo de Aplicaciones Web
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Conocer las necesidades del negocio:</strong> es esencial entender los requisitos del usuario y el dominio del negocio para crear aplicaciones efectivas.</li>
+                            <li><strong>Interoperabilidad:</strong> determinar si el sistema debe integrarse con otros es crucial durante el análisis.</li>
+                            <li><strong>Elección del framework:</strong> se debe seleccionar el marco de trabajo según los objetivos del proyecto y las tecnologías necesarias (HTML5, CSS3, JavaScript, etc.).</li>
+                            <li><strong>Usabilidad y accesibilidad:</strong> el diseño debe ser sencillo, claro y adaptable a diferentes dispositivos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-book"></i>Referencias
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>HTML y CSS</li>
+                            <li>Desarrollo del lado cliente en ASP.NET Core</li>
+                            <li>jQuery</li>
+                            <li>Angular</li>
+                            <li>React</li>
+                            <li>Vue</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: HISTORIA Y EVOLUCIÓN DE HTML -->
+            <div class="chapter">
+                <h2 class="chapter-title">3️⃣ Historia y Evolución de HTML</h2>
+
+                <div class="definition">
+                    HTML (Hypertext Markup Language) es el lenguaje de marcado fundamental para la creación y estructuración de contenido en la web. A lo largo de su evolución, HTML ha sido clave en la expansión de la World Wide Web.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-flag"></i>Orígenes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>En 1989, <strong>Tim Berners-Lee</strong>, un científico británico, propuso un sistema para gestionar información en el CERN (Organización Europea para la Investigación Nuclear).</p>
+                        <p style="margin-top: 10px;">En 1990, junto con <strong>Robert Cailliau</strong>, Berners-Lee desarrolló un modelo de sistema de hipertexto para compartir información mediante una red.</p>
+                        <p style="margin-top: 10px;">En 1991, Berners-Lee introdujo el primer lenguaje de marcado: <strong>HTML</strong>, para estructurar y enlazar documentos.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-timeline"></i>Evolución de HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>Año / Versión</th>
+                                <th>Hito</th>
+                            </tr>
+                            <tr>
+                                <td><strong>1994</strong></td>
+                                <td>Berners-Lee fundó el W3C (World Wide Web Consortium) para estandarizar tecnologías web, incluido HTML.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML 2.0 (1995)</strong></td>
+                                <td>Primera versión estandarizada de HTML.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML 3.0 (1996)</strong></td>
+                                <td>Introdujo nuevas características como tablas y formularios.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML 3.2 (1997)</strong></td>
+                                <td>Agregó soporte para hojas de estilo (CSS) y mejoras en formularios.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML 4.0 (1997)</strong></td>
+                                <td>Mejoró la semántica, permitió el uso de JavaScript y separó contenido de presentación.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XHTML (2000)</strong></td>
+                                <td>Una versión más estricta basada en XML.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML5 (2008)</strong></td>
+                                <td>Introdujo nuevos elementos semánticos, soportó multimedia sin complementos externos y mejoró la interoperabilidad.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTML Living Standard</strong></td>
+                                <td>A partir de HTML5, HTML pasó a un estándar "vivo", lo que implica actualizaciones continuas sin versiones específicas.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-desktop"></i>Front-End
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es la interfaz gráfica y la parte visible de una aplicación. Incluye lo que los usuarios ven e interactúan, y es responsable de mostrar la información de manera atractiva.</p>
+                        <p style="margin-top: 12px;"><strong>Responsabilidades:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Interfaz de Usuario (UI):</strong> diseño y presentación.</li>
+                            <li><strong>Interactividad:</strong> implementación de botones, formularios y menús.</li>
+                            <li><strong>Navegación:</strong> gestión intuitiva de la estructura de la aplicación.</li>
+                            <li><strong>Optimización del rendimiento:</strong> asegurar una carga rápida de recursos.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Tecnologías:</strong> HTML (estructura), CSS (diseño), JavaScript (interactividad) y frameworks como React, Angular y Vue.js para interfaces dinámicas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-database"></i>Back-End
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es el lado del servidor que gestiona la lógica, el procesamiento de datos y la interacción con la base de datos.</p>
+                        <p style="margin-top: 12px;"><strong>Responsabilidades:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Lógica de Negocio:</strong> procesos internos según las necesidades del negocio.</li>
+                            <li><strong>Acceso a Base de Datos:</strong> almacenamiento y recuperación de datos.</li>
+                            <li><strong>Autenticación y Autorización:</strong> seguridad del sistema.</li>
+                            <li><strong>Integración de Servicios Externos:</strong> conexión con otras aplicaciones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-tag"></i>Etiquetas en HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Las etiquetas HTML son elementos clave para estructurar y dar formato al contenido en una página web. Son interpretadas por el navegador para mostrar la página correctamente.</p>
+                        <p style="margin-top: 12px;"><strong>Estructura de una etiqueta:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Se compone de un nombre de etiqueta rodeado de corchetes angulares.</li>
+                            <li><strong>Etiquetas de apertura y cierre:</strong> muchas etiquetas requieren una etiqueta de apertura y una de cierre.</li>
+                            <li><strong>Etiquetas de autocierre:</strong> algunas etiquetas no requieren una etiqueta de cierre.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Etiquetas HTML comunes:</strong></p>
+                        <table>
+                            <tr>
+                                <th>Etiqueta</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr><td><code>&lt;html&gt;</code></td><td>Define el comienzo y final del documento HTML.</td></tr>
+                            <tr><td><code>&lt;head&gt;</code></td><td>Contiene metainformación sobre el documento.</td></tr>
+                            <tr><td><code>&lt;title&gt;</code></td><td>Define el título de la página, visible en la barra del navegador.</td></tr>
+                            <tr><td><code>&lt;body&gt;</code></td><td>Contiene el contenido principal de la página.</td></tr>
+                            <tr><td><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code></td><td>Definen encabezados de diferentes niveles.</td></tr>
+                            <tr><td><code>&lt;p&gt;</code></td><td>Define un párrafo.</td></tr>
+                            <tr><td><code>&lt;a&gt;</code></td><td>Define un enlace (hipervínculo).</td></tr>
+                            <tr><td><code>&lt;img&gt;</code></td><td>Define una imagen.</td></tr>
+                            <tr><td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></td><td>Definen listas ordenadas y no ordenadas.</td></tr>
+                            <tr><td><code>&lt;div&gt;</code></td><td>Agrupa elementos para aplicar estilos.</td></tr>
+                            <tr><td><code>&lt;span&gt;</code></td><td>Aplica estilos a un fragmento específico de texto.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-at"></i>Atributos en HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los atributos en HTML proporcionan información adicional sobre los elementos. Se escriben en pares de nombre y valor: <code>nombre="valor"</code>.</p>
+                        <p style="margin-top: 12px;"><strong>Atributos comunes:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>id</code>: identificador único para un elemento.</li>
+                            <li><code>class</code>: clasificación del elemento.</li>
+                            <li><code>style</code>: define los estilos CSS directamente en el elemento.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 4: ETIQUETAS Y ATRIBUTOS FUNDAMENTALES -->
+            <div class="chapter">
+                <h2 class="chapter-title">4️⃣ Etiquetas y Atributos Fundamentales de HTML</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-check"></i>Reglas Generales
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li>Todos los documentos HTML deben comenzar con una declaración de tipo de documento: <code>&lt;!DOCTYPE html&gt;</code>.</li>
+                            <li>El documento HTML en sí comienza con <code>&lt;html&gt;</code> y termina con <code>&lt;/html&gt;</code>. La parte visible del documento está entre <code>&lt;body&gt;</code> y <code>&lt;/body&gt;</code>.</li>
+                            <li>Las etiquetas HTML no son case sensitive: <code>&lt;H1&gt;</code> es igual a <code>&lt;h1&gt;</code>.</li>
+                            <li>El estándar HTML5 no requiere etiquetas en minúscula, pero W3C recomienda las etiquetas en minúscula, y la define como obligatorio para documentos del tipo XHTML.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-heading"></i>Encabezados y Párrafos
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los títulos HTML se definen con las etiquetas <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>. <code>&lt;h1&gt;</code> define el encabezado más importante o de mayor tamaño, y <code>&lt;h6&gt;</code> define el encabezado más pequeño.</p>
+                        <p style="margin-top: 12px;">La etiqueta párrafo se define con la etiqueta <code>&lt;p&gt;</code>.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-link"></i>Enlaces (Links)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los links de HTML se definen con la etiqueta <code>&lt;a&gt;</code>. El destino del link se declara con el atributo <code>href</code>. Los atributos amplían la información del elemento.</p>
+                        <p style="margin-top: 12px;">De forma predeterminada, la página vinculada se muestra en la ventana del navegador actual. Para cambiar esto, se debe especificar otro destino con el atributo <code>target</code>:</p>
+                        <table style="margin-top: 12px;">
+                            <tr>
+                                <th>Valor</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr><td><code>_self</code></td><td>Predeterminado. Abre el documento en la misma ventana/pestaña en la que se hizo clic.</td></tr>
+                            <tr><td><code>_blank</code></td><td>Abre el documento en una nueva ventana o pestaña.</td></tr>
+                            <tr><td><code>_parent</code></td><td>Abre el documento en el marco principal.</td></tr>
+                            <tr><td><code>_top</code></td><td>Abre el documento en el cuerpo completo de la ventana.</td></tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Enlace a correo electrónico:</strong> se usa <code>mailto:</code> dentro del atributo <code>href</code> para crear un enlace que abra el programa de correo electrónico del usuario y le permita enviar un nuevo correo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-image"></i>Imágenes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Las imágenes HTML se definen con la etiqueta <code>&lt;img&gt;</code>. El archivo de origen (<code>src</code>), el texto alternativo (<code>alt</code>), ancho (<code>width</code>) y alto (<code>height</code>) se declaran como atributos.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-ban"></i>Etiquetas Vacías
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Estas etiquetas no contienen contenido. <code>&lt;br&gt;</code> es un elemento vacío sin una etiqueta de fin. Puede cerrarse con la etiqueta de comienzo seguida de un slash: <code>&lt;br /&gt;</code>.</p>
+                        <p style="margin-top: 10px;">Si se busca una validación estructurada o se usará para ser leído por analizadores XML, deberá cerrarlas. La etiqueta <code>&lt;br&gt;</code> sirve como salto de línea.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-info"></i>La Etiqueta &lt;head&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Es un elemento contenedor de metadata acerca del documento HTML. Esta información no es visualizada. El elemento <code>&lt;head&gt;</code> está ubicado entre la etiqueta <code>&lt;html&gt;</code> y <code>&lt;body&gt;</code>.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-paintbrush"></i>El Atributo style
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El atributo <code>style</code> se usa para agregar estilos a un elemento, como color, fuente, tamaño y más.</p>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li><code>background-color</code>: cambia el color del fondo.</li>
+                            <li><code>color</code>: color del texto.</li>
+                            <li><code>font-family</code>: fuente de los textos.</li>
+                            <li><code>font-size</code>: tamaño de la letra.</li>
+                            <li><code>text-align</code>: alinea el texto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-globe"></i>El Atributo lang
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El atributo <code>lang</code> se incluye dentro de la etiqueta <code>&lt;html&gt;</code>, para declarar el idioma de la página web. Esto está destinado a ayudar a los motores de búsqueda y navegadores.</p>
+                        <p style="margin-top: 10px;">Los códigos de país también se pueden agregar al código de idioma: los dos primeros caracteres definen el idioma y los dos últimos definen el país (ej: <code>lang="en-US"</code> especifica inglés como idioma y Estados Unidos como país).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-minus"></i>Reglas Horizontales y Texto Preformateado
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>&lt;hr&gt;:</strong> define un salto temático en una página HTML y, con mayor frecuencia, se muestra como una regla horizontal. Se utiliza para separar contenido (o definir un cambio) en una página HTML.</p>
+                        <p style="margin-top: 10px;"><strong>&lt;pre&gt;:</strong> define texto preformateado. El texto dentro de un elemento <code>&lt;pre&gt;</code> se muestra en una fuente de ancho fijo y conserva tanto los espacios como los saltos de línea.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-bold"></i>Formato de Texto: &lt;b&gt; y &lt;strong&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><code>&lt;b&gt;</code> define texto en negrita.</p>
+                        <p style="margin-top: 10px;"><code>&lt;strong&gt;</code> define el resaltado del texto (semánticamente indica importancia, más allá del estilo visual).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 5: HTML5 - ELEMENTOS SEMÁNTICOS, MULTIMEDIA Y APIs -->
+            <div class="chapter">
+                <h2 class="chapter-title">5️⃣ HTML5: Elementos Semánticos, Multimedia y APIs <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="section-title">Nuevos Elementos Semánticos</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shapes"></i>Elementos Semánticos HTML5
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Elemento</th><th>Descripción</th></tr>
+                            <tr><td><code>&lt;article&gt;</code></td><td>Define un artículo independiente.</td></tr>
+                            <tr><td><code>&lt;aside&gt;</code></td><td>Define contenido como sidebar en una página.</td></tr>
+                            <tr><td><code>&lt;bdi&gt;</code></td><td>Define parte del texto que puede formatearse en dirección diferente.</td></tr>
+                            <tr><td><code>&lt;details&gt;</code></td><td>Detalles adicionales que pueden ser visualizados o no.</td></tr>
+                            <tr><td><code>&lt;dialog&gt;</code></td><td>Define un diálogo, box o window.</td></tr>
+                            <tr><td><code>&lt;figcaption&gt;</code></td><td>Define caption para un elemento <code>&lt;figure&gt;</code>.</td></tr>
+                            <tr><td><code>&lt;figure&gt;</code></td><td>Define contenido como ilustraciones, diagramas, fotos, etc. Agrupa contenido multimedia junto con su descripción (<code>&lt;figcaption&gt;</code>).</td></tr>
+                            <tr><td><code>&lt;footer&gt;</code></td><td>Define pie para un documento.</td></tr>
+                            <tr><td><code>&lt;header&gt;</code></td><td>Define encabezado para un documento.</td></tr>
+                            <tr><td><code>&lt;main&gt;</code></td><td>Especifica contenido principal.</td></tr>
+                            <tr><td><code>&lt;mark&gt;</code></td><td>Marca o destaca texto.</td></tr>
+                            <tr><td><code>&lt;nav&gt;</code></td><td>Define navegación.</td></tr>
+                            <tr><td><code>&lt;section&gt;</code></td><td>Define una sección.</td></tr>
+                            <tr><td><code>&lt;summary&gt;</code></td><td>Define resumen.</td></tr>
+                            <tr><td><code>&lt;time&gt;</code></td><td>Define hora/fecha.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Gráficos y Multimedia</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-area"></i>Gráficos: canvas y svg
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Tag</th><th>Descripción</th></tr>
+                            <tr><td><code>&lt;canvas&gt;</code></td><td>Dibuja gráficos vía script (JavaScript).</td></tr>
+                            <tr><td><code>&lt;svg&gt;</code></td><td>Dibuja gráficos vectoriales.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-photo-film"></i>Etiquetas de Multimedia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Tag</th><th>Descripción</th></tr>
+                            <tr><td><code>&lt;audio&gt;</code></td><td>Define un sonido.</td></tr>
+                            <tr><td><code>&lt;embed&gt;</code></td><td>Define contenedor para aplicaciones externas (plugins).</td></tr>
+                            <tr><td><code>&lt;source&gt;</code></td><td>Define origen para <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code>.</td></tr>
+                            <tr><td><code>&lt;track&gt;</code></td><td>Define pistas para video y audio.</td></tr>
+                            <tr><td><code>&lt;video&gt;</code></td><td>Define contenido de video.</td></tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Atributos comunes de audio/video:</strong> <code>controls</code> (muestra controles de reproducción), <code>autoplay</code> (inicia reproducción automática), <code>loop</code> (reproduce en bucle), <code>muted</code> (mudo por defecto, solo video).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-keyboard"></i>Nuevos Input Types (HTML5)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><code>color</code>, <code>date</code>, <code>datetime</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>range</code>, <code>search</code>, <code>tel</code>, <code>time</code>, <code>url</code>, <code>week</code>.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">HTML5 APIs</div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-location-dot"></i>Geolocation API
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> devuelve coordenadas (latitud y longitud) de la ubicación del usuario.</p>
+                        <p style="margin-top: 10px;"><strong>Objeto:</strong> <code>navigator.geolocation</code></p>
+                        <p style="margin-top: 10px;"><strong>Métodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>.getCurrentPosition()</code>: recupera la posición actual del usuario.</li>
+                            <li><code>.watchPosition()</code>: verifica la posición del usuario regularmente para detectar cambios.</li>
+                            <li><code>.clearWatch()</code>: finaliza un <code>watchPosition()</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-hand-pointer"></i>Drag and Drop API
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> permite arrastrar y soltar elementos en la página.</p>
+                        <p style="margin-top: 10px;"><strong>Propiedad:</strong> <code>draggable="true"</code> hace un elemento arrastrable.</p>
+                        <p style="margin-top: 10px;"><strong>Eventos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>ondragstart</code>: se dispara cuando comienza el arrastre.</li>
+                            <li><code>ondragover</code>: especifica dónde se puede arrastrar.</li>
+                            <li><code>ondrop</code>: se dispara cuando se suelta el elemento.</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Métodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>event.preventDefault()</code>: permite el drop (debe usarse en <code>ondragover</code>).</li>
+                            <li><code>dataTransfer.setData()</code>: establece el tipo y valor de los datos arrastrados.</li>
+                            <li><code>dataTransfer.getData()</code>: obtiene los datos arrastrados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-pen-ruler"></i>Canvas API
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> permite dibujar gráficos en una página web a través de JavaScript.</p>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li>Es solo un contenedor para gráficos.</li>
+                            <li>Debe usarse JavaScript para dibujar.</li>
+                            <li>Tiene varios métodos para dibujar trayectorias, cajas, círculos, texto e imágenes.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Rectángulos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>rect()</code>: crea un rectángulo.</li>
+                            <li><code>fillRect(x, y, width, height)</code>: rectángulo lleno.</li>
+                            <li><code>strokeRect(x, y, width, height)</code>: rectángulo sin llenar (solo bordes).</li>
+                            <li><code>clearRect(x, y, width, height)</code>: limpia píxeles específicos.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Trayectorias/Líneas:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>beginPath()</code>: comienza una trayectoria.</li>
+                            <li><code>moveTo(x, y)</code>: mueve el punto sin crear línea.</li>
+                            <li><code>lineTo(x, y)</code>: crea línea hasta el punto.</li>
+                            <li><code>closePath()</code>: crea trayectoria de vuelta al inicio.</li>
+                            <li><code>stroke()</code>: dibuja la trayectoria.</li>
+                            <li><code>fill()</code>: rellena la trayectoria.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Círculos, Arcos y Curvas:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>arc(x, y, radius, startAngle, endAngle)</code>: crea círculo/arco.</li>
+                            <li><code>arcTo(x1, y1, x2, y2, radius)</code>: arco entre dos tangentes.</li>
+                            <li><code>quadraticCurveTo()</code>: curva Bézier cuadrática.</li>
+                            <li><code>bezierCurveTo()</code>: curva Bézier cúbica.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Otros métodos:</strong> <code>clip()</code> (recorta región de cualquier forma), <code>isPointInPath()</code> (verifica si un punto está en la trayectoria).</p>
+
+                        <p style="margin-top: 15px;"><strong>Colores, estilos y sombras:</strong></p>
+                        <table>
+                            <tr><th>Propiedad</th><th>Descripción</th></tr>
+                            <tr><td><code>fillStyle</code></td><td>Color, gradiente o patrón para relleno.</td></tr>
+                            <tr><td><code>strokeStyle</code></td><td>Color, gradiente o patrón para trazos.</td></tr>
+                            <tr><td><code>shadowColor</code></td><td>Color de sombra.</td></tr>
+                            <tr><td><code>shadowBlur</code></td><td>Nivel de desenfoque de sombra.</td></tr>
+                            <tr><td><code>shadowOffsetX</code></td><td>Distancia horizontal de sombra.</td></tr>
+                            <tr><td><code>shadowOffsetY</code></td><td>Distancia vertical de sombra.</td></tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>Gradientes:</strong></p>
+                        <table>
+                            <tr><th>Método</th><th>Descripción</th></tr>
+                            <tr><td><code>createLinearGradient()</code></td><td>Crea gradiente lineal.</td></tr>
+                            <tr><td><code>createRadialGradient()</code></td><td>Crea gradiente radial/circular.</td></tr>
+                            <tr><td><code>createPattern()</code></td><td>Repite el elemento especificado.</td></tr>
+                            <tr><td><code>addColorStop()</code></td><td>Especifica colores y posiciones en el gradiente.</td></tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>Estilos de líneas:</strong></p>
+                        <table>
+                            <tr><th>Propiedad</th><th>Descripción</th></tr>
+                            <tr><td><code>lineCap</code></td><td>Estilo de extremos de línea.</td></tr>
+                            <tr><td><code>lineJoin</code></td><td>Tipo de esquina cuando se unen líneas.</td></tr>
+                            <tr><td><code>lineWidth</code></td><td>Ancho de línea actual.</td></tr>
+                            <tr><td><code>miterLimit</code></td><td>Longitud miter máxima.</td></tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>Transformaciones:</strong></p>
+                        <table>
+                            <tr><th>Método</th><th>Descripción</th></tr>
+                            <tr><td><code>scale()</code></td><td>Agranda o achica el dibujo.</td></tr>
+                            <tr><td><code>rotate()</code></td><td>Rota el dibujo.</td></tr>
+                            <tr><td><code>translate()</code></td><td>Remapea la posición (0,0) en el canvas.</td></tr>
+                            <tr><td><code>transform()</code></td><td>Reemplaza la matriz de transformación.</td></tr>
+                            <tr><td><code>setTransform()</code></td><td>Resetea a identidad y ejecuta <code>transform()</code>.</td></tr>
+                        </table>
+
+                        <p style="margin-top: 15px;"><strong>Texto en Canvas:</strong></p>
+                        <table>
+                            <tr><th>Propiedad / Método</th><th>Descripción</th></tr>
+                            <tr><td><code>font</code></td><td>Define propiedades de fuente.</td></tr>
+                            <tr><td><code>textAlign</code></td><td>Alineación del texto.</td></tr>
+                            <tr><td><code>textBaseline</code></td><td>Línea base del texto.</td></tr>
+                            <tr><td><code>fillText()</code></td><td>Dibuja texto relleno.</td></tr>
+                            <tr><td><code>strokeText()</code></td><td>Dibuja texto sin relleno.</td></tr>
+                            <tr><td><code>measureText()</code></td><td>Retorna el ancho del texto especificado.</td></tr>
+                        </table>
+
+                        <div class="highlight" style="margin-top: 15px;">
+                            <i class="fas fa-border-all"></i> <strong>Coordenadas de Canvas:</strong> es una grilla 2D donde la esquina superior izquierda es (0,0).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-box-archive"></i>Web Storage
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> permite almacenar datos localmente en el navegador del usuario sin enviarlos al servidor.</p>
+                        <p style="margin-top: 10px;"><strong>Ventajas:</strong></p>
+                        <ul class="bullet-list">
+                            <li>La información nunca se transfiere al servidor.</li>
+                            <li>Puede almacenar hasta 5 MB.</li>
+                            <li>Mejor que las cookies para datos locales.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Objetos de almacenamiento:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>localStorage</code>: almacena datos sin fecha de expiración (permanente).</li>
+                            <li><code>sessionStorage</code>: almacena datos para una sesión (se pierden al cerrar el navegador).</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Métodos y atributos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>.getItem(key)</code>: devuelve el valor del elemento con clave <code>key</code>.</li>
+                            <li><code>.setItem(key, value)</code>: almacena valor referenciado por clave.</li>
+                            <li><code>.removeItem(key)</code>: elimina el par clave/valor.</li>
+                            <li><code>.clear()</code>: elimina todos los elementos.</li>
+                            <li><code>.key(index)</code>: devuelve la clave en la posición <code>index</code>.</li>
+                            <li><code>.length</code>: número de elementos almacenados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-microchip"></i>Web Workers
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Definición:</strong> código JavaScript que corre en segundo plano sin afectar la performance de la página.</p>
+                        <p style="margin-top: 10px;"><strong>Características:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Permite procesos pesados sin bloquear la interfaz.</li>
+                            <li>No afectan la usabilidad de la aplicación.</li>
+                            <li>Se ejecutan en paralelo con el código principal.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Tipos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><strong>Web Workers Dedicados:</strong> vinculados al script que los llamó.</li>
+                            <li><strong>SharedWorker:</strong> accesibles desde múltiples contextos (varias ventanas, iframes, otros workers).</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Métodos:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>new Worker("archivo.js")</code>: crea un worker.</li>
+                            <li><code>.postMessage(data)</code>: envía mensajes al worker.</li>
+                            <li><code>.onmessage</code>: recibe mensajes del worker.</li>
+                            <li><code>.terminate()</code>: detiene el worker.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 6: NUEVOS EVENTOS HTML5 -->
+            <div class="chapter">
+                <h2 class="chapter-title">6️⃣ Nuevos Eventos HTML5 <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-window-maximize"></i>Eventos de Window
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>onafterprint</code>: después de que el documento se imprime.</li>
+                            <li><code>onbeforeprint</code>: antes de que el documento sea impreso.</li>
+                            <li><code>onbeforeonload</code>: antes de que el documento cargue.</li>
+                            <li><code>onerror</code>: cuando ocurre un error.</li>
+                            <li><code>onhaschange</code>: cuando el documento cambia.</li>
+                            <li><code>onmessage</code>: cuando un mensaje es disparado.</li>
+                            <li><code>onoffline</code>: el documento pasa a offline.</li>
+                            <li><code>ononline</code>: el documento pasa a online.</li>
+                            <li><code>onpagehide</code>: la ventana se oculta.</li>
+                            <li><code>onpageshow</code>: la ventana se muestra.</li>
+                            <li><code>onunload</code>: el usuario abandona el documento.</li>
+                            <li><code>onpopstate</code>: el historial de la ventana cambia.</li>
+                            <li><code>onundo</code>: se realiza un undo.</li>
+                            <li><code>onredo</code>: se realiza un redo.</li>
+                            <li><code>onresize</code>: la ventana cambia de tamaño.</li>
+                            <li><code>onstorage</code>: el documento carga.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-computer-mouse"></i>Eventos de Mouse
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>ondrag</code>: el elemento es arrastrado.</li>
+                            <li><code>ondragend</code>: la operación de arrastre termina.</li>
+                            <li><code>ondragenter</code>: el elemento se arrastra a un destino válido.</li>
+                            <li><code>ondragleave</code>: el elemento deja el destino válido.</li>
+                            <li><code>ondragover</code>: el elemento está siendo arrastrado sobre un destino válido.</li>
+                            <li><code>ondragstart</code>: comienza la operación de arrastre.</li>
+                            <li><code>ondrop</code>: el elemento arrastrado es soltado.</li>
+                            <li><code>onmousewheel</code>: la rueda del mouse es girada.</li>
+                            <li><code>onscroll</code>: la barra de scroll es utilizada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-photo-film"></i>Eventos de Multimedia
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>oncanplay</code>: multimedia puede comenzar reproducción (cargando buffer).</li>
+                            <li><code>oncanplaythrough</code>: multimedia puede reproducirse hasta el final sin parar.</li>
+                            <li><code>ondurationchange</code>: la duración de multimedia cambia.</li>
+                            <li><code>onemptied</code>: el contenedor multimedia queda vacío.</li>
+                            <li><code>onended</code>: multimedia llega al final.</li>
+                            <li><code>onerror</code>: error durante la carga de multimedia.</li>
+                            <li><code>onloadeddata</code>: la información multimedia se carga.</li>
+                            <li><code>onloadedmetadata</code>: duración y metadata se cargan.</li>
+                            <li><code>onloadstart</code>: el navegador comienza a cargar multimedia.</li>
+                            <li><code>onpause</code>: el contenido multimedia se pausa.</li>
+                            <li><code>onplay</code>: el contenido multimedia comienza la reproducción.</li>
+                            <li><code>onplaying</code>: el contenido está en proceso de reproducción.</li>
+                            <li><code>onprogress</code>: el navegador está trayendo el multimedia.</li>
+                            <li><code>onratechange</code>: la tasa de reproducción cambia.</li>
+                            <li><code>onreadystatechange</code>: el ready-state cambia.</li>
+                            <li><code>onseeked</code>: la búsqueda termina.</li>
+                            <li><code>onseeking</code>: la búsqueda comienza.</li>
+                            <li><code>onstalled</code>: error trayendo multimedia.</li>
+                            <li><code>onsuspend</code>: el navegador intenta traer contenido pero se detiene.</li>
+                            <li><code>ontimeupdate</code>: la posición de reproducción cambia.</li>
+                            <li><code>onvolumechange</code>: el volumen cambia.</li>
+                            <li><code>onwaiting</code>: la reproducción se detiene pero puede continuar.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-rectangle-list"></i>Eventos de Formulario (HTML5)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>oncontextmenu</code>: el menú contextual es disparado.</li>
+                            <li><code>onformchange</code>: el formulario cambia.</li>
+                            <li><code>onforminput</code>: el formulario recibe entrada.</li>
+                            <li><code>oninput</code>: el elemento recibe entrada del usuario.</li>
+                            <li><code>oninvalid</code>: el elemento es inválido.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 7: CSS -->
+            <div class="chapter">
+                <h2 class="chapter-title">7️⃣ CSS (Cascading Style Sheets) <span class="exam-badge" title="Tema confirmado por el profesor para el examen">⭐ Examen</span></h2>
+
+                <div class="definition">
+                    CSS describe cómo se visualizan los elementos del HTML.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-layer-group"></i>Tres Formas de Usar CSS
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><strong>Inline:</strong> mediante el atributo <code>style</code> directamente en el elemento.</li>
+                            <li><strong>Internal:</strong> mediante un elemento <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code>.</li>
+                            <li><strong>External:</strong> mediante un archivo CSS externo enlazado con <code>&lt;link rel="stylesheet"&gt;</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-font"></i>CSS Fonts (Fuentes)
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>color</code>: define el color del texto.</li>
+                            <li><code>font-family</code>: define la fuente a utilizar.</li>
+                            <li><code>font-size</code>: define el tamaño del texto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-palette"></i>CSS Colores
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th>Formato</th><th>Descripción</th></tr>
+                            <tr><td><strong>Hexadecimal</strong></td><td>Formato <code>#RRGGBB</code>, valores de 00 a FF. Soportado por casi todos los navegadores.</td></tr>
+                            <tr><td><strong>RGB</strong></td><td>Formato <code>rgb(rojo, verde, azul)</code>, valores de 0 a 255 para cada color.</td></tr>
+                            <tr><td><strong>RGBA</strong></td><td>RGB + alpha (transparencia). Alpha de 0.0 (transparente) a 1.0 (opaco). Soportado por IE9+, Chrome, Safari, Opera10+.</td></tr>
+                            <tr><td><strong>Nombres de colores</strong></td><td>140 nombres de colores predefinidos en las especificaciones HTML y CSS (ej: red, blue, green, yellow).</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 8: LISTAS, COMENTARIOS, COLORES, IMÁGENES Y TABLAS -->
+            <div class="chapter">
+                <h2 class="chapter-title">8️⃣ Listas, Comentarios, Colores, Imágenes y Tablas</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-italic"></i>Texto Itálico
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El elemento <code>&lt;i&gt;</code> define texto en cursiva/itálico.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ul"></i>Listas Desordenadas &lt;ul&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El elemento <code>&lt;ul&gt;</code> define una lista desordenada (sin orden específico), compuesta por elementos <code>&lt;li&gt;</code>.</p>
+                        <p style="margin-top: 12px;"><strong>Propiedad CSS <code>list-style-type</code></strong> define el estilo de las marcas de la lista:</p>
+                        <table>
+                            <tr><th>Valor</th><th>Descripción</th></tr>
+                            <tr><td><code>disc</code></td><td>Punto redondo (predeterminado).</td></tr>
+                            <tr><td><code>circle</code></td><td>Círculo vacío.</td></tr>
+                            <tr><td><code>square</code></td><td>Cuadrado.</td></tr>
+                            <tr><td><code>none</code></td><td>Sin marcador.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>Listas Ordenadas &lt;ol&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>El elemento <code>&lt;ol&gt;</code> define una lista ordenada (con numeración o secuencia).</p>
+                        <p style="margin-top: 12px;"><strong>Atributo <code>type</code></strong> define el tipo de marcador de los elementos de la lista:</p>
+                        <table>
+                            <tr><th>Valor</th><th>Descripción</th></tr>
+                            <tr><td><code>1</code></td><td>Números (1, 2, 3...) - predeterminado.</td></tr>
+                            <tr><td><code>A</code></td><td>Letras mayúsculas (A, B, C...).</td></tr>
+                            <tr><td><code>a</code></td><td>Letras minúsculas (a, b, c...).</td></tr>
+                            <tr><td><code>I</code></td><td>Números romanos mayúsculas (I, II, III...).</td></tr>
+                            <tr><td><code>i</code></td><td>Números romanos minúsculas (i, ii, iii...).</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-comment-slash"></i>Comentarios en HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Permiten agregar notas al código que no se mostrarán en la página. Se escriben entre <code>&lt;!--</code> y <code>--&gt;</code>.</p>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li>No aparecen en la página web.</li>
+                            <li>Útiles para documentar el código.</li>
+                            <li>Pueden ocupar múltiples líneas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-droplet"></i>Colores en HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Los colores HTML se especifican con nombres de colores predefinidos o con valores RGB, HEX, HSL, RGBA o HSLA.</p>
+                        <table style="margin-top: 12px;">
+                            <tr><th>Forma</th><th>Descripción</th></tr>
+                            <tr><td><strong>Nombres predefinidos</strong></td><td>Se usan nombres de colores directos (ej: red, blue).</td></tr>
+                            <tr><td><strong>HEX</strong></td><td>Formato <code>#RRGGBB</code> (valores de 00 a FF).</td></tr>
+                            <tr><td><strong>RGB</strong></td><td>Formato <code>rgb(rojo, verde, azul)</code> (valores de 0 a 255).</td></tr>
+                            <tr><td><strong>RGBA</strong></td><td>RGB + Alpha (transparencia), de 0.0 a 1.0.</td></tr>
+                            <tr><td><strong>HSL</strong></td><td>Matiz (Hue), Saturación, Luminosidad.</td></tr>
+                            <tr><td><strong>HSLA</strong></td><td>HSL + Alpha (transparencia).</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-image"></i>Imágenes en HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Consideraciones:</strong></p>
+                        <ul class="bullet-list">
+                            <li>Las imágenes mejoran el diseño y apariencia de una página web.</li>
+                            <li>No se insertan técnicamente en la página; están vinculadas a la página.</li>
+                            <li>La etiqueta <code>&lt;img&gt;</code> crea un espacio de espera para la imagen referenciada.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Características de <code>&lt;img&gt;</code>:</strong> etiqueta vacía (sin contenido, sin cierre), solo contiene atributos, puede colocarse en cualquier lugar de la página.</p>
+                        <p style="margin-top: 12px;"><strong>Atributos obligatorios:</strong></p>
+                        <table>
+                            <tr><th>Atributo</th><th>Descripción</th></tr>
+                            <tr><td><code>src</code></td><td>Especifica la ruta/ubicación de la imagen.</td></tr>
+                            <tr><td><code>alt</code></td><td>Especifica texto alternativo si la imagen no carga.</td></tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Tamaño de imágenes:</strong> se puede definir con los atributos <code>width</code> y <code>height</code> (en píxeles, más directo) o con el atributo <code>style</code> (más flexible, admite porcentajes).</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table"></i>Tablas HTML
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Sirven para organizar datos en filas y columnas de forma estructurada.</p>
+                        <p style="margin-top: 12px;"><strong>Etiquetas principales:</strong></p>
+                        <table>
+                            <tr><th>Etiqueta</th><th>Descripción</th></tr>
+                            <tr><td><code>&lt;table&gt;</code></td><td>Define la tabla completa.</td></tr>
+                            <tr><td><code>&lt;tr&gt;</code></td><td>Define una fila (Table Row).</td></tr>
+                            <tr><td><code>&lt;th&gt;</code></td><td>Define encabezado de tabla (Table Header).</td></tr>
+                            <tr><td><code>&lt;td&gt;</code></td><td>Define datos de celda (Table Data).</td></tr>
+                        </table>
+                        <p style="margin-top: 12px;"><strong>Estilos por defecto:</strong> <code>&lt;th&gt;</code> se muestra en negrita y centrado; <code>&lt;td&gt;</code> se muestra en texto regular y alineado a la izquierda.</p>
+
+                        <p style="margin-top: 15px;"><strong>Propiedades CSS para tablas:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>border</code>: agrega bordes a la tabla.</li>
+                            <li><code>border-collapse</code>: elimina el espacio doble entre bordes de celdas.</li>
+                            <li><code>padding</code>: agrega espacio interno dentro de las celdas.</li>
+                            <li><code>text-align</code>: alinea el contenido de las celdas (<code>left</code>, <code>center</code>, <code>right</code>).</li>
+                            <li><code>border-spacing</code>: define el espacio entre las celdas.</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>Atributos para celdas:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>colspan</code>: hace que una celda abarque múltiples columnas.</li>
+                            <li><code>rowspan</code>: hace que una celda abarque múltiples filas.</li>
+                        </ul>
+
+                        <p style="margin-top: 12px;"><strong>Identificador único <code>id</code>:</strong> define de forma única una tabla para estilos o referencias específicas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 9: BLOQUES, FORMULARIOS Y EVENTOS -->
+            <div class="chapter">
+                <h2 class="chapter-title">9️⃣ Bloques, Formularios y Eventos</h2>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-square"></i>Elementos a Nivel de Bloque vs Línea
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Cada elemento HTML tiene un valor de visualización predeterminado: <strong>bloque</strong> o <strong>en línea</strong>.</p>
+                        <p style="margin-top: 12px;"><strong>Elementos a nivel de bloque:</strong> siempre comienzan en una nueva línea, ocupan todo el ancho disponible y se extienden hacia izquierda y derecha tanto como pueden.</p>
+                        <p style="margin-top: 12px;"><strong>&lt;div&gt;:</strong> contenedor a nivel de bloque usado para agrupar otros elementos HTML. Sin atributos obligatorios (atributos comunes: <code>style</code>, <code>class</code>, <code>id</code>). Se usa con CSS para diseñar bloques de contenido, como contenedor de secciones, aplicar estilos a grupos de elementos y organizar la estructura de la página.</p>
+                        <p style="margin-top: 12px;"><strong>&lt;span&gt;:</strong> contenedor en línea usado para marcar una parte de texto o documento. No comienza nueva línea. Sin atributos obligatorios. Se usa con CSS para diseñar partes específicas de texto.</p>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-lightbulb"></i> <strong>Diferencia clave:</strong> <code>&lt;div&gt;</code> = bloque (nueva línea); <code>&lt;span&gt;</code> = en línea (mismo renglón).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-pen"></i>El Elemento &lt;form&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Define un formulario para recolectar datos que ingresa el usuario. Contiene varios tipos de elementos de entrada, envía datos a un servidor e interactúa con el usuario.</p>
+                        <p style="margin-top: 12px;"><strong>Elementos de formulario:</strong> text fields (campos de texto), checkboxes (casillas de verificación), radio buttons (botones de opción), submit buttons (botones enviar), entre otros.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-keyboard"></i>El Elemento &lt;input&gt;
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Campo de entrada que puede visualizarse de diferentes formas según el atributo <code>type</code>.</p>
+                        <p style="margin-top: 10px;"><strong>Atributos:</strong> <code>type</code> (define el tipo de entrada), <code>name</code> (nombre del campo), <code>value</code> (valor predeterminado), <code>placeholder</code> (texto de ayuda).</p>
+                        <p style="margin-top: 12px;"><strong>Tipos de &lt;input&gt;:</strong></p>
+                        <table>
+                            <tr><th>Type</th><th>Descripción</th></tr>
+                            <tr><td><code>text</code></td><td>Campo de texto de una línea.</td></tr>
+                            <tr><td><code>password</code></td><td>Campo de contraseña (oculta caracteres).</td></tr>
+                            <tr><td><code>email</code></td><td>Campo de email con validación.</td></tr>
+                            <tr><td><code>number</code></td><td>Campo para números.</td></tr>
+                            <tr><td><code>date</code></td><td>Selector de fecha.</td></tr>
+                            <tr><td><code>time</code></td><td>Selector de hora.</td></tr>
+                            <tr><td><code>url</code></td><td>Campo para URL validada.</td></tr>
+                            <tr><td><code>week</code></td><td>Selector de semana.</td></tr>
+                            <tr><td><code>color</code></td><td>Selector de color.</td></tr>
+                            <tr><td><code>range</code></td><td>Deslizador.</td></tr>
+                            <tr><td><code>search</code></td><td>Campo de búsqueda.</td></tr>
+                            <tr><td><code>tel</code></td><td>Campo de teléfono.</td></tr>
+                            <tr><td><code>radio</code></td><td>Botón de opción (selecciona uno).</td></tr>
+                            <tr><td><code>checkbox</code></td><td>Casilla verificable (múltiples).</td></tr>
+                            <tr><td><code>submit</code></td><td>Botón para enviar.</td></tr>
+                            <tr><td><code>reset</code></td><td>Botón para limpiar.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-caret-down"></i>El Elemento &lt;select&gt; - Desplegable
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Crea un menú desplegable para seleccionar una opción.</p>
+                        <p style="margin-top: 10px;"><strong>Estructura:</strong> <code>&lt;select&gt;</code> es el contenedor, <code>&lt;option&gt;</code> define cada opción. El atributo <code>value</code> es el valor a enviar, y <code>selected</code> marca la opción predeterminada.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-circle-dot"></i>Radio Buttons y Checkboxes
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <table>
+                            <tr><th><code>&lt;input type="radio"&gt;</code></th><th><code>&lt;input type="checkbox"&gt;</code></th></tr>
+                            <tr>
+                                <td>Permite seleccionar <strong>UNA SOLA</strong> opción de varias. Solo una puede estar seleccionada. Se agrupan con el mismo <code>name</code>. <code>value</code> es lo que se envía y <code>checked</code> marca la predeterminada.</td>
+                                <td>Permite seleccionar <strong>MÚLTIPLES</strong> opciones. Varias pueden estar marcadas. <code>value</code> es lo que se envía y <code>checked</code> marca la predeterminada.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-paper-plane"></i>Envío del Formulario: action y method
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>&lt;input type="submit"&gt;:</strong> botón para enviar los datos del formulario. Atributo <code>value</code> define el texto que aparece en el botón.</p>
+                        <p style="margin-top: 12px;"><strong>Atributo <code>action</code>:</strong> indica a dónde se envían los datos del formulario (URL o archivo que los procesa en el servidor).</p>
+                        <p style="margin-top: 12px;"><strong>Atributo <code>method</code>:</strong> forma de entregar los datos.</p>
+                        <table style="margin-top: 12px;">
+                            <tr><th>GET</th><th>POST</th></tr>
+                            <tr>
+                                <td>Los datos viajan visibles en la URL. Limitado en tamaño. NO seguro para datos sensibles. Uso: búsquedas no sensibles, datos cortos.</td>
+                                <td>Los datos NO son visibles. Sin límite de tamaño. Más seguro para datos sensibles. La URL permanece oculta. Uso: datos sensibles (contraseñas, información personal), archivos grandes.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-title">Eventos en HTML</div>
+
+                <div class="definition">
+                    Un evento es una acción del usuario que puede disparar código JavaScript.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file"></i>Eventos de Documento e Imagen
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>Documento:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>onload</code>: ocurre cuando termina de cargar el documento.</li>
+                            <li><code>onunload</code>: ocurre cuando el usuario quita el documento de la ventana.</li>
+                        </ul>
+                        <p style="margin-top: 12px;"><strong>Imagen:</strong></p>
+                        <ul class="bullet-list">
+                            <li><code>onabort</code>: ocurre cuando la carga de imagen es abortada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-rectangle-list"></i>Eventos de Formulario
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>onselect</code>: se selecciona contenido del elemento.</li>
+                            <li><code>onchange</code>: el elemento del formulario cambia su valor.</li>
+                            <li><code>onfocus</code>: el elemento recibe el foco (es seleccionado).</li>
+                            <li><code>onblur</code>: el elemento pierde el foco.</li>
+                            <li><code>onreset</code>: se resetea/limpia el formulario.</li>
+                            <li><code>onsubmit</code>: se envía el formulario.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-keyboard"></i>Eventos de Teclado
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>onkeypress</code>: tecla es presionada y soltada.</li>
+                            <li><code>onkeydown</code>: tecla es pulsada (presionada).</li>
+                            <li><code>onkeyup</code>: usuario libera la tecla.</li>
+                        </ul>
+                        <div class="highlight" style="margin-top: 12px;">
+                            <i class="fas fa-arrow-right"></i> <strong>Orden de ejecución:</strong> keydown → keypress → keyup
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-computer-mouse"></i>Eventos de Mouse
+                        <span class="toggle-icon">›</span>
+                    </div>
+                    <div class="card-content">
+                        <ul class="bullet-list">
+                            <li><code>onmousemove</code>: el mouse se mueve sobre el elemento.</li>
+                            <li><code>onmouseout</code>: el mouse sale del elemento.</li>
+                            <li><code>onmouseover</code>: el mouse entra al elemento desde afuera.</li>
+                            <li><code>onclick</code>: click del botón izquierdo del mouse.</li>
+                            <li><code>ondblclick</code>: doble click del mouse.</li>
+                            <li><code>onmousedown</code>: botón del mouse es presionado.</li>
+                            <li><code>onmouseup</code>: botón del mouse es soltado.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hacer que las cards sean expandibles
+        document.querySelectorAll('.card-title').forEach(function(title) {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const card = this.closest('.card');
+                if (!card) return;
+
+                const content = card.querySelector('.card-content');
+                const icon = card.querySelector('.toggle-icon');
+
+                if (content) {
+                    content.classList.toggle('show');
+                }
+                if (icon) {
+                    icon.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
